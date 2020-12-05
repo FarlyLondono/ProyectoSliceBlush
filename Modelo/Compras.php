@@ -4,6 +4,7 @@ class compras{
 
 private $idcompra;
 private $IdUsuarios;
+private $Nombre;
 private $proveedor;
 private $numerofactura;
 private $fechacompra;
@@ -25,6 +26,12 @@ public function setIdUsuarios($IdUsuarios){
 }
 public function getIdUsuarios(){
     return $this->IdUsuarios;
+}
+public function setNombre($Nombre){
+    $this->Nombre = $Nombre;
+}
+public function getNombre(){
+    return $this->Nombre;
 }
 
 public function setproveedor($proveedor){

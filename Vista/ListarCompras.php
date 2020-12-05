@@ -59,7 +59,7 @@ function boton(idcompra) {
                 <hr>
                     <tr>
                         <th>Id</th>
-                        <th>IdUsuarios</th>
+                        <th>Nombre Usuario</th>
                         <th>Proveedor</th>
                         <th>Numero Factura</th>
                         <th>Fecha Compra</th>
@@ -71,11 +71,11 @@ function boton(idcompra) {
                     <?php foreach($listarcompras as $C){ ?> 
                         <tr>
                         <td><?php echo $C->getidcompra()  ?></td>
-                        <td><?php echo $C->getIdUsuarios()  ?></td>
+                        <td><strong><?php echo $C->getNombre()  ?></strong></td>
                         <td><?php echo $C->getproveedor()  ?></td>
                         <td><?php echo $C->getnumerofactura()  ?></td>
                         <td><?php echo $C->getfechacompra()  ?></td>
-                        <td><?php echo $C->getTotal()  ?></td> 
+                        <td><strong style="color:green;"><?php echo $C->getTotal()  ?></strong></td> 
                         <td>
                         <?php
                         $sesion = $_SESSION["IdRol"];

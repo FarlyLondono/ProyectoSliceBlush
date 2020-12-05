@@ -9,14 +9,15 @@ public function __construct(){
 public function listarcompras(){
     $Db = Db::Conectar();
         $listacompras = [];
-        $Sql = $Db->query("SELECT f.idcompra,f.IdUsuarios,f.proveedor, f.numerofactura, f.fechacompra,sum(r.Total) as Totalcompra 
-        FROM compras AS f INNER JOIN detallecompra AS r ON f.idcompra=r.idcompra GROUP BY r.idcompra");
+        $Sql = $Db->query("SELECT f.idcompra,f.IdUsuarios,f.proveedor, f.numerofactura, f.fechacompra,u.Nombre,sum(r.Total) as Totalcompra 
+        FROM compras AS f INNER JOIN detallecompra AS r ON f.idcompra=r.idcompra INNER JOIN usuarios AS u ON f.IdUsuarios=u.IdUsuarios GROUP BY r.idcompra");
         //$Sql->bindValue('idcompra',$idcompra);
         $Sql->execute();
         foreach($Sql->fetchAll() as $compras){
             $C = new compras();
             $C->setidcompra($compras['idcompra']);
             $C->setIdUsuarios($compras['IdUsuarios']);
+            $C->setNombre($compras['Nombre']);
             $C->setproveedor($compras['proveedor']);
             $C->setnumerofactura($compras['numerofactura']);
             $C->setfechacompra($compras['fechacompra']);
