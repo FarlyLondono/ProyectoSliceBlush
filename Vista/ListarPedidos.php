@@ -79,6 +79,7 @@ function boton(idPedido) {
                         <th>IdPedido</th>
                         <th>Cliente</th>
                         <th>Fecha Registro</th>
+                        <th>Total Pedido</th>
                         <th>Estado Pedido</th>
                         <th>Accion</th>
                     </tr>
@@ -89,8 +90,9 @@ function boton(idPedido) {
                     foreach($ListarPedidos as $Pedido){ ?>
                         <tr>
                         <td><?php echo $Pedido->getidPedido()  ?></td>
-                        <td><?php echo $Pedido->getNombre()  ?></td>
+                        <td><strong><?php echo $Pedido->getNombre()  ?></strong></td>
                         <td><?php echo $Pedido->getFechaRegistro()  ?></td>
+                        <td><strong style="color:green;"><?php echo $Pedido->getTotalPedido()  ?></strong></td>
                         <td><?php echo $Pedido->getNombreEstadoPedido()  ?></td>     
                         <td>
                         <?php

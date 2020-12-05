@@ -5,6 +5,7 @@ class Pedido{
     private $fechaRegistro;
     private $IdEstadoPedido;
     private $NombreEstadoPedido;
+    private $TotalPedido;
 
 
     public function _construct(){
@@ -48,6 +49,13 @@ class Pedido{
 
     public function getNombreEstadoPedido(){
         return $this ->NombreEstadoPedido;
+    }
+    public function setTotalPedido($TotalPedido){
+        $this->TotalPedido = $TotalPedido;
+    }
+
+    public function getTotalPedido(){
+        return $this ->TotalPedido;
     }
     public function setNombre($Nombre){
         $this->Nombre = $Nombre;

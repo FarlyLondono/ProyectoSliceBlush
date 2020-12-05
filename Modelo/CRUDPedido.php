@@ -8,7 +8,14 @@ class CRUDPedido{
     public function ListarPedidos(){
         $Db = Db::Conectar();
         $listarPedidos = [];
-        $Sql = $Db->query('SELECT f.IdEstadoPedido,f.IdCliente,f.idPedido, f.fechaRegistro,e.IdEstadoPedido,e.NombreEstadoPedido,r.idCliente,r.Nombre FROM pedidos AS f INNER JOIN estadopedido AS e ON f.IdEstadoPedido=e.IdEstadoPedido INNER JOIN clientes AS r ON f.idCliente=r.idCliente');
+        //$Sql = $Db->query('SELECT f.IdEstadoPedido,f.IdCliente,f.idPedido, f.fechaRegistro,e.IdEstadoPedido,e.NombreEstadoPedido,r.idCliente,r.Nombre FROM pedidos AS f INNER JOIN estadopedido AS e ON f.IdEstadoPedido=e.IdEstadoPedido INNER JOIN clientes AS r ON f.idCliente=r.idCliente');
+
+        $Sql = $Db->query('SELECT f.IdEstadoPedido,f.IdCliente,f.idPedido,f.fechaRegistro,e.IdEstadoPedido,e.NombreEstadoPedido,r.idCliente,r.Nombre,
+        sum(p.precio) as TotalPedido 
+        FROM pedidos AS f INNER JOIN estadopedido AS e ON f.IdEstadoPedido=e.IdEstadoPedido
+        INNER JOIN clientes AS r ON f.idCliente=r.idCliente INNER JOIN detallepedidos AS p ON f.idPedido=p.idPedido
+        GROUP BY p.idPedido');
+       
         $Sql->execute();
         foreach($Sql->fetchAll() as $Registro){
             $C = new Pedido(); //crear un objeto de tipo usuario
@@ -16,6 +23,7 @@ class CRUDPedido{
             $C->setNombre($Registro['Nombre']);
             $C->setfechaRegistro($Registro['fechaRegistro']);
             $C->setNombreEstadoPedido($Registro['NombreEstadoPedido']);
+            $C->setTotalPedido($Registro['TotalPedido']);
             $ListarPedidos[]= $C;//asignar ala lista el objeto.
         }
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
