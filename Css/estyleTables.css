@@ -1,0 +1,11 @@
+#formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: rgba(197, 195, 195, 0.856);
+    width: 110%;
+    max-width: 1100px;
+    left: calc(4% - 35px);
+    position: relative;
+    padding: 20px;
+    text-align: center;
+}
