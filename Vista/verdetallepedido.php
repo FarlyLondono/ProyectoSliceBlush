@@ -81,7 +81,6 @@ function desplegarVista2($ruta)
                     <tr align="center">
                         
                         <th>Id Pedido</th>
-                        <th>Id Producto</th>
                         <th>Nombre Producto</th>
                         <th>Cantidad</th>
                         <th>Valor Total</th>
@@ -93,7 +92,6 @@ function desplegarVista2($ruta)
                         <tr align="center">
                             
                             <td><strong><?php echo $C->getidPedido()  ?></strong></td>
-                            <td><?php echo $C->getidProducto()  ?></td>
                             <td><?php echo $C->getNombreProducto()  ?></td>
                             <td><strong><?php echo $C->getcantidad()  ?></strong></td>
                             <td><?php echo $C->getprecio()  ?></td>
