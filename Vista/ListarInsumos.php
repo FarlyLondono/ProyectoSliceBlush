@@ -70,7 +70,7 @@ function boton(idinsumo) {
                         <td><?php echo $I->getnombreProducto()  ?></td>
                         <td><?php echo $I->getunidadmedida()  ?></td>
                         <td><?php echo $I->getprecio()  ?></td>
-                        <td><?php echo $I->getStock()  ?></td>  
+                        <td><strong style="color:green;"><?php echo $I->getStock()  ?></strong></td>  
                         <td>
                         <?php
                         $sesion = $_SESSION["IdRol"];
