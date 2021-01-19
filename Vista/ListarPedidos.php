@@ -39,7 +39,7 @@ function boton(idPedido) {
   if (result.isConfirmed) {
     $.ajax({url:"../ProyectoSliceBlush/Controlador/ControladorPedido.php?eliminarPedido&idPedido="+idPedido,
         success:()=>{
-            window.location.href="../CRUDC/menu.php"
+            window.location.href="../ProyectoSliceBlush/menu.php"
         }})
   }
 })
