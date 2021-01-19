@@ -32,9 +32,9 @@ function boton(idProducto) {
   confirmButtonText: 'Si, Eliminar!'
 }).then((result) => {
   if (result.isConfirmed) {
-    $.ajax({url:"../CRUDC/Controlador/controlador.php?eliminarProducto&idProducto="+idProducto,
+    $.ajax({url:"../ProyectoSliceBlush/Controlador/controlador.php?eliminarProducto&idProducto="+idProducto,
         success:()=>{
-            window.location.href="../CRUDC/menu.php"
+            window.location.href="../ProyectoSliceBlush/menu.php"
         }})
   }
 })

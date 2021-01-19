@@ -35,9 +35,9 @@ function boton(idcompra) {
   confirmButtonText: 'Si, Eliminar!'
 }).then((result) => {
   if (result.isConfirmed) {
-    $.ajax({url:"../CRUDC/Controlador/ControladorCompra.php?eliminarcompra&idcompra="+idcompra,
+    $.ajax({url:"../ProyectoSliceBlush/Controlador/ControladorCompra.php?eliminarcompra&idcompra="+idcompra,
         success:()=>{
-            window.location.href="../CRUDC/menu.php"
+            window.location.href="../ProyectoSliceBlush/menu.php"
         }})
   }
 })

@@ -32,9 +32,9 @@ function boton(idinsumo) {
   confirmButtonText: 'Si, Eliminar!'
 }).then((result) => {
   if (result.isConfirmed) {
-    $.ajax({url:"../CRUDC/Controlador/ControladorInsumos.php?eliminarinsumo&idinsumo="+idinsumo,
+    $.ajax({url:"..ProyectoSliceBlush/Controlador/ControladorInsumos.php?eliminarinsumo&idinsumo="+idinsumo,
         success:()=>{
-            window.location.href="../CRUDC/menu.php"
+            window.location.href="../ProyectoSliceBlush/menu.php"
         }})
   }
 })

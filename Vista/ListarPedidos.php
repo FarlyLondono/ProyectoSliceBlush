@@ -37,7 +37,7 @@ function boton(idPedido) {
   confirmButtonText: 'Si, Borralo!'
 }).then((result) => {
   if (result.isConfirmed) {
-    $.ajax({url:"../CRUDC/Controlador/ControladorPedido.php?eliminarPedido&idPedido="+idPedido,
+    $.ajax({url:"../ProyectoSliceBlush/Controlador/ControladorPedido.php?eliminarPedido&idPedido="+idPedido,
         success:()=>{
             window.location.href="../CRUDC/menu.php"
         }})

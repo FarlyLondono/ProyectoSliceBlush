@@ -33,9 +33,9 @@ function boton(idCliente) {
   confirmButtonText: 'Si, Eliminar!'
 }).then((result) => {
   if (result.isConfirmed) {
-    $.ajax({url:"../CRUDC/Controlador/controlador.php?eliminarCliente&idCliente="+idCliente,
+    $.ajax({url:"../ProyectoSliceBlush/Controlador/controlador.php?eliminarCliente&idCliente="+idCliente,
         success:()=>{
-            window.location.href="../CRUDC/menu.php"
+            window.location.href="../ProyectoSliceBlush/menu.php"
         }})
   }
 })
