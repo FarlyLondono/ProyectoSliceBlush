@@ -67,7 +67,7 @@ function boton(IdUsuarios) {
                         <th>Correo</th>
                         <th>Rol</th>
                         <th>Estado</th>
-                        <th>Accion</th>
+                        <th>..</th>
                     </tr>
                 </thead>
                 <tbody>

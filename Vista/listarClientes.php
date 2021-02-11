@@ -60,7 +60,7 @@ function boton(idCliente) {
                         <th>Direccion</th>
                         <th>Telefono</th>
                         <th>Contrasena</th>
-                        <th>Accion</th>
+                        <th>..</th>
                     </tr>
                 </thead>
                 <tbody>

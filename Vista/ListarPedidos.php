@@ -81,7 +81,7 @@ function boton(idPedido) {
                         <th>Fecha Registro</th>
                         <th>Total Pedido</th>
                         <th>Estado Pedido</th>
-                        <th>Accion</th>
+                        <th>..</th>
                     </tr>
                 </thead>
                 <tbody>

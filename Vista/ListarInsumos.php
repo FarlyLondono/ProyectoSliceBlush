@@ -60,7 +60,7 @@ function boton(idinsumo) {
                         <th>Unidad de Medida</th>
                         <th>Precio Producto</th>
                         <th>Stock</th>
-                        <th>Accion</th>
+                        <th>..</th>
                     </tr>
                 </thead>
                 <tbody>

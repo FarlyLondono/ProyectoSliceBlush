@@ -59,7 +59,7 @@ function boton(idProducto) {
                         <th>Descripcion Producto</th>
                         <th>Precio Producto</th>
                         <th>Estado</th>
-                        <th>Accion</th>
+                        <th>..</th>
                     </tr>
                 </thead>
                 <tbody>

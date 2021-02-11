@@ -64,7 +64,7 @@ function boton(idcompra) {
                         <th>Numero Factura</th>
                         <th>Fecha Compra</th>
                         <th>Total</th>
-                        <th>Accion</th>
+                        <th>..</th>
                     </tr>
                 </thead>
                 <tbody>
