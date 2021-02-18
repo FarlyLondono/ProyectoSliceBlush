@@ -47,7 +47,7 @@ function boton(idcompra) {
 
 
 <link rel="stylesheet" href="Css/estyleTables.css">
-<title>Gestionar Compras</title>   
+<title>Gestionar las Compras</title>   
 <body background="../Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
     <div class="container mt-4">
         <div class="card text-white bg-secondary mb-3">
