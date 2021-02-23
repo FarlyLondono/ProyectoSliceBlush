@@ -51,7 +51,7 @@ function boton(idcompra) {
 <body background="../Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
     <div class="container mt-4">
         <div class="card text-white bg-secondary mb-3">
-        <p class="h1" align="center">Lista Compras</p>
+        <p class="h1" align="center">Lista de Compras</p>
         </div>    
         <div id="formContent">
             <table class="table" id="listarcompras">
