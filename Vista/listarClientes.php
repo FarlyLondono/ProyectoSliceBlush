@@ -1,8 +1,12 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <?php
 session_start();
+$sesion = $_SESSION["IdRol"];
 
 if(!isset($_SESSION["Correo"])){
+    header("Location:../index.php");
+}
+elseif($sesion == 0){
     header("Location:../index.php");
 }
 require_once("../Controlador/controlador.php");

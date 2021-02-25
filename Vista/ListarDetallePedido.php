@@ -1,5 +1,13 @@
 <?php 
+session_start();
+$sesion = $_SESSION["IdRol"];
 
+if(!isset($_SESSION["Correo"])){
+    header("Location:../index.php");
+}
+elseif($sesion <> 1){
+    header("Location:../index.php");
+}
 require_once("../Controlador/ControladorPedido.php");
 
 $ControladorPedido = new ControladorPedido();
