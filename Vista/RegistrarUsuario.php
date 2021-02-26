@@ -111,6 +111,12 @@ $listarestados = $controlador->listarestados();
                     if (strlen($Contrasena) < 6) {
                         array_push($campos, "El campo contraseña no debe tener menos de 6 caracteres");
                     }
+                    if (strlen($NumeroDocumento) > 10) {
+                        array_push($campos, "El campo NumeroDocumento no debe tener mas de 10 caracteres");
+                    }
+                    if (strlen($NumeroDocumento) < 6) {
+                        array_push($campos, "El campo NumeroDocumento no debe tener menos de 6 caracteres");
+                    }
                     if (strpos($Correo, "@") == false) {
                         array_push($campos, "ingrese un correo electronico valido");
                     }
