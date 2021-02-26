@@ -8,7 +8,7 @@ require_once("../Controlador/controlador.php");
 $controlador = new controlador();
 $listarRoles = $controlador->listarRoles();
 $listarestados = $controlador->listarestados();
-
+$crudcliente = new CRUDcliente();
 
 
 
@@ -85,6 +85,9 @@ $listarestados = $controlador->listarestados();
                         if(isset($_GET['registrarCliente'])){
                             desplegarVista("Vista/registrarCliente.php");
                         }elseif(isset($_POST["registrarCliente"])){
+                            $Correo = $_POST['Correo'];
+                            $NombreCorreo = $crudcliente->buscarCorreoCliente($Correo);
+                            if ($NombreCorreo == 0){
                             $controlador->registrarCliente();
                             ?>
                             <script>
@@ -95,6 +98,17 @@ $listarestados = $controlador->listarestados();
                         })
                             </script>
                             <?php
+                            }else{
+                                ?>
+                            <script>
+                            swal("error!", "Este usuario ya existe!","error",{
+                            button: "OK"
+                        }).then(function(){
+                        window.location.href="../index.php"
+                        })
+                            </script>
+                            <?php
+                            }
                         }
                     }
                     echo "</div>";

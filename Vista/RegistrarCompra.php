@@ -1,7 +1,11 @@
 <?php 
 session_start();
-if(!isset($_SESSION["Correo"]))
-{
+$sesion = $_SESSION["IdRol"];
+
+if(!isset($_SESSION["Correo"])){
+    header("Location:../index.php");
+}
+elseif($sesion == 0){
     header("Location:../index.php");
 }
 require_once("../Controlador/ControladorCompra.php");

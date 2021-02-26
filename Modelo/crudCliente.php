@@ -154,6 +154,27 @@ class CRUDcliente{
 
     }
 
+    public function buscarCorreoCliente($Correo)
+    {
+        $Db = Db::Conectar();
+        $Sql = $Db->prepare('SELECT * FROM clientes
+        WHERE Correo=:Correo');
+          $Sql->bindValue('Correo',$Correo);
+          
+          $Sql->execute();
+          $C = new Clientes();
+          $var = 0;
+          if($Sql->rowCount()>0)
+          {
+              $var=1;
+          }
+          else{
+              $var=0;
+          }
+          Db::cerrarconexion($Db);
+          return $var;
+        }
+
    
 }
 
