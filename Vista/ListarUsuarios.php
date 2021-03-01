@@ -81,7 +81,7 @@ function boton(IdUsuarios) {
                         <td><?php echo $C->getNombreEstado()  ?></td>
                         <td>
                         <a href="Vista/editarUsuario.php?editarUsuario&IdUsuarios=<?php echo  $C->getIdUsuarios(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
-                        <a onclick="boton(<?php echo $C->getIdUsuarios(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.jfif" alt="">Eliminar</a>
+                        <a onclick="boton(<?php echo $C->getIdUsuarios(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
                         </td>     
                         </tr>
 
