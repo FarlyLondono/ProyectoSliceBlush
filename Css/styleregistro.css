@@ -18,7 +18,7 @@ body {
     bottom: -40px;
     width: auto;
     height: auto;
-    background-image: url(https://cdn.glitch.com/e71bec93-401f-4b37-bde5-d8aa20eeffbd%2Frsz_ryan-plomp-bpqmvbizcbm-unsplash_2.jpg?v=1595424616027);
+    background-image: url(https://cdn.glitch.com/fbff7eb9-672b-4689-baec-387dda4b00ff%2Frsz_shapelined-_jbkdviwexi-unsplash_1.jpg?v=1614873226859);
     background-size: cover;
     z-index: 0;
 }
@@ -123,6 +123,7 @@ body {
     margin-top: 10px;
     text-align: center;
 }
+
 .login a[type=submit] {
     width: 250px;
     height: 35px;

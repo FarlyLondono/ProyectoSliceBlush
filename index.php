@@ -19,7 +19,6 @@
 </head>
 
 <body>
-<body background="Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
   <div id="logear">
     <div class="body"></div>
     <div class="grad"></div>
