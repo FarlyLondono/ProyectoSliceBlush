@@ -31,10 +31,10 @@
       <form action="Controlador/ControladorLogin.php" method="POST">
         <input type="text" placeholder="Correo" name="Correo" id="Correo"><br>
         <input type="password" placeholder="Contrasena" name="Contrasena" id="Contrasena"><br>
-        <p class="message">No estas registrado? <a style="color: black;" class="pointer"  href="Vista/RegistrarCliente1.php">Crea una cuenta</a></p>
+        <strong><p class="message">No estas registrado? <a  style="color: black;" class="pointer"  href="Vista/RegistrarCliente1.php">Crea una cuenta</a></strong></p>
         <br/>
         <button type="submit"  class="btn btn-dark" name="Acceder" value="Acceder">Acceder</button><br />
-        <a class="pointer" style="color:black" href="Vista/RecuperarContrasena.php">Olvide mi contraseña!</a>
+       <strong><a class="pointer" style="color:black" href="Vista/RecuperarContrasena.php">Olvide mi contraseña!</a></strong>
         </form>
         <br/>
       </div>
