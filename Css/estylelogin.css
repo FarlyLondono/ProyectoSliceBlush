@@ -13,7 +13,7 @@ body {
 #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: rgba(197, 195, 195, 0.856);
+    background: rgba(197, 195, 195, 0.575);
     padding: 30px;
     width: 100%;
     max-width: 450px;
@@ -22,6 +22,7 @@ body {
     -webkit-box-shadow: 0 30px 60px 0 rgb(0, 0, 0);
     box-shadow: 0 30px 60px 0 rgb(0, 0, 0);
     text-align: center;
+    left: calc(30% - 255px);
 }
 
 .body {
@@ -32,7 +33,7 @@ body {
     bottom: -40px;
     width: auto;
     height: auto;
-    background-image: url(https://cdn.glitch.com/fbff7eb9-672b-4689-baec-387dda4b00ff%2Frsz_shapelined-_jbkdviwexi-unsplash_1.jpg?v=1614873226859);
+    background-image: url(https://cdn.glitch.com/e71bec93-401f-4b37-bde5-d8aa20eeffbd%2Frsz_ryan-plomp-bpqmvbizcbm-unsplash_2.jpg?v=1595424616027);
     background-size: cover;
     z-index: 0;
 }
@@ -53,8 +54,8 @@ body {
 
 .header {
     position: absolute;
-    top: calc(50% - 35px);
-    left: calc(50% - 255px);
+    top: calc(28% - 35px);
+    left: calc(60% - 255px);
     z-index: 2;
 }
 
