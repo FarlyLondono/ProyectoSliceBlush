@@ -75,8 +75,8 @@ function boton(idProducto) {
                         if($sesion == 1)
                         {
                             ?>
-                        <a href="Vista/editarProducto.php?editarProducto&idProducto=<?php echo  $C->getidProducto(); ?>" class="btn btn-outline-warning">Editar</a>
-                        <a onclick="boton(<?php echo $C->getidProducto(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
+                        <a href="Vista/editarProducto.php?editarProducto&idProducto=<?php echo  $C->getidProducto(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
+                        <a onclick="boton(<?php echo $C->getidProducto(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
                         <?php
                         }
                         ?>  

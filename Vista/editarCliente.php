@@ -70,8 +70,8 @@ elseif(isset($_POST["editarCliente"])){
 
 </br>
 
-    <button type="submit" name="editarCliente" class="btn btn-primary">Editar</button>
-    <a href="../menu.php" class="btn btn-success">REGRESAR</a>     
+    <button type="submit" name="editarCliente" class="btn btn-success">Editar</button>
+    <a href="../menu.php" class="btn btn-primary">Regresar</a>     
 
         </form>
 

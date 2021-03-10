@@ -77,8 +77,8 @@ elseif(isset($_POST["editarProducto"])){
                 </select>
 </br>
 
-    <button type="submit" name="editarProducto" class="btn btn-primary">Editar</button>
-    <a href="../menu.php" class="btn btn-success">REGRESAR</a>     
+    <button type="submit" name="editarProducto" class="btn btn-success">Editar</button>
+    <a href="../menu.php" class="btn btn-primary">Regresar</a>     
         
         </form>
 

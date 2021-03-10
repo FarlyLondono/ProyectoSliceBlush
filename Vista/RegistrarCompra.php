@@ -84,8 +84,8 @@ $listarinsumos = $ControladorInsumo->listarinsumos();
                 <label for="">Observaciones</label> 
                 <input type="text" name="observaciones" id="observaciones"  class="form-control">
             </br>
-        <button type="submit" name="registrarcompra" class="btn btn-primary">Agregar</button>  
-        <a href="../menu.php" class="btn btn-success">REGRESAR</a>   
+        <button type="submit" name="registrarcompra" class="btn btn-success">Agregar</button>  
+        <a href="../menu.php" class="btn btn-primary">Regresar</a>   
 
     
         </form>

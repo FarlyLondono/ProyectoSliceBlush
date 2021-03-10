@@ -63,8 +63,8 @@ if(isset($_POST["editarinsumo"])){
     <input type="text" name="Stock" id="Stock" class="form-control" value="<?php echo $buscarinsumo->getStock() ?>">
     </br>
 
-    <button type="submit" name="editarinsumo" class="btn btn-primary">Editar</button>
-    <a href="../menu.php" class="btn btn-success">REGRESAR</a>
+    <button type="submit" name="editarinsumo" class="btn btn-success">Editar</button>
+    <a href="../menu.php" class="btn btn-primary">Regrasar</a>
         </form>
 
     </div>

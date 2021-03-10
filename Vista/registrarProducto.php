@@ -64,8 +64,8 @@ $listarestado = $controlador->listarestados();
           </br>
 
           </select>
-          <button type="submit" name="registrarProducto" class="btn btn-primary">Registrar</button>
-          <a href="../menu.php" class="btn btn-success">REGRESAR</a>
+          <button type="submit" name="registrarProducto" class="btn btn-success">Registrar</button>
+          <a href="../menu.php" class="btn btn-primary">Regresar</a>
 
 
 

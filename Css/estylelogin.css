@@ -13,7 +13,7 @@ body {
 #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: rgba(197, 195, 195, 0.856);
+    background: rgba(197, 195, 195, 0.575);
     padding: 30px;
     width: 100%;
     max-width: 450px;
@@ -22,6 +22,7 @@ body {
     -webkit-box-shadow: 0 30px 60px 0 rgb(0, 0, 0);
     box-shadow: 0 30px 60px 0 rgb(0, 0, 0);
     text-align: center;
+    left: calc(30% - 255px);
 }
 
 .body {
@@ -53,14 +54,14 @@ body {
 
 .header {
     position: absolute;
-    top: calc(50% - 35px);
-    left: calc(50% - 255px);
+    top: calc(28% - 35px);
+    left: calc(60% - 255px);
     z-index: 2;
 }
 
 .header div {
     float: left;
-    color: #fff;
+    color: rgb(255, 255, 255);
     font-family: 'Exo', sans-serif;
     font-size: 35px;
     font-weight: 200;
@@ -68,7 +69,7 @@ body {
 }
 
 .header div span {
-    color: #07090f !important;
+    color: #000000 !important;
 }
 
 .login {
@@ -134,12 +135,12 @@ body {
 
 .login input[type=text]:focus {
     outline: none;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(0, 199, 235);
 }
 
 .login input[type=password]:focus {
     outline: none;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(0, 225, 255);
 }
 
 .login input[type=button]:focus {

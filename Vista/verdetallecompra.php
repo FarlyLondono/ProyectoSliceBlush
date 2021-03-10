@@ -89,8 +89,8 @@ function boton(iddetallecompra) {
                         <td><?php echo $C->getTotal()  ?></td>
                         <td><?php echo $C->getobservaciones()  ?></td>
                         <td>
-                        <a href="../Vista/editardetallecompra.php?editardetallecompra&iddetallecompra=<?php echo  $C->getiddetallecompra(); ?>" class="btn btn-outline-warning">Editar</a>
-                        <a onclick="boton(<?php echo $C->getiddetallecompra(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
+                        <a href="../Vista/editardetallecompra.php?editardetallecompra&iddetallecompra=<?php echo  $C->getiddetallecompra(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
+                        <a onclick="boton(<?php echo $C->getiddetallecompra(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
                         </td>     
                         </tr>
 

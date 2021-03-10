@@ -76,8 +76,8 @@ $listarProductos = $ControladorPedido->listarProductos();
         <input type="text" name="valorDetalle" id="valorDetalle" class="form-control" readonly/>
 
 </br>
-        <button type="submit" name="RegistrarPedido" class="btn btn-primary">Agregar</button>  
-        <a href="../menu.php" class="btn btn-success">REGRESAR</a>   
+        <button type="submit" name="RegistrarPedido" class="btn btn-success">Agregar</button>  
+        <a href="../menu.php" class="btn btn-primary">Regresar</a>   
 
     
         </form>
