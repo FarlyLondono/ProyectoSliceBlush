@@ -76,7 +76,7 @@ function boton(idPedido) {
                 <thead class="thead-dark">
                 <hr>
                     <tr>
-                        <th>IdPedido</th>
+                        
                         <th>Cliente</th>
                         <th>Fecha Registro</th>
                         <th>Total Pedido</th>
@@ -89,7 +89,7 @@ function boton(idPedido) {
                     if(is_array($ListarPedidos)){
                     foreach($ListarPedidos as $Pedido){ ?>
                         <tr>
-                        <td><?php echo $Pedido->getidPedido()  ?></td>
+                        
                         <td><strong><?php echo $Pedido->getNombre()  ?></strong></td>
                         <td><?php echo $Pedido->getFechaRegistro()  ?></td>
                         <td><strong style="color:green;"><?php echo $Pedido->getTotalPedido()  ?></strong></td>
@@ -101,8 +101,8 @@ function boton(idPedido) {
                         {
                             ?>
                         <a href="../ProyectoSliceBlush/Controlador/ControladorPedido.php?editarPedido&idPedido=<?php echo  $Pedido->getidPedido(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
-                        <a  href="../ProyectoSliceBlush/Controlador/ControladorPedido.php?verdetallepedido&idPedido=<?php echo  $Pedido->getidPedido(); ?>" class="btn btn-outline-primary">Ver Detalle</a>
-                        <a onclick="boton(<?php echo $Pedido->getidPedido(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
+                        <a  href="../ProyectoSliceBlush/Controlador/ControladorPedido.php?verdetallepedido&idPedido=<?php echo  $Pedido->getidPedido(); ?>" class="btn btn-outline-primary"><img style="width: 25px; height: 25px;" src="Img/verdetalle.png" alt="">Ver Detalle</a>
+                        <a onclick="boton(<?php echo $Pedido->getidPedido(); ?>)" type="button" class="btn btn-outline-danger">Inhabilitar</a>
                         <?php
                         }
                         ?>

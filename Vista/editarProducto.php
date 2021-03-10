@@ -56,13 +56,13 @@ elseif(isset($_POST["editarProducto"])){
     <div class="card-bordy">
 
     <form method="POST" action="editarProducto.php"> 
-    <label for="">idProducto:</label>  
-    <input type="text" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>
-    <label for="">NombreProducto:</label>  
+      
+    <input type="hidden" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>
+    <label for="">Nombre Producto:</label>  
     <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>">
-    <label for="">DescripcionProducto:</label>  
+    <label for="">Descripción:</label>  
     <input type="text" name="DescripcionProducto" id="DescripcionProducto" class="form-control" value="<?php echo $buscarProducto->getDescripcionProducto() ?>">
-    <label for="">PrecioProducto:</label>  
+    <label for="">Precio:</label>  
     <input  type="text" name="PrecioProducto" id="PrecioProducto" class="form-control" value="<?php echo $buscarProducto->getPrecioProducto() ?>" >
     <label for="">Estado:</label>
     <select type="text" name="idEstado" id="idEstado" class="form-control">

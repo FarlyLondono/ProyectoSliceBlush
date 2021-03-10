@@ -53,9 +53,9 @@ if(isset($_POST["editarUsuario"])){
     <div class="card-bordy">
 
     <form  method="POST" action="editarUsuario.php"> 
-    <label for="">Id Usuario:</label>  
-    <input type="text" name="IdUsuarios" id="IdUsuarios" class="form-control" value="<?php echo $buscarusuario->getIdUsuarios() ?>" readonly>
-    <label for="">Numero Documento:</label>  
+    
+    <input type="hidden" name="IdUsuarios" id="IdUsuarios" class="form-control" value="<?php echo $buscarusuario->getIdUsuarios() ?>" readonly>
+    <label for="">Número Documento:</label>  
     <input type="text" name="NumeroDocumento" id="NumeroDocumento" class="form-control" value="<?php echo $buscarusuario->getNumeroDocumento() ?>">
     <label for="">Nombre:</label>  
     <input  type="text" name="Nombre" id="Nombre" class="form-control" value="<?php echo $buscarusuario->getNombre() ?>" >
@@ -64,7 +64,7 @@ if(isset($_POST["editarUsuario"])){
     <label for="">Correo:</label>  
     <input type="text" name="Correo" id="Correo" class="form-control"  value="<?php echo $buscarusuario->getCorreo() ?>">
     <label for="">Contraseña:</label>  
-    <input type="text" name="Contrasena" id="Contrasena" class="form-control"  value="<?php echo $buscarusuario->getContrasena() ?>">
+    <input type="password" name="Contrasena" id="Contrasena" class="form-control"  value="<?php echo $buscarusuario->getContrasena() ?>">
     <label for="">Estado:</label>
     <select type="text" name="IdEstado" id="IdEstado" class="form-control">
                     <option value="" >seleccione</option>
@@ -89,8 +89,8 @@ if(isset($_POST["editarUsuario"])){
                 </select>
 </br>
 
-    <button type="submit" name="editarUsuario" class="btn btn-primary">Editar</button>
-    <a href="../menu.php" class="btn btn-success">REGRESAR</a>     
+    <button type="submit" name="editarUsuario" class="btn btn-success">Editar</button>
+    <a href="../menu.php" class="btn btn-primary">Regresar</a>     
 
         </form>
 

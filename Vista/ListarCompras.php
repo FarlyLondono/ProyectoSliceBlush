@@ -62,10 +62,10 @@ function boton(idcompra) {
                 <thead class="thead-dark">
                 <hr>
                     <tr>
-                        <th>Id</th>
+                        
                         <th>Nombre Usuario</th>
                         <th>Proveedor</th>
-                        <th>Numero Factura</th>
+                        <th>Número Factura</th>
                         <th>Fecha Compra</th>
                         <th>Total</th>
                         <th>..</th>
@@ -74,7 +74,7 @@ function boton(idcompra) {
                 <tbody>
                     <?php foreach($listarcompras as $C){ ?> 
                         <tr>
-                        <td><?php echo $C->getidcompra()  ?></td>
+                        
                         <td><strong><?php echo $C->getNombre()  ?></strong></td>
                         <td><?php echo $C->getproveedor()  ?></td>
                         <td><?php echo $C->getnumerofactura()  ?></td>

@@ -59,10 +59,9 @@ function boton(idcompra) {
                 <thead class="thead-dark">
                 <hr>
                     <tr>
-                        <th>Id Detalle Compra</th>
-                        <th>Id Insumo</th>
+                        
+                        
                         <th>Nombre Insumo</th>
-                        <th>Id compra</th>
                         <th>Cantidad</th>
                         <th>Total</th>
                         <th>Observaciones</th>
@@ -71,10 +70,9 @@ function boton(idcompra) {
                 <tbody>
                     <?php foreach($listardetallecompra as $C){ ?> 
                         <tr>
-                        <td><strong><?php echo $C->getiddetallecompra()  ?></strong></td>
-                        <td><strong><?php echo $C->getidinsumo()  ?></strong></td>
+                        
+                        
                         <td><strong><?php echo $C->getnombreProducto()  ?></strong></td>
-                        <td><strong><?php echo $C->getidcompra()  ?></strong></td>
                         <td><strong><?php echo $C->getCantidad()  ?></strong></td>
                         <td><strong><?php echo $C->getTotal()  ?></strong></td>
                         <td><strong><?php echo $C->getobservaciones()  ?></strong></td>        

@@ -42,8 +42,8 @@ $buscarPedido= $ControladorPedido->buscarPedido($_GET["idPedido"]);
     <div class="card-bordy">
 
     <form name="frmpedido" method="POST" action="../Controlador/ControladorPedido.php"> 
-    <label for="">idPedido:</label>  
-    <input type="text" name="idPedido" id="idPedido" class="form-control" value="<?php echo $buscarPedido->getidPedido() ?>" readonly>
+     
+    <input type="hidden" name="idPedido" id="idPedido" class="form-control" value="<?php echo $buscarPedido->getidPedido() ?>" readonly>
     <label for="">Cliente:</label>  
     <select type="text" name="idCliente" id="idCliente" class="form-control">
                     <option value="" >seleccione</option>
@@ -58,8 +58,7 @@ $buscarPedido= $ControladorPedido->buscarPedido($_GET["idPedido"]);
                 }
                 ?>                 
                 </select>
-                </br>
-    <label for="">fecha Registro:</label>  
+    <label for="">Fecha Registro:</label>  
     <input type="text" name="fechaRegistro" id="fechaRegistro" class="form-control" value="<?php echo $buscarPedido->getfechaRegistro() ?>" readonly>
     <label for="">Estado Pedido:</label>  
     <select type="text" name="IdEstadoPedido" id="IdEstadoPedido" class="form-control">
@@ -77,8 +76,8 @@ $buscarPedido= $ControladorPedido->buscarPedido($_GET["idPedido"]);
                 </select>
                 </br>
 
-    <button type="submit" name="editarPedido" class="btn btn-primary">Editar</button>
-    <a href="../menu.php" class="btn btn-success">REGRESAR</a>     
+    <button type="submit" name="editarPedido" class="btn btn-success">Editar</button>
+    <a href="../menu.php" class="btn btn-primary">Regresar</a>     
         
         </form>
 

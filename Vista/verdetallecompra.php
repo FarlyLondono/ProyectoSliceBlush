@@ -73,24 +73,22 @@ function boton(iddetallecompra) {
                 <hr>
                     <tr align="center">
                         <th>Nombre Producto</th>
-                        <th>Id Compra</th>
                         <th>Cantidad</th>
                         <th>Total</th>
-                        <th>Observaciones</th>
-                        <th>Acciones</th>
+                        <th>Observación</th>
+                        <th>..</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($verdetallecompra as $C){ ?>
                         <tr align="center" >
                         <td><strong><?php echo $C->getnombreProducto()  ?></strong></td>
-                        <td><?php echo $C->getidcompra()  ?></td>
                         <td><strong><?php echo $C->getCantidad()  ?></strong></td>
                         <td><?php echo $C->getTotal()  ?></td>
                         <td><?php echo $C->getobservaciones()  ?></td>
                         <td>
-                        <a href="../Vista/editardetallecompra.php?editardetallecompra&iddetallecompra=<?php echo  $C->getiddetallecompra(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
-                        <a onclick="boton(<?php echo $C->getiddetallecompra(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
+                        <a href="../Vista/editardetallecompra.php?editardetallecompra&iddetallecompra=<?php echo  $C->getiddetallecompra(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="../Img/editar.png" alt="">Editar</a>
+                        <a onclick="boton(<?php echo $C->getiddetallecompra(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="../Img/eliminar.png" alt="">Eliminar</a>
                         </td>     
                         </tr>
 
@@ -101,7 +99,7 @@ function boton(iddetallecompra) {
 
             </table>
             <div class="card-header text-white">
-            <a href="../menu.php" class="btn btn-success">REGRESAR</a>  
+            <a href="../menu.php" class="btn btn-primary">Regresar</a>  
             </div> 
     </div>
    

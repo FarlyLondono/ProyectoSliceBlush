@@ -55,18 +55,18 @@ elseif(isset($_POST["editarCliente"])){
     <div class="card-bordy">
 
     <form  method="POST" action="editarCliente.php"> 
-    <label for="">idCliente:</label>  
-    <input type="text" name="idCliente" id="idCliente" class="form-control" value="<?php echo $buscarCliente->getidCliente() ?>" readonly>
+     
+    <input type="hidden" name="idCliente" id="idCliente" class="form-control" value="<?php echo $buscarCliente->getidCliente() ?>" readonly>
     <label for="">Nombre:</label>  
     <input type="text" name="Nombre" id="Nombre" class="form-control" value="<?php echo $buscarCliente->getNombre() ?>">
     <label for="">Correo:</label>  
     <input  type="text" name="Correo" id="Correo" class="form-control" value="<?php echo $buscarCliente->getCorreo() ?>" >
-    <label for="">Direccion:</label>  
+    <label for="">Dirección:</label>  
     <input type="text" name="Direccion" id="Direccion" class="form-control" value="<?php echo $buscarCliente->getDireccion() ?>">
-    <label for="">Telefono:</label>  
+    <label for="">Teléfono:</label>  
     <input type="text" name="Telefono" id="Telefono" class="form-control"  value="<?php echo $buscarCliente->getTelefono() ?>">
     <label for="">Contraseña:</label>  
-    <input type="text" name="Contrasena" id="Contrasena" class="form-control"  value="<?php echo $buscarCliente->getContrasena() ?>">
+    <input type="password" name="Contrasena" id="Contrasena" class="form-control"  value="<?php echo $buscarCliente->getContrasena() ?>">
 
 </br>
 

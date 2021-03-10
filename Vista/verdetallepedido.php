@@ -80,24 +80,22 @@ function desplegarVista2($ruta)
                     <hr>
                     <tr align="center">
                         
-                        <th>Id Pedido</th>
                         <th>Nombre Producto</th>
                         <th>Cantidad</th>
                         <th>Valor Total</th>
-                        <th>Acciones</th>
+                        <th>..</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($verdetallepedido as $C) { ?>
                         <tr align="center">
                             
-                            <td><strong><?php echo $C->getidPedido()  ?></strong></td>
                             <td><?php echo $C->getNombreProducto()  ?></td>
                             <td><strong><?php echo $C->getcantidad()  ?></strong></td>
                             <td><?php echo $C->getprecio()  ?></td>
                             <td>
-                                <a href="../Vista/editardetallepedido.php?editardetallepedido&idDetallePedido=<?php echo  $C->getidDetallePedido(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
-                                <a onclick="boton(<?php echo $C->getidDetallePedido(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
+                                <a href="../Vista/editardetallepedido.php?editardetallepedido&idDetallePedido=<?php echo  $C->getidDetallePedido(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="../Img/editar.png" alt="">Editar</a>
+                                <a onclick="boton(<?php echo $C->getidDetallePedido(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="../Img/eliminar.png" alt="">Eliminar</a>
                             </td>
                         </tr>
 
@@ -110,7 +108,7 @@ function desplegarVista2($ruta)
         </div>
 
         <div class="card-header text-white">
-            <a href="../menu.php" class="btn btn-success">REGRESAR</a>
+            <a href="../menu.php" class="btn btn-primary">Regresar</a>
         </div>
     </div>
 

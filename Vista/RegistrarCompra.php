@@ -45,8 +45,8 @@ $listarinsumos = $ControladorInsumo->listarinsumos();
     <div class="login">
             <form id="frmcompra" name="frmcompra"  method="POST" action="../Controlador/ControladorCompra.php" >
             <input type="hidden" name="registrarcompra" id="registrarcompra">
-                <label for="">Numero Compra</label> 
-                <input type="text" name="idcompra" id="idcompra" class="form-control" readonly>
+                
+                <input type="hidden" name="idcompra" id="idcompra" class="form-control" readonly>
                 <label id="usuariorequerido" for="">Usuario</label> 
                 <select type="text"  name="usuario" id="usuario" class="form-control">
                     <option value="" >seleccione usuario</option>
@@ -58,7 +58,7 @@ $listarinsumos = $ControladorInsumo->listarinsumos();
                 }
                 ?>                 
                 </select>
-                <label id="numerofacturarequerido" for="">Numero Factura</label> 
+                <label id="numerofacturarequerido" for="">Número Factura</label> 
                 <input type="text" name="numerofactura" id="numerofactura" class="form-control" >
                 <label id="proveedorreuqerido" for="">Proveedor</label> 
                 <input type="text" name="proveedor" id="proveedor"  class="form-control">
@@ -81,7 +81,7 @@ $listarinsumos = $ControladorInsumo->listarinsumos();
                 onkeyup= "calcularValorDetalle()" onkeydown="calcularValorDetalle()" >
                 <label for="">Valor Total:</label>
                 <input type="text" name="valortotal" id="valortotal" class="form-control" readonly >
-                <label for="">Observaciones</label> 
+                <label for="">Observación</label> 
                 <input type="text" name="observaciones" id="observaciones"  class="form-control">
             </br>
         <button type="submit" name="registrarcompra" class="btn btn-success">Agregar</button>  

@@ -49,7 +49,7 @@ $listarestados = $controlador->listarestados();
                 <input type="text" name="Apellidos" id="Apellidos" value="<?php echo $_POST['Apellidos'] ?>" class="form-control">
                 <label for="">Correo:</label>
                 <input type="text" name="Correo" id="Correo" value="<?php echo $_POST['Correo'] ?>" class="form-control">
-                <label for="">Contrasena:</label>
+                <label for="">Contraseña:</label>
                 <input type="password" name="Contrasena" id="Contrasena" value="<?php echo $_POST['Contrasena'] ?>" class="form-control">
                 <label for="">Estado:</label>
                 <select name="IdEstado" id="IdEstado" onchange="mostrarnombre(this.value)" class="form-control">

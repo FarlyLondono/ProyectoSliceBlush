@@ -146,7 +146,7 @@ date_default_timezone_set("America/Lima");
             </br>
             <form class="form-inline my-2 my-lg-0">
                 <a href="Vista/cerrarSesion.php" class="btn btn-outline-light my-3 my-sm-0 mr-sm-3" aria-pressed="true"
-                    type="submit">Cerrar sesion</a>
+                    type="submit">Cerrar sesión</a>
             </form>
         </div>
     </nav>
