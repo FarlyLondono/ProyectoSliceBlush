@@ -154,6 +154,28 @@ class CRUDcliente{
 
     }
 
+
+    public function buscaridcliente($Correo){
+        //conectar ala DB
+        $Db = Db::Conectar();
+        $$listarClientes = [];
+        $Sql = $Db->prepare('SELECT idCliente FROM clientes WHERE Correo=:Correo');
+        $Sql->bindValue(':Correo',$Correo);
+        //se ejecuta la consulta
+        try{ 
+            $Sql->execute();
+            $resultado = $Sql->fetchColumn();
+            echo("iD = $resultado\n");
+            return $resultado;
+        }
+        catch(Exception $e){
+            echo $e->getMessage();
+            die();
+        }
+
+    }
+    
+    
     public function buscarCorreoCliente($Correo)
     {
         $Db = Db::Conectar();
