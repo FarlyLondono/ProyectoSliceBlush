@@ -76,8 +76,8 @@ if(isset($_POST["editarcompra"])){
     <input type="text" name="fechacompra" id="fechacompra" class="form-control" value="<?php echo $buscarcompra->getfechacompra() ?>" readonly>
     </br>
 
-    <button type="submit" name="editarcompra" class="btn btn-primary">Editar</button>
-    <a href="../menu.php" class="btn btn-success">REGRESAR</a>
+    <button type="submit" name="editarcompra" class="btn btn-success">Editar</button>
+    <a href="../menu.php" class="btn btn-primary">Regresar</a>
         </form>
 
     </div>
