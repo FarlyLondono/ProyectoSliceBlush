@@ -100,9 +100,9 @@ function boton(idPedido) {
                         if($sesion == 1 || $sesion == 2)
                         {
                             ?>
-                        <a href="../ProyectoSliceBlush/Controlador/ControladorPedido.php?editarPedido&idPedido=<?php echo  $Pedido->getidPedido(); ?>" class="btn btn-outline-warning">Editar</a>
+                        <a href="../ProyectoSliceBlush/Controlador/ControladorPedido.php?editarPedido&idPedido=<?php echo  $Pedido->getidPedido(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
                         <a  href="../ProyectoSliceBlush/Controlador/ControladorPedido.php?verdetallepedido&idPedido=<?php echo  $Pedido->getidPedido(); ?>" class="btn btn-outline-primary">Ver Detalle</a>
-                        <a onclick="boton(<?php echo $Pedido->getidPedido(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
+                        <a onclick="boton(<?php echo $Pedido->getidPedido(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
                         <?php
                         }
                         ?>

@@ -86,9 +86,9 @@ function boton(idcompra) {
                         if($sesion == 1)
                         {
                             ?>
-                        <a href="Vista/editarCompra.php?editarcompra&idcompra=<?php echo  $C->getidcompra(); ?>" class="btn btn-outline-warning">Editar</a>
+                        <a href="Vista/editarCompra.php?editarcompra&idcompra=<?php echo  $C->getidcompra(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
                         <a  href="Controlador/Controladordetallecompra.php?verdetallecompra&idcompra=<?php echo  $C->getidcompra(); ?>" class="btn btn-outline-primary">Ver Detalle</a>
-                        <a onclick="boton(<?php echo $C->getidcompra(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
+                        <a onclick="boton(<?php echo $C->getidcompra(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
                         <?php
                         }
                         ?>  
