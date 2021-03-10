@@ -162,7 +162,6 @@ class CRUDcliente{
           $Sql->bindValue('Correo',$Correo);
           
           $Sql->execute();
-          $C = new Clientes();
           $var = 0;
           if($Sql->rowCount()>0)
           {
