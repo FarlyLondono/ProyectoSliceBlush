@@ -1,5 +1,6 @@
 <?php
 class CRUDcliente{
+    
     public function __construct(){}
 
     public function VerificarLogin($Clientes)
