@@ -4,7 +4,8 @@ if(!isset($_SESSION["Correo"]))
 {
     header("Location:../index.php");
 }
-include "../Modelo/CarritoCompras.php";
+
+require_once("../Modelo/CarritoCompras.php");
 require_once("../Modelo/conexion.php");
 require_once("../Modelo/config.php");
 require_once("../Controlador/controlador.php");
@@ -30,7 +31,6 @@ function desplegarVista2($ruta){
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
 </head>
@@ -55,6 +55,7 @@ function desplegarVista2($ruta){
         <?php foreach($listarProductos as $C){  ?>
             <div class="col-3">
                     <div class="card">
+
                         <img
                         title="<?php echo $C->getNombreProducto(); ?>" 
                         alt="<?php  echo $C->getNombreProducto(); ?>"
