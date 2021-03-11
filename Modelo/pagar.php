@@ -1,5 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <?php
+session_start();
 require_once("conexion.php");
 require_once("config.php");
 require_once("CarritoCompras.php");
@@ -8,11 +9,14 @@ $ControladorPedido = new ControladorPedido();
 ?>
 
 <?php
+//$_SESSION['idCliente'] = $_POST['idCliente'];
 if($_POST){
     $total=0;
+    //$SID=session_id();
     $Correo=$_POST['email'];
+    //echo $SID;
     $idCliente = $ControladorPedido->buscaridcliente($Correo);
-    echo'  
+  echo'  
     <script>
 swal($idCliente, "Ya estas registrado!","success",{
     button: "OK"
@@ -39,7 +43,24 @@ window.location.href="../index.php"
         Db::CerrarConexion($Db);
         return $idPedidoGenerado;
     
-        
+        /*
+        $Db = Db::Conectar();
+        $idPedidoGenerado = -1;
+        $sql = $Db->prepare('INSERT INTO pedidos(
+            idCliente,fechaRegistro,IdEstadoPedido)
+            VALUES(
+            :idCliente,NOW(),:IdEstadoPedido)');
+        $sql->bindValue('idCliente',$SID);
+        $sql->bindValue('IdEstadoPedido',1);
+        try{
+            $sql->execute();
+            $idPedidoGenerado = $Db->lastInsertId();
+        }
+        catch(Exception $e){
+            echo $e->getMessage();
+        }
+        Db::CerrarConexion($Db);
+        return $idPedidoGenerado;*/
         foreach($_SESSION['CARRITO'] as $indice=>$producto){
             $Db = Db::Conectar();
             $sentencia=$Db->prepare('INSERT INTO `detallepedidos`
@@ -54,7 +75,28 @@ window.location.href="../index.php"
 
             Db::CerrarConexion($Db);
         }
-           
+            /*$Db = Db::Conectar();
+            $sql = $Db->prepare('INSERT INTO detallepedidos(
+                idPedido,idProducto,cantidad,precio)
+                VALUES(
+                :idPedido,:idProducto,:cantidad,:precio)');
+            $sql->bindValue('idPedido', $detallePedidos->getidPedido());
+            $sql->bindValue('idProducto', $detallePedidos->getidProducto());
+            $sql->bindValue('cantidad', $detallePedidos->getcantidad());
+            $sql->bindValue('precio', $detallePedidos->getprecio());
+
+            try{
+                $sql->execute();
+            }
+            catch(Exception $e){
+                echo $e->getMessage();
+            }
+            Db::CerrarConexion($Db);*/
+    //echo "<h3>".$total."</h3>";
+
+}
+
+//session_destroy()
 ?>
 <!DOCTYPE html>
 <html lang="en">
