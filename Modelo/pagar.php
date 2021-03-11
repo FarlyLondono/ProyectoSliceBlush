@@ -32,35 +32,18 @@ window.location.href="../index.php"
 
         $Db = Db::Conectar();
         $idPedidoGenerado = -1;
-        $sentencia=$Db->prepare("INSERT INTO `pedidos`
-                 (`idCliente`, `fechaRegistro`, `IdEstadoPedido`)
-        VALUES (:idCliente,NOW(),:IdEstadoPedido)");
+        $sentencia=$Db->prepare('INSERT INTO pedidos
+                 (idCliente, fechaRegistro, IdEstadoPedido)
+        VALUES (:idCliente,NOW(),:IdEstadoPedido)');
         $sentencia->bindValue(":idCliente",print_r($idCliente,true));
-        $sentencia->bindValue(":IdEstadoPedido",3);
+        $sentencia->bindValue(":IdEstadoPedido",1);
 
         $sentencia->execute();
         $idPedidoGenerado = $Db->lastInsertId();
         Db::CerrarConexion($Db);
         return $idPedidoGenerado;
     
-        /*
-        $Db = Db::Conectar();
-        $idPedidoGenerado = -1;
-        $sql = $Db->prepare('INSERT INTO pedidos(
-            idCliente,fechaRegistro,IdEstadoPedido)
-            VALUES(
-            :idCliente,NOW(),:IdEstadoPedido)');
-        $sql->bindValue('idCliente',$SID);
-        $sql->bindValue('IdEstadoPedido',1);
-        try{
-            $sql->execute();
-            $idPedidoGenerado = $Db->lastInsertId();
-        }
-        catch(Exception $e){
-            echo $e->getMessage();
-        }
-        Db::CerrarConexion($Db);
-        return $idPedidoGenerado;*/
+        
         foreach($_SESSION['CARRITO'] as $indice=>$producto){
             $Db = Db::Conectar();
             $sentencia=$Db->prepare('INSERT INTO `detallepedidos`
@@ -68,9 +51,9 @@ window.location.href="../index.php"
             VALUES (:idPedido, :idProducto, :cantidad, :precio);');
 
             $sentencia->bindValue(":idPedido",$idPedidoGenerado);
-            $sentencia->bindValue(":idProducto",$producto->getidProducto(['ID']));
-            $sentencia->bindValue(":cantidad",$producto->getcantidad(['CANTIDAD']));
-            $sentencia->bindValue(":precio",$producto->getprecio(['PRECIO']));
+            $sentencia->bindValue(":idProducto",$producto->setidProducto(['ID']));
+            $sentencia->bindValue(":cantidad",$producto->setcantidad(['CANTIDAD']));
+            $sentencia->bindValue(":precio",$producto->setprecio(['PRECIO']));
             $sentencia->execute();
 
             Db::CerrarConexion($Db);
@@ -124,7 +107,7 @@ window.location.href="../index.php"
     <p>Los productos podran ser descargados una vez que se procese el pago<br>
     <strong>(para aclaraciones : Asadoslaportada@gmail.com)</strong>
     </p>
-    <a href="../menu.php" class="btn btn-success">REGRESAR</a>
+    <a href="../menu.php" class="btn btn-success">Regresar</a>
 </div>
 </body>
 

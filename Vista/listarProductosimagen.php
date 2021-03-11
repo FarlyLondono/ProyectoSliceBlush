@@ -39,7 +39,7 @@ function desplegarVista2($ruta){
         <div class="card text-white bg-secondary mb-3">
         <p class="h1" align="center">Lista Productos</p>  
     </div>
-    <a href="../menu.php" class="btn btn-success" >REGRESAR</a>
+    <a href="../menu.php" class="btn btn-primary" >Regresar</a>
     <a  href="ListaCarritoCompras.php"  ><img src="../Img/outline_shopping_cart_white_36dp.png" class=" my-3 my-sm-0 mr-sm-3" width="50" height="50" style="color:red;"></a> 
     <br>
     <br>

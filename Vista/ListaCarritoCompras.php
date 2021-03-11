@@ -47,7 +47,7 @@ function desplegarVista2($ruta){
     <div class="card-bordy">
     <div class="card text-white bg-secondary mb-3">
     <h1 align="center">Lista Carrito de Compras</h1>
-    <a href="listarProductosimagen.php" class="btn btn-success">REGRESAR</a> 
+    <a href="listarProductosimagen.php" class="btn btn-primary">Regresar</a> 
     <?php if(!empty($_SESSION['CARRITO'])){ ?>
     </div>
     <div id="formContent">
