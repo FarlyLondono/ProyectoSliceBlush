@@ -61,9 +61,8 @@ function boton(idCliente) {
                     <tr>
                         <th>Nombre</th>
                         <th>Correo</th>
-                        <th>Direccion</th>
-                        <th>Telefono</th>
-                        <th>Contrasena</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
                         <th>..</th>
                     </tr>
                 </thead>
@@ -74,13 +73,7 @@ function boton(idCliente) {
                         <td><?php echo $C->getCorreo()  ?></td>
                         <td><?php echo $C->getDireccion()  ?></td>
                         <td><?php echo $C->getTelefono()  ?></td>
-                        <td type="password"><?php
-                        $sesion = $_SESSION["IdRol"];
-                        if($sesion == 1)
-                        {
-                            ?><?php echo $C->getContrasena()  ?><?php
-                        }
-                        ?> </td>    
+                           
 
                         <td>
                         
@@ -89,8 +82,8 @@ function boton(idCliente) {
                         if($sesion == 1)
                         {
                             ?>
-                        <a href="Vista/editarCliente.php?editarCliente&idCliente=<?php echo  $C->getidCliente(); ?>" class="btn btn-outline-warning">Editar</a>
-                        <a onclick="boton(<?php echo $C->getIdCliente(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
+                        <a href="Vista/editarCliente.php?editarCliente&idCliente=<?php echo  $C->getidCliente(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
+                        <a onclick="boton(<?php echo $C->getIdCliente(); ?>)" type="button" class="btn btn-outline-danger">Inhabilitar</a>
                         <?php
                         }
                         ?> 

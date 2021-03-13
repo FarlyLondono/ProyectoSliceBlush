@@ -62,10 +62,10 @@ function boton(idcompra) {
                 <thead class="thead-dark">
                 <hr>
                     <tr>
-                        <th>Id</th>
+                        
                         <th>Nombre Usuario</th>
                         <th>Proveedor</th>
-                        <th>Numero Factura</th>
+                        <th>Número Factura</th>
                         <th>Fecha Compra</th>
                         <th>Total</th>
                         <th>..</th>
@@ -74,7 +74,7 @@ function boton(idcompra) {
                 <tbody>
                     <?php foreach($listarcompras as $C){ ?> 
                         <tr>
-                        <td><?php echo $C->getidcompra()  ?></td>
+                        
                         <td><strong><?php echo $C->getNombre()  ?></strong></td>
                         <td><?php echo $C->getproveedor()  ?></td>
                         <td><?php echo $C->getnumerofactura()  ?></td>
@@ -86,9 +86,9 @@ function boton(idcompra) {
                         if($sesion == 1)
                         {
                             ?>
-                        <a href="Vista/editarCompra.php?editarcompra&idcompra=<?php echo  $C->getidcompra(); ?>" class="btn btn-outline-warning">Editar</a>
-                        <a  href="Controlador/Controladordetallecompra.php?verdetallecompra&idcompra=<?php echo  $C->getidcompra(); ?>" class="btn btn-outline-primary">Ver Detalle</a>
-                        <a onclick="boton(<?php echo $C->getidcompra(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
+                        <a href="Vista/editarCompra.php?editarcompra&idcompra=<?php echo  $C->getidcompra(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
+                        <a  href="Controlador/Controladordetallecompra.php?verdetallecompra&idcompra=<?php echo  $C->getidcompra(); ?>" class="btn btn-outline-primary"><img style="width: 35px; height: 35px;" src="Img/verdetalle.png" alt="">Ver Detalle</a>
+                        <a onclick="boton(<?php echo $C->getidcompra(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
                         <?php
                         }
                         ?>  

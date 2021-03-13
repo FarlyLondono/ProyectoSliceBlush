@@ -43,8 +43,8 @@ $ListaDetallePedido = $ControladorPedido->ListarDetallePedido($_POST["idPedido"]
                 <thead class="thead-dark">
                 <hr>
                     <tr>
-                        <th>id Detalle Pedido</th>
-                        <th>id Pedido</th>
+                        
+                        
                         <th>Nombre Producto</th>
                         <th>Cantidad</th>
                         <th>Valor Total</th>
@@ -55,8 +55,7 @@ $ListaDetallePedido = $ControladorPedido->ListarDetallePedido($_POST["idPedido"]
                         { 
                         ?>
                         <tr>
-                        <td><?php echo $detallePedidos->getidDetallePedido()  ?></td>
-                        <td><?php echo $detallePedidos->getidPedido()  ?></td>
+                        
                         <td><strong><?php echo $detallePedidos->getNombreProducto()  ?></strong></td>
                         <td><?php echo $detallePedidos->getcantidad()  ?></td>  
                         <td><strong><?php echo $detallePedidos->getprecio()?></strong></td>

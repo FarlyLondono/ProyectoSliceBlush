@@ -51,20 +51,20 @@ if(isset($_POST["editarinsumo"])){
     <div class="card-bordy">
 
     <form name="frminsumo" method="POST" action="editarInsumo.php"> 
-    <label for="">idinsumo:</label>  
-    <input type="text" name="idinsumo" id="idinsumo" class="form-control" value="<?php echo $buscarinsumo->getidinsumo() ?>" readonly>
+     
+    <input type="hidden" name="idinsumo" id="idinsumo" class="form-control" value="<?php echo $buscarinsumo->getidinsumo() ?>" readonly>
     <label for="">Nombre Producto:</label>  
     <input type="text" name="nombreProducto" id="nombreProducto" class="form-control" value="<?php echo $buscarinsumo->getnombreProducto() ?>">
     <label for="">Unidada Medida:</label>  
     <input type="text" name="unidadmedida" id="unidadmedida" class="form-control" value="<?php echo $buscarinsumo->getunidadmedida() ?>">
-    <label for="">Precio Product:</label>  
+    <label for="">Precio Producto:</label>  
     <input type="text" name="precio" id="precio" class="form-control" value="<?php echo $buscarinsumo->getprecio() ?>">
     <label for="">Stock:</label>  
     <input type="text" name="Stock" id="Stock" class="form-control" value="<?php echo $buscarinsumo->getStock() ?>">
     </br>
 
-    <button type="submit" name="editarinsumo" class="btn btn-primary">Editar</button>
-    <a href="../menu.php" class="btn btn-success">REGRESAR</a>
+    <button type="submit" name="editarinsumo" class="btn btn-success">Editar</button>
+    <a href="../menu.php" class="btn btn-primary">Regrasar</a>
         </form>
 
     </div>

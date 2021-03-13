@@ -8,6 +8,7 @@ class Productos{
     private $PrecioProducto;
     private $idEstado;
     private $NombreEstado;
+    private $imagen;
 
 
     public function __construct(){
@@ -58,6 +59,13 @@ class Productos{
 
     public function getNombreEstado(){
         return $this ->NombreEstado;
+    }
+    public function setimagen($imagen){
+        $this->imagen = $imagen;
+    }
+
+    public function getimagen(){
+        return $this ->imagen;
     }
 
 

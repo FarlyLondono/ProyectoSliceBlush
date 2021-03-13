@@ -61,7 +61,7 @@ function boton(IdUsuarios) {
                 <thead class="thead-dark">
                 <hr>
                     <tr>
-                        <th>NumeroDocumento</th>
+                        <th>NúmeroDocumento</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Correo</th>
@@ -81,7 +81,7 @@ function boton(IdUsuarios) {
                         <td><?php echo $C->getNombreEstado()  ?></td>
                         <td>
                         <a href="Vista/editarUsuario.php?editarUsuario&IdUsuarios=<?php echo  $C->getIdUsuarios(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
-                        <a onclick="boton(<?php echo $C->getIdUsuarios(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
+                        <a onclick="boton(<?php echo $C->getIdUsuarios(); ?>)" type="button" class="btn btn-outline-danger">Inhabilitar</a>
                         </td>     
                         </tr>
 

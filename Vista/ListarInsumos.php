@@ -36,7 +36,7 @@ function boton(idinsumo) {
   confirmButtonText: 'Si, Eliminar!'
 }).then((result) => {
   if (result.isConfirmed) {
-    $.ajax({url:"..ProyectoSliceBlush/Controlador/ControladorInsumos.php?eliminarinsumo&idinsumo="+idinsumo,
+    $.ajax({url:"../ProyectoSliceBlush/Controlador/ControladorInsumos.php?eliminarinsumo&idinsumo="+idinsumo,
         success:()=>{
             window.location.href="../ProyectoSliceBlush/menu.php"
         }})
@@ -59,7 +59,7 @@ function boton(idinsumo) {
                 <thead class="thead-dark">
                 <hr>
                     <tr>
-                        <th>Id Insumo</th>
+                        
                         <th>Nombre Producto</th>
                         <th>Unidad de Medida</th>
                         <th>Precio Producto</th>
@@ -70,7 +70,7 @@ function boton(idinsumo) {
                 <tbody>
                     <?php foreach($listarinsumos as $I){ ?> 
                         <tr>
-                        <td><?php echo $I->getidinsumo()  ?></td>
+                        
                         <td><?php echo $I->getnombreProducto()  ?></td>
                         <td><?php echo $I->getunidadmedida()  ?></td>
                         <td><strong style="color:green;"><?php echo $I->getprecio()  ?></strong></td>
@@ -81,8 +81,8 @@ function boton(idinsumo) {
                         if($sesion == 1)
                         {
                             ?>
-                        <a href="Vista/editarInsumo.php?editarinsumo&idinsumo=<?php echo  $I->getidinsumo(); ?>" class="btn btn-outline-warning">Editar</a>
-                        <a onclick="boton(<?php echo $I->getidinsumo(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
+                        <a href="Vista/editarInsumo.php?editarinsumo&idinsumo=<?php echo  $I->getidinsumo(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
+                        <a onclick="boton(<?php echo $I->getidinsumo(); ?>)" type="button" class="btn btn-outline-danger">Inhabilitar</a>
                         <?php
                         }
                         ?>  

@@ -56,9 +56,9 @@ if(isset($_POST["editarcompra"])){
     <div class="card-bordy">
 
     <form name="frminsumo" method="POST" action="editarCompra.php"> 
-    <label for="">Id Compra:</label>  
-    <input type="text" name="idcompra" id="idcompra" class="form-control" value="<?php echo $buscarcompra->getidcompra() ?>" readonly>
-    <label for="">Id Usuario:</label>  
+      
+    <input type="hidden" name="idcompra" id="idcompra" class="form-control" value="<?php echo $buscarcompra->getidcompra() ?>" readonly>
+    <label for="">Nombre Usuario:</label>  
     <select type="text" name="IdUsuarios" id="IdUsuarios" class="form-control" onchange="mostrarprecio(this.value)">
                     <option value="" >seleccione</option>
                     <?php
@@ -70,14 +70,14 @@ if(isset($_POST["editarcompra"])){
                 ?>                 
                 </select> <label for="">Proveedor:</label>  
     <input type="text" name="proveedor" id="proveedor" class="form-control" value="<?php echo $buscarcompra->getproveedor() ?>">
-    <label for="">Numero de Factura:</label>  
+    <label for="">Número de Factura:</label>  
     <input type="text" name="numerofactura" id="numerofactura" class="form-control" value="<?php echo $buscarcompra->getnumerofactura() ?>">
     <label for="">Fecha Compra:</label>  
     <input type="text" name="fechacompra" id="fechacompra" class="form-control" value="<?php echo $buscarcompra->getfechacompra() ?>" readonly>
     </br>
 
-    <button type="submit" name="editarcompra" class="btn btn-primary">Editar</button>
-    <a href="../menu.php" class="btn btn-success">REGRESAR</a>
+    <button type="submit" name="editarcompra" class="btn btn-success">Editar</button>
+    <a href="../menu.php" class="btn btn-primary">Regresar</a>
         </form>
 
     </div>

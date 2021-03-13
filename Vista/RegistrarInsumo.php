@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 $sesion = $_SESSION["IdRol"];
 
@@ -8,6 +9,8 @@ if(!isset($_SESSION["Correo"])){
 elseif($sesion <> 1){
     header("Location:../index.php");
 }
+
+
 require_once("../Controlador/ControladorInsumos.php");
 $ControladorInsumo = new ControladorInsumo();
 /*$listarProductos = $controlador->listarProductos();
@@ -45,12 +48,17 @@ $listarestado = $controlador->listarestados();*/
           <label id="nombreRequerido" for="">Nombre Producto:</label>
           <input type="text" name="nombreProducto" value="<?php echo $_POST['nombreProducto'] ?>" id="nombreProducto" class="form-control">
           <label id="unidadRequerido" for="">Unidad De Medida:</label>
-          <input type="text" name="unidadmedida" value="<?php echo $_POST['unidadmedida'] ?>" id="unidadmedida" class="form-control">
+          <select name="unidadmedida" id="unidadmedida" value="<?php echo $_POST['unidadmedida'] ?>" class="form-control">
+                    <option value="">Seleccione</option>
+                    <option value="Kg">Kg</option>
+                    <option value="Unidades">Unidades</option>
+          </select>
+         
           <label id="precioRequerido" for="">Precio Producto:</label>
           <input type="text" name="precio" value="<?php echo $_POST['precio'] ?>" id="precio" class="form-control">
           <label id="StockRequerido" for="">Stock:</label>
           <input type="text" name="Stock" value="<?php echo $_POST['Stock'] ?>" id="Stock" class="form-control">
-      
+          <br>
           <button type="submit" name="RegistrarInsumo" id="RegistrarInsumo" class="btn btn-success">Registrar</button>
           <a href="../menu.php" class="btn btn-primary">Regresar</a>
 

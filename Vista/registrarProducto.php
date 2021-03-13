@@ -43,9 +43,9 @@ $listarestado = $controlador->listarestados();
         <form name="frmusuario" method="POST" action="registrarProducto.php">
           <label for="">NombreProducto:</label>
           <input type="text" name="NombreProducto" value="<?php echo $_POST['NombreProducto'] ?>" id="NombreProducto" class="form-control">
-          <label for="">DescripcionProducto:</label>
+          <label for="">Descripción:</label>
           <input type="text" name="DescripcionProducto" value="<?php echo $_POST['DescripcionProducto'] ?>" id="DescripcionProducto" class="form-control">
-          <label for="">PrecioProducto:</label>
+          <label for="">Precio:</label>
           <input type="text" name="PrecioProducto" value="<?php echo $_POST['PrecioProducto'] ?>" id="PrecioProducto" class="form-control">
           <label for="">Estado:</label>
           <select name="idEstado" id="idEstado" class="form-control">

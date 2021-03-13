@@ -10,7 +10,7 @@ class CRUDproducto{
         $Db = Db::Conectar();
         $listarProductos = [];
         //se define la consulta
-        $Sql = $Db->query('SELECT p.idEstado,p.idProducto, p.NombreProducto,p.DescripcionProducto,p.PrecioProducto,e.idEstado,e.NombreEstado FROM productos as p INNER JOIN estado as e ON e.idEstado=p.idEstado');
+        $Sql = $Db->query('SELECT p.idEstado,p.idProducto, p.NombreProducto,p.DescripcionProducto,p.PrecioProducto,p.imagen,e.idEstado,e.NombreEstado FROM productos as p INNER JOIN estado as e ON e.idEstado=p.idEstado');
         //se ejecuta la consulta
         $Sql->execute();
         foreach($Sql->fetchAll() as $Productos){
@@ -21,6 +21,7 @@ class CRUDproducto{
             $C->setPrecioProducto($Productos['PrecioProducto']);
             $C->setidEstado($Productos['idEstado']);
             $C->setNombreEstado($Productos['NombreEstado']);
+            $C->setimagen($Productos['imagen']);
           
             /*echo "<p>".$Usuario['idUsuarios']."</p>";
             echo "<p>".$Usuario['tipodocumento']."</p>";*/
