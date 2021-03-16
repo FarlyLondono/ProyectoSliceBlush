@@ -2,10 +2,9 @@
 session_start();
 $sesion = $_SESSION["IdRol"];
 
-if(!isset($_SESSION["Correo"])){
+if (!isset($_SESSION["Correo"])) {
     header("Location:../index.php");
-}
-elseif($sesion <> 1){
+} elseif ($sesion <> 1) {
     header("Location:../index.php");
 }
 
@@ -179,7 +178,7 @@ $listarestados = $controlador->listarestados();
         let IdRolaux = 0;
         <?php
         foreach ($listarRoles as $R) { ?>
-            IdRolaux = <?php echo $R->getIdRol(); ?>; //asignar a una variable jscript una variable php
+            IdRolaux = <?php echo $R->getIdRol(); ?>;
 
             if (IdRol == IdRolaux) {
                 $("#NombreRol").val(<?php echo $R->getNombreRol(); ?>)
