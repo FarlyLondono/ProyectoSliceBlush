@@ -43,9 +43,9 @@ $listarCliente = $controlador->listarClientes();
         <input type="text" name="Nombre" id="Nombre" value="<?php echo $_POST['Nombre'] ?>" class="form-control" >
         <label for="">Correo:</label> 
         <input type="text" name="Correo" id="Correo" value="<?php echo $_POST['Correo'] ?>" class="form-control">
-        <label for="">Direccion:</label>
+        <label for="">Dirección:</label>
         <input type="text" name="Direccion" id="Direccion" value="<?php echo $_POST['Direccion'] ?>" class="form-control">
-        <label for="">Telefono:</label>
+        <label for="">Teléfono:</label>
         <input type="text" name="Telefono" id="Telefono" value="<?php echo $_POST['Telefono'] ?>" class="form-control">
         <label for="">Contraseña:</label>
         <input type="password" name="Contrasena" value="<?php echo $_POST['Contrasena'] ?>" id="Contrasena" class="form-control">
@@ -89,7 +89,7 @@ if((isset($_POST['Nombre'])) && (isset($_POST['Correo'])) && (isset($_POST['Dire
         array_push($campos, "ingrese una Direccion valida");
     }
     if(($Nombre == "" ) || ($Correo == "" ) || ($Direccion == "" ) || ($Telefono == "" ) || ($Contrasena == "" )){
-        array_push($campos, "Los campos no pueden quedar vacio");
+        array_push($campos, "Los campos no pueden quedar vacios");
     }
     if(count($campos) > 0){
       echo "<div>";

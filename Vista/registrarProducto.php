@@ -41,7 +41,7 @@ $listarestado = $controlador->listarestados();
       <div class="card-bordy">
 
         <form name="frmusuario" method="POST" action="registrarProducto.php">
-          <label for="">NombreProducto:</label>
+          <label for="">Nombre Producto:</label>
           <input type="text" name="NombreProducto" value="<?php echo $_POST['NombreProducto'] ?>" id="NombreProducto" class="form-control">
           <label for="">Descripción:</label>
           <input type="text" name="DescripcionProducto" value="<?php echo $_POST['DescripcionProducto'] ?>" id="DescripcionProducto" class="form-control">
@@ -91,7 +91,7 @@ $listarestado = $controlador->listarestados();
             $campos = array();
 
             if (($NombreProducto == "") || ($DescripcionProducto == "") || ($PrecioProducto == "") || ($idEstado == "")) {
-              array_push($campos, "Los campos no pueden quedar vacio");
+              array_push($campos, "Los campos no pueden quedar vacios");
             }
             if (!preg_match('/^[0-9]*$/', $PrecioProducto)) {
               array_push($campos, "El campo PrecioProducto solo permite numeros");

@@ -40,7 +40,7 @@ $listarProductos = $ControladorPedido->listarProductos();
     <div class="card-bordy">
         <form name="frmpedido" id="frmpedido" method="POST" action="../Controlador/ControladorPedido    .php"> 
         <input type="hidden" name="RegistrarPedido" id="RegistrarPedido" />
-        <label for="">Numero pedido:</label>  
+        <label for="">Número pedido:</label>  
         <input type="text" name="idPedido" id="idPedido" class="form-control" readonly />
         <label for="">Cliente:</label>  
         <select type="text" name="Cliente" id="Cliente" class="form-control">

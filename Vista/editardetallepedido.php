@@ -55,10 +55,10 @@ if(isset($_POST["editardetallepedido"])){
     <div class="card-bordy">
 
     <form name="frmdetallepedido" method="POST" action="editardetallepedido.php"> 
-    <label for="">Id Detallepedido:</label>  
-    <input type="text" readonly name="idDetallePedido" id="idDetallePedido" class="form-control" value="<?php echo $buscardetallepedido->getidDetallePedido(); ?>" readonly>
-    <label for="">Id Pedido:</label>  
-    <input type="text" readonly name="idPedido" id="idPedido" class="form-control" value="<?php echo $buscardetallepedido->getidPedido() ?>">
+    <label for=""></label>  
+    <input type="hidden" readonly name="idDetallePedido" id="idDetallePedido" class="form-control" value="<?php echo $buscardetallepedido->getidDetallePedido(); ?>" readonly>
+    <label for=""></label>  
+    <input type="hidden" readonly name="idPedido" id="idPedido" class="form-control" value="<?php echo $buscardetallepedido->getidPedido() ?>">
     <label for="">Producto:</label>
     <select type="text" name="idProducto" id="idProducto" class="form-control" onchange="mostrarprecio(this.value)" >
                     <option value="" >seleccione</option>
@@ -80,8 +80,8 @@ if(isset($_POST["editardetallepedido"])){
     
     </br>
 
-    <button type="submit" name="editardetallepedido" class="btn btn-primary">Editar</button>
-    <a href="../menu.php" class="btn btn-success">REGRESAR</a>
+    <button type="submit" name="editardetallepedido" class="btn btn-success">Editar</button>
+    <a href="../menu.php" class="btn btn-primary">Regresar</a>
         </form>
 
     </div>
