@@ -32,10 +32,11 @@ $crudcliente = new CRUDcliente();
                 </br>
                 <input type="text" placeholder="Correo" id="Correo" name="Correo"><br>
                 </br>
-                <input type="text" placeholder="Direccion" id="Direccion" name="Direccion"><br>
+                <input type="text" placeholder="Dirección" id="Direccion" name="Direccion"><br>
                 </br>
-                <input type="text" placeholder="Telefono" id="Telefono" name="Telefono"><br>
-                <input type="password" placeholder="Contrasena" id="Contrasena" name="Contrasena"><br>
+                <input type="text" placeholder="Teléfono" id="Telefono" name="Telefono">
+                </br>
+                <input type="password" placeholder="Contraseña" id="Contrasena" name="Contrasena">
                 </br>
                 <button type="submit" name="registrarCliente" class="btn btn-dark">Registrar</button>
                 </br>

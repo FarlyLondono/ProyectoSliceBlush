@@ -40,7 +40,7 @@ $listarestados = $controlador->listarestados();
         <div class="card-bordy">
             <form action="RegistrarUsuario.php" method="POST">
 
-                <label for="">NumeroDocumento:</label>
+                <label for="">Número Documento:</label>
                 <input type="text" name="NumeroDocumento" value="<?php echo $_POST['NumeroDocumento'] ?>" id="NumeroDocumento" class="form-control">
                 <label for="">Nombre:</label>
                 <input type="text" name="Nombre" id="Nombre" value="<?php echo $_POST['Nombre'] ?>" class="form-control">
@@ -122,7 +122,7 @@ $listarestados = $controlador->listarestados();
                         array_push($campos, "ingrese un correo electronico valido");
                     }
                     if (($NumeroDocumento == "") || ($Nombre == "") || ($Apellidos == "") || ($Correo == "") || ($Contrasena == "") || ($IdEstado == "") || ($IdRol == "")) {
-                        array_push($campos, "Los campos no pueden quedar vacio");
+                        array_push($campos,  "Los campos no pueden quedar vacios");
                     }
                     if (count($campos) > 0) {
                         echo "<div>";

@@ -21,6 +21,7 @@
   <div id="logear">
     <div class="body"></div>
     <div class="grad"></div>
+<<<<<<< HEAD
     <div>
       <div class="header">
         <div><strong>Slice<span>Blush</strong></span></div>
@@ -40,6 +41,25 @@
           </form>
           <br />
         </div>
+=======
+    <div class="header">
+      <div><strong>Slice<span>Blush</strong></span></div>
+    </div>
+    <br>
+    <div class="login">
+      <div id="formContent">
+      <form action="Controlador/ControladorLogin.php" method="POST">
+        <input type="text" placeholder="Correo" name="Correo" id="Correo"><br>
+        <input type="password" placeholder="Contraseña" name="Contrasena" id="Contrasena"><br>
+        <strong><p class="message">No está registrado? <a  style="color: black;" class="pointer"  href="Vista/RegistrarCliente1.php">Crea una cuenta</a></strong></p>
+        <br/>
+        <button type="submit"  class="btn btn-dark" name="Acceder" value="Acceder">Acceder</button>
+        <br/>
+        <br/>
+       <strong><a class="pointer" style="color:black" href="Vista/RecuperarContrasena.php">Olvidé mi contraseña!</a></strong>
+        </form>
+        <br/>
+>>>>>>> 5b7b8a77aa9a993d6f4022c007854d55c3ea8b4f
       </div>
     </div>
   </div>
