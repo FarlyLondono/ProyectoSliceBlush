@@ -35,17 +35,21 @@ class controladorlogin{
     */
 
     public function VerificarLogin($Correo,$Contrasena){
+
+        $salt = md5($Contrasena);
+        $password = crypt($Contrasena,$salt);
+
         //From Usuario
         $Usuario = new Usuarios();
         $CRUDUsuario = new CRUDusuario();
         $Usuario->setCorreo($Correo);
-        $Usuario->setContrasena($Contrasena);
+        $Usuario->setContrasena($password);
         $Usuario = $CRUDUsuario->VerificarLogin($Usuario);
         //From Cliente
         $Cliente = new Clientes();
         $CRUDCliente = new CRUDcliente();
         $Cliente->setCorreo($Correo);
-        $Cliente->setContrasena($Contrasena);
+        $Cliente->setContrasena($password);
         $Cliente = $CRUDCliente->VerificarLogin($Cliente);
 
           if($Usuario->getExiste()==1){

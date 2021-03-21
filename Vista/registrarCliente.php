@@ -74,6 +74,7 @@ if((isset($_POST['Nombre'])) && (isset($_POST['Correo'])) && (isset($_POST['Dire
     $Telefono = $_POST['Telefono'];
     $Contrasena = $_POST['Contrasena'];
 
+
     $campos = array();
     
     if(strlen($Contrasena) < 6){

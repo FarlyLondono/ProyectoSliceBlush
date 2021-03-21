@@ -14,6 +14,9 @@ require_once("../Modelo/EstadoPedido.php");
 require_once("../Modelo/CRUDestadopedido.php");
 
 
+
+
+
 class controlador{
 
 public function __construct(){}
@@ -54,7 +57,11 @@ public function listarUsuarios(){
     return $listarUsuarios;
 
 }
+
+
 public function RegistrarUsuario(){
+    $salt = md5($_POST["Contrasena"]);
+    $passwordencriptada = crypt($_POST["Contrasena"],$salt);
 
     $Usuarios = new Usuarios();
     $CRUDusuario = new CRUDusuario();
@@ -62,7 +69,7 @@ public function RegistrarUsuario(){
     $Usuarios->setNombre($_POST["Nombre"]);
     $Usuarios->setApellidos($_POST["Apellidos"]);
     $Usuarios->setCorreo($_POST["Correo"]);
-    $Usuarios->setContrasena($_POST["Contrasena"]);
+    $Usuarios->setContrasena($passwordencriptada);
     $Usuarios->setIdEstado($_POST["IdEstado"]);
     $Usuarios->setIdRol($_POST["IdRol"]);
     
@@ -78,7 +85,8 @@ public function buscarusuario($IdUsuarios){
 }
 
 public function editarusuario(){
-
+    $salt = md5($_POST["Contrasena"]);
+    $passwordencriptada = crypt($_POST["Contrasena"],$salt);
     $Usuarios = new Usuarios();
     $CRUDusuario = new CRUDusuario();
         $Usuarios->setIdUsuarios($_POST["IdUsuarios"]);
@@ -86,7 +94,7 @@ public function editarusuario(){
         $Usuarios->setNombre($_POST["Nombre"]);
         $Usuarios->setApellidos($_POST["Apellidos"]);
         $Usuarios->setCorreo($_POST["Correo"]);
-        $Usuarios->setContrasena($_POST["Contrasena"]);
+        $Usuarios->setContrasena($passwordencriptada);
         $Usuarios->setIdEstado($_POST["IdEstado"]);
         $Usuarios->setIdRol($_POST["IdRol"]);
     
@@ -117,7 +125,12 @@ public function listarClientes(){
 }
 
 
-public function registrarCliente(){
+
+public function registrarCliente(){    
+
+    $salt = md5($_POST["Contrasena"]);
+    $passwordencriptada = crypt($_POST["Contrasena"],$salt);
+    
 
     $Clientes = new Clientes();
     $CRUDcliente = new CRUDcliente();
@@ -125,14 +138,19 @@ public function registrarCliente(){
     $Clientes->setCorreo($_POST["Correo"]);
     $Clientes->setDireccion($_POST["Direccion"]);
     $Clientes->setTelefono($_POST["Telefono"]);
-    $Clientes->setContrasena($_POST["Contrasena"]);
+    $Clientes->setContrasena($passwordencriptada);
     
         //var_dump($Usuario);
     $CRUDcliente->registrarCliente($Clientes);
 }
 
 
+
+
     public function editarCliente(){
+
+        $salt = md5($_POST["Contrasena"]);
+        $passwordencriptada = crypt($_POST["Contrasena"],$salt);
 
     $Clientes = new Clientes();
     $CRUDcliente = new CRUDcliente();
@@ -141,7 +159,7 @@ public function registrarCliente(){
         $Clientes->setCorreo($_POST["Correo"]);
         $Clientes->setDireccion($_POST["Direccion"]);
         $Clientes->setTelefono($_POST["Telefono"]);
-        $Clientes->setContrasena($_POST["Contrasena"]);
+        $Clientes->setContrasena($passwordencriptada);
     
         
             //var_dump($Usuario);
@@ -150,7 +168,6 @@ public function registrarCliente(){
 
     }
 
-    
 
     public function eliminarCliente($idCliente){
 

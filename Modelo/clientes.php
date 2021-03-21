@@ -1,7 +1,7 @@
 <?php
 
 class Clientes{
-    //definicion de atributos
+
     private $idCliente;
     private $Nombre;
     private $Correo;
@@ -10,6 +10,7 @@ class Clientes{
     private $Contrasena;
     private $IdEstado;
     private $Existe;
+    
     
 
     public function __construct(){
@@ -78,6 +79,7 @@ class Clientes{
     }
 
 }
+
 
 
 ?>

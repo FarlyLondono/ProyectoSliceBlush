@@ -105,6 +105,8 @@ $listarestados = $controlador->listarestados();
                     $IdEstado = $_POST['IdEstado'];
                     $IdRol = $_POST['IdRol'];
 
+                   
+
                     $campos = array();
 
                     if (strlen($Contrasena) < 6) {

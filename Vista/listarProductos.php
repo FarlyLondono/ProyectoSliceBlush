@@ -2,8 +2,11 @@
 session_start();
 if(!isset($_SESSION["Correo"]))
 {
-    header("Location:../index.php");
+    //header("Location:../index.php");
 }
+
+
+
 
 require_once("../Controlador/controlador.php");
 $controlador = new controlador();

@@ -6,6 +6,7 @@ class CRUDusuario{
     public function VerificarLogin($Usuario)
     {
         // var_dump($Cliente);
+        echo  $Usuario->getContrasena();
         $Db = Db::Conectar();
         $Sql = $Db->prepare("SELECT * FROM usuarios where Correo=:Correo AND Contrasena=:Contrasena");
         $Sql->bindvalue('Correo',$Usuario->getCorreo());

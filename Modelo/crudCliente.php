@@ -1,4 +1,6 @@
 <?php
+
+
 class CRUDcliente{
     
     public function __construct(){}
@@ -57,7 +59,13 @@ class CRUDcliente{
         return $listarClientes;//retornar el array de objetos.
     }
 
+   
+
     public function registrarCliente($Clientes){
+
+
+            
+
         $Db = Db::Conectar();
         $Sql = $Db->prepare('INSERT INTO clientes(Nombre,Correo,Direccion,Telefono,Contrasena)
          VALUES(:Nombre,:Correo,:Direccion,:Telefono,:Contrasena)');
@@ -72,7 +80,7 @@ class CRUDcliente{
         try{
 
             $Sql->execute();
-            echo "registro exitoso";
+            
         }
         catch(Exception $e){
             echo $e->getMessage();
@@ -199,5 +207,6 @@ class CRUDcliente{
 
    
 }
+
 
 ?>
