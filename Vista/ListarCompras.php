@@ -9,6 +9,7 @@ elseif($sesion == 0){
     header("Location:../index.php");
 }
 
+
 require_once("../Controlador/ControladorCompra.php");
 $ControladorCompra = new ControladorCompra();
 $listarcompras = $ControladorCompra-> listarcompras();
@@ -59,6 +60,8 @@ function boton(idcompra) {
         </div>    
         <div id="formContent">
             <table class="table" id="listarcompras">
+            
+
                 <thead class="thead-dark">
                 <hr>
                     <tr>
@@ -102,9 +105,10 @@ function boton(idcompra) {
 
             </table>
             <div class="card-header text-white">
-                <a href="Vista/RegistrarCompra.php" class="btn btn-primary">AGREGAR</a>
+            <a href="Vista/RegistrarCompra.php" class="btn btn-primary">AGREGAR</a>    
+            <a href="Vista/Reportecompras.php" class="btn btn-warning">Generar Reporte</a>
+            
             </div> 
-
        
 
 

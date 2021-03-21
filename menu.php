@@ -79,7 +79,7 @@ date_default_timezone_set("America/Lima");
                                 >Tabla Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a style="color: white;" class="nav-link pointer" href="Vista/listarProductosimagen.php" 
+                            <a style="color: white;" class="nav-link pointer"  href="Vista/listarProductosimagen.php"
                                 >Productos</a>
                         </li>
                         <li class="nav-item">
@@ -100,7 +100,7 @@ date_default_timezone_set("America/Lima");
                   {
                         ?>
                             <li class="nav-item">
-                            <a style="color: white;" class="nav-link pointer" href="Vista/listarProductosimagen.php" 
+                            <a style="color: white;" class="nav-link pointer"  href="Vista/listarProductosimagen.php" 
                                 >Productos</a>
                             </li>
                             <li class="nav-item">
@@ -121,7 +121,7 @@ date_default_timezone_set("America/Lima");
                                     >Tabla Productos</a>
                             </li>
                             <li class="nav-item">
-                            <a style="color: white;" class="nav-link pointer" href="Vista/listarProductosimagen.php" 
+                            <a style="color: white;" class="nav-link pointer"  href="Vista/listarProductosimagen.php" 
                                 >Productos</a>
                             </li>
                             <li class="nav-item">
@@ -141,7 +141,7 @@ date_default_timezone_set("America/Lima");
                     {
                             ?>
                             <li class="nav-item">
-                            <a style="color: white;" class="nav-link pointer" href="Vista/listarProductosimagen.php" 
+                            <a style="color: white;" class="nav-link pointer" href="Vista/listarProductosimagen.php"
                                 >Productos</a>
                             </li>
                             <li class="nav-item">

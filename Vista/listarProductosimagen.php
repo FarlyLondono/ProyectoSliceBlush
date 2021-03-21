@@ -4,8 +4,7 @@ if(!isset($_SESSION["Correo"]))
 {
     header("Location:../index.php");
 }
-
-require_once("../Modelo/CarritoCompras.php");
+include "../Modelo/CarritoCompras.php";
 require_once("../Modelo/conexion.php");
 require_once("../Modelo/config.php");
 require_once("../Controlador/controlador.php");
@@ -31,15 +30,16 @@ function desplegarVista2($ruta){
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
 </head>
 <body background="../Img/rsz_jaco-pretorius-agzehyx-jfo-unsplash_1.jpg">
     <div class="container mt-4">
         <div class="card text-white bg-secondary mb-3">
-        <p class="h1" align="center">Menú Productos</p>  
+        <p class="h1" align="center">Lista Productos</p>  
     </div>
-    <a href="../menu.php" class="btn btn-primary" >Regresar</a>
+    <a href="../menu.php" class="btn btn-success" >REGRESAR</a>
     <a  href="ListaCarritoCompras.php"  ><img src="../Img/outline_shopping_cart_white_36dp.png" class=" my-3 my-sm-0 mr-sm-3" width="50" height="50" style="color:red;"></a> 
     <br>
     <br>
@@ -55,7 +55,6 @@ function desplegarVista2($ruta){
         <?php foreach($listarProductos as $C){  ?>
             <div class="col-3">
                     <div class="card">
-
                         <img
                         title="<?php echo $C->getNombreProducto(); ?>" 
                         alt="<?php  echo $C->getNombreProducto(); ?>"
@@ -72,7 +71,7 @@ function desplegarVista2($ruta){
                             
                             <form action="listarProductosimagen.php" method="post">
                             
-                            <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($C->getidProducto(),COD,KEY); ?>">
+                            <input type="hidden" name="idProducto" id="idProducto" value="<?php echo openssl_encrypt($C->getidProducto(),COD,KEY); ?>">
                             <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($C->getNombreProducto(),COD,KEY); ?>">
                             <input type="hidden" name="precio" id="precio" value="<?php  echo openssl_encrypt($C->getPrecioProducto(),COD,KEY); ?>">
                             <input type="hidden" name="cantidad" id="cantidad" value="<?php  echo openssl_encrypt(1,COD,KEY); ?>">
