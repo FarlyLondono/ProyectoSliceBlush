@@ -22,7 +22,7 @@ function desplegarVista2($ruta){
 }
 
 if(isset($_POST["editarUsuario"])){
-    //$controlador->editarusuario();
+    $controlador->editarusuario();
     //desplegarVista("../menu.php");
 }
 
@@ -54,7 +54,7 @@ if(isset($_POST["editarUsuario"])){
     <div class="card-bordy">
 
     <form name="frmeditarusuario" id="frmeditarusuario"> 
-    
+    <input type="hidden" name="editarUsuario"/>
     <input type="hidden" name="IdUsuarios" id="IdUsuarios" class="form-control" value="<?php echo $buscarusuario->getIdUsuarios() ?>" readonly>
     <label for="">Número Documento:</label>  
     <input type="text" name="NumeroDocumento" id="NumeroDocumento" class="form-control" value="<?php echo $buscarusuario->getNumeroDocumento() ?>">
@@ -105,18 +105,19 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
     $("#editarUsuario").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
         e.preventDefault();
         if(validarDatoseditarusurio()){    
-        var dataString = $('#frmeditarusuario').serialize();
-        $.post("../Vista/editarUsuario.php",dataString, function(response) { 
-          alert(response); 
+        var dataString = $("#frmeditarusuario").serialize()
+        $.post("editarUsuario.php", dataString, function(response) { 
+          //alert(response); 
+          console.log(dataString);
             $(document).ready(function() {
             Swal.fire({
             position: 'top-center',
             icon: 'success',
-            title: 'Registro Exitoso!!!',
+            title: 'Actualización Exitosa!!!',
             showConfirButton: true,
             //timer: 2000
             }).then(function() {
-            //window.location.href = "../menu.php"; 
+            window.location.href = "../menu.php"; 
             })});
         }) 
         }
