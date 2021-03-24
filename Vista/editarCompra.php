@@ -43,7 +43,9 @@ if(isset($_POST["editarcompra"])){
     <link rel="icon" type="image/png" href="../Img/hamburguer.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         
 </head>
 <body background="../Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
@@ -55,7 +57,7 @@ if(isset($_POST["editarcompra"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frminsumo" method="POST" action="editarCompra.php"> 
+    <form name="frminsumo" id="frminsumo" method="POST" action="editarCompra.php"> 
       
     <input type="hidden" name="idcompra" id="idcompra" class="form-control" value="<?php echo $buscarcompra->getidcompra() ?>" readonly>
     <label for="">Nombre Usuario:</label>  
@@ -76,7 +78,7 @@ if(isset($_POST["editarcompra"])){
     <input type="text" name="fechacompra" id="fechacompra" class="form-control" value="<?php echo $buscarcompra->getfechacompra() ?>" readonly>
     </br>
 
-    <button type="submit" name="editarcompra" class="btn btn-success">Editar</button>
+    <button type="submit" name="editarcompra" id="editarcompra" class="btn btn-success">Editar</button>
     <a href="../menu.php" class="btn btn-primary">Regresar</a>
         </form>
 
@@ -84,5 +86,28 @@ if(isset($_POST["editarcompra"])){
 </div>
 </div>
 </body>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../js/validaciones.js"></script>
+<script >
+$(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
+    $("#editarcompra").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
+        e.preventDefault();
+        if(validarDatoseditarcompra()){    
+        var dataString = $('#frminsumo').serialize();
+        $.post("editarCompra.php",dataString, function(response) { 
+          //alert(response); 
+            $(document).ready(function() {
+            Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Registro Exitoso!!!',
+            showConfirButton: true,
+            //timer: 2000
+            }).then(function() {
+            window.location.href = "../menu.php"; 
+            })});
+        }) 
+        }
+    });    
+});
+</script>
 </html>

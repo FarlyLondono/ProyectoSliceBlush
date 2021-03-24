@@ -43,6 +43,7 @@ if(isset($_POST["editardetallepedido"])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body background="../Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
@@ -54,7 +55,7 @@ if(isset($_POST["editardetallepedido"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frmdetallepedido" method="POST" action="editardetallepedido.php"> 
+    <form name="frmdetallepedido" id="frmdetallepedido" method="POST" action="editardetallepedido.php"> 
     <label for=""></label>  
     <input type="hidden" readonly name="idDetallePedido" id="idDetallePedido" class="form-control" value="<?php echo $buscardetallepedido->getidDetallePedido(); ?>" readonly>
     <label for=""></label>  
@@ -80,7 +81,7 @@ if(isset($_POST["editardetallepedido"])){
     
     </br>
 
-    <button type="submit" name="editardetallepedido" class="btn btn-success">Editar</button>
+    <button type="submit" name="editardetallepedido" id="editardetallepedido" class="btn btn-success">Editar</button>
     <a href="../menu.php" class="btn btn-primary">Regresar</a>
         </form>
 
@@ -89,8 +90,7 @@ if(isset($_POST["editardetallepedido"])){
 </div>
 </body>
 <script>
-    
-
+ 
     function mostrarprecio(){
     var idProducto = document.getElementById('idProducto').value;
     var cantidad = $("#cantidad").val();
@@ -113,10 +113,30 @@ function calcularValorDetalle()
     let precio = $("#precio").val();
     $("#valorDetalle").val(Cantidad*precio);
 }
+</script>
 
-
-
-
-
+<script src="../js/validaciones.js"></script>
+<script >
+$(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
+    $("#editardetallepedido").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
+        e.preventDefault();
+        if(validarDatosdetallepedido()){    
+        var dataString = $('#frmdetallepedido').serialize();
+        $.post("editardetallepedido.php",dataString, function(response) { 
+          //alert(response); 
+            $(document).ready(function() {
+            Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Registro Exitoso!!!',
+            showConfirButton: true,
+            //timer: 2000
+            }).then(function() {
+            window.location.href = "../menu.php"; 
+            })});
+        }) 
+        }
+    });    
+});
 </script>
 </html>
