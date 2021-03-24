@@ -55,7 +55,8 @@ if(isset($_POST["editardetallepedido"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frmdetallepedido" id="frmdetallepedido" method="POST" action="editardetallepedido.php"> 
+    <form name="frmdetallepedido" id="frmdetallepedido">
+    <input type="hidden" name="editardetallepedido"/>  
     <label for=""></label>  
     <input type="hidden" readonly name="idDetallePedido" id="idDetallePedido" class="form-control" value="<?php echo $buscardetallepedido->getidDetallePedido(); ?>" readonly>
     <label for=""></label>  
@@ -128,7 +129,7 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
             Swal.fire({
             position: 'top-center',
             icon: 'success',
-            title: 'Registro Exitoso!!!',
+            title: 'Actualización Exitosa!!!',
             showConfirButton: true,
             //timer: 2000
             }).then(function() {
