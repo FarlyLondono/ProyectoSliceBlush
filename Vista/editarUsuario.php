@@ -22,8 +22,8 @@ function desplegarVista2($ruta){
 }
 
 if(isset($_POST["editarUsuario"])){
-    $controlador->editarusuario();
-    desplegarVista("../menu.php");
+    //$controlador->editarusuario();
+    //desplegarVista("../menu.php");
 }
 
 
@@ -38,10 +38,11 @@ if(isset($_POST["editarUsuario"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuario</title>
     <link rel="icon" type="image/png" href="../Img/hamburguer.png" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body background="../Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
 <div class="container mt-4">
@@ -52,7 +53,7 @@ if(isset($_POST["editarUsuario"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form  method="POST" action="editarUsuario.php"> 
+    <form name="frmeditarusuario" id="frmeditarusuario"> 
     
     <input type="hidden" name="IdUsuarios" id="IdUsuarios" class="form-control" value="<?php echo $buscarusuario->getIdUsuarios() ?>" readonly>
     <label for="">Número Documento:</label>  
@@ -89,7 +90,7 @@ if(isset($_POST["editarUsuario"])){
                 </select>
 </br>
 
-    <button type="submit" name="editarUsuario" class="btn btn-success">Editar</button>
+    <button type="submit" name="editarUsuario" id="editarUsuario" class="btn btn-success">Editar</button>
     <a href="../menu.php" class="btn btn-primary">Regresar</a>     
 
         </form>
@@ -98,5 +99,29 @@ if(isset($_POST["editarUsuario"])){
 </div>
 </div>
 </body>
+<script src="../js/validaciones.js"></script>
+<script >
+$(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
+    $("#editarUsuario").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
+        e.preventDefault();
+        if(validarDatoseditarusurio()){    
+        var dataString = $('#frmeditarusuario').serialize();
+        $.post("../Vista/editarUsuario.php",dataString, function(response) { 
+          alert(response); 
+            $(document).ready(function() {
+            Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Registro Exitoso!!!',
+            showConfirButton: true,
+            //timer: 2000
+            }).then(function() {
+            //window.location.href = "../menu.php"; 
+            })});
+        }) 
+        }
+    });    
+});
+</script>
 
 </html>

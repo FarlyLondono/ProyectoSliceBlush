@@ -85,8 +85,8 @@ public function buscarusuario($IdUsuarios){
 }
 
 public function editarusuario(){
-    $salt = md5($_POST["Contrasena"]);
-    $passwordencriptada = crypt($_POST["Contrasena"],$salt);
+    //$salt = md5($_POST["Contrasena"]);
+    //$passwordencriptada = crypt($_POST["Contrasena"],$salt);
     $Usuarios = new Usuarios();
     $CRUDusuario = new CRUDusuario();
         $Usuarios->setIdUsuarios($_POST["IdUsuarios"]);
@@ -94,12 +94,12 @@ public function editarusuario(){
         $Usuarios->setNombre($_POST["Nombre"]);
         $Usuarios->setApellidos($_POST["Apellidos"]);
         $Usuarios->setCorreo($_POST["Correo"]);
-        $Usuarios->setContrasena($passwordencriptada);
+        $Usuarios->setContrasena($_POST["Contrasena"]);
         $Usuarios->setIdEstado($_POST["IdEstado"]);
         $Usuarios->setIdRol($_POST["IdRol"]);
     
         
-            //var_dump($Usuario);
+    var_dump($Usuarios);
     $CRUDusuario->editarusuario($Usuarios);
 
 
@@ -258,4 +258,7 @@ elseif(isset($_GET["eliminarProducto"])){
 }
 elseif(isset($_GET["eliminarUsuario"])){
     $controlador->eliminarUsuario($_GET["IdUsuarios"]);
+}elseif(isset($_POST["editarUsuario"])){
+    //$controlador->editarusuario();
+    //desplegarVista("../menu.php");
 }

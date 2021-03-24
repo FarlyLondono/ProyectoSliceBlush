@@ -104,3 +104,191 @@ $("#RegistrarInsumo").click(function() {
     }
 
 });
+
+function validarDatoseditarusurio() {
+
+    var comprobacion = 0;
+    if ($("#NumeroDocumento").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Número Documento está vacío" });
+        comprobacion++;
+    }
+    if ($("#Nombre").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Nombre está vacío" });
+        comprobacion++;
+    }
+    if ($("#Apellidos").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Apellidos está vacío" });
+        comprobacion++;
+    }
+    if ($("#Correo").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Correo está vacío" });
+        comprobacion++;
+    }
+    if ($("#Contrasena").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Contraseña está vacío" });
+        comprobacion++;
+    }
+    if (comprobacion > 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarDatoseditarcliente() {
+
+    var comprobacion = 0;
+    if ($("#Nombre").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Nombre está vacío" });
+        comprobacion++;
+    }
+    if ($("#Correo").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Correo está vacío" });
+        comprobacion++;
+    }
+    if ($("#Direccion").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Dirección está vacío" });
+        comprobacion++;
+    }
+    if ($("#Telefono").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Teléfono está vacío" });
+        comprobacion++;
+    }
+    if ($("#Contrasena").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Contraseña está vacío" });
+        comprobacion++;
+    }
+    if (comprobacion > 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarDatoseditarproducto() {
+
+    var comprobacion = 0;
+    if ($("#NombreProducto").val().length == 0) {
+        swal({ icon: 'error', text: "El campo NombreProducto está vacío" });
+        comprobacion++;
+    }
+    if ($("#DescripcionProducto").val().length == 0) {
+        swal({ icon: 'error', text: "El campo DescripcionProducto está vacío" });
+        comprobacion++;
+    }
+    if ($("#PrecioProducto").val().length == 0) {
+        swal({ icon: 'error', text: "El campo PrecioProducto está vacío" });
+        comprobacion++;
+    }
+    if (comprobacion > 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarDatoseditarpedido() {
+
+    var comprobacion = 0;
+    if ($("#IdEstadoPedido").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Estado pedido está vacío" });
+        comprobacion++;
+    }
+    if ($("#idCliente").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Cliente está vacío" });
+        comprobacion++;
+    }
+    if (comprobacion > 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarDatoseditarinsumo() {
+
+    var comprobacion = 0;
+    if ($("#nombreProducto").val().length == 0) {
+        swal({ icon: 'error', text: "El campo nombreProducto está vacío" });
+        comprobacion++;
+    }
+    if ($("#unidadmedida").val().length == 0) {
+        swal({ icon: 'error', text: "El campo unidadmedida está vacío" });
+        comprobacion++;
+    }
+    if ($("#precio").val().length == 0) {
+        swal({ icon: 'error', text: "El campo precio está vacío" });
+        comprobacion++;
+    }
+    if (comprobacion > 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarDatoseditarcompra() {
+
+    var comprobacion = 0;
+    if ($("#IdUsuarios").val().length == 0) {
+        swal({ icon: 'error', text: "El campo nombreUsuario está vacío" });
+        comprobacion++;
+    }
+    if ($("#proveedor").val().length == 0) {
+        swal({ icon: 'error', text: "El campo proveedor está vacío" });
+        comprobacion++;
+    }
+    if ($("#numerofactura").val().length == 0) {
+        swal({ icon: 'error', text: "El campo número factura está vacío" });
+        comprobacion++;
+    }
+    if (comprobacion > 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarDatosdetallecompra() {
+
+    var comprobacion = 0;
+    if ($("#idinsumo").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Insumo está vacío" });
+        comprobacion++;
+    }
+    if ($("#Cantidad").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Cantidad está vacío" });
+        comprobacion++;
+    }
+    if (comprobacion > 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function validarDatosdetallepedido() {
+
+    var comprobacion = 0;
+    if ($("#idProducto").val().length == 0) {
+        swal({ icon: 'error', text: "El campo producto está vacío" });
+        comprobacion++;
+    }
+    if ($("#cantidad").val().length == 0) {
+        swal({ icon: 'error', text: "El campo Cantidad está vacío" });
+        comprobacion++;
+    }
+    if (comprobacion > 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
