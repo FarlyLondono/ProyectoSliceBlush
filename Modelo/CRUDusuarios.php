@@ -5,8 +5,9 @@ class CRUDusuario{
 
     public function VerificarLogin($Usuario)
     {
-        // var_dump($Cliente);
-        echo  $Usuario->getContrasena();
+
+        //echo  
+        $Usuario->getContrasena();
         $Db = Db::Conectar();
         $Sql = $Db->prepare("SELECT * FROM usuarios where Correo=:Correo AND Contrasena=:Contrasena");
         $Sql->bindvalue('Correo',$Usuario->getCorreo());
@@ -23,22 +24,19 @@ class CRUDusuario{
             $C->setExiste(1);
         }
         else{
-            //echo "No existe";
+    
             $C->setExiste(0);
         }
         return $C;
     }
 
     public function listarUsuarios(){
-        //conectar ala DB
         $Db = Db::Conectar();
         $listaUsuarios = [];
-        //se define la consulta
         $Sql = $Db->query('SELECT f.IdEstado,f.IdRol,f.IdUsuarios, f.NumeroDocumento, f.Nombre, f.Apellidos, f.Correo, e.idEstado,e.NombreEstado,r.idRol,r.NombreRol FROM usuarios AS f INNER JOIN estado AS e ON f.IdEstado=e.IdEstado INNER JOIN rol AS r ON f.IdRol=r.idRol');
-        //se ejecuta la consulta
         $Sql->execute();
         foreach($Sql->fetchAll() as $Usuario){
-            $U = new Usuarios(); //crear un objeto de tipo usuario
+            $U = new Usuarios();
             $U->setIdUsuarios($Usuario['IdUsuarios']);
             $U->setNumeroDocumento($Usuario['NumeroDocumento']);
             $U->setNombre($Usuario['Nombre']);
@@ -47,13 +45,11 @@ class CRUDusuario{
             $U->setNombreEstado($Usuario['NombreEstado']);
             $U->setNombreRol($Usuario['NombreRol']);
             
-            /*echo "<p>".$Usuario['idUsuarios']."</p>";
-            echo "<p>".$Usuario['tipodocumento']."</p>";*/
-
-            $listaUsuarios[]= $U;//asignar ala lista el objeto.
+            
+            $listaUsuarios[]= $U;
         }
-        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
-        return $listaUsuarios;//retornar el array de objetos.
+        Db::cerrarconexion($Db);
+        return $listaUsuarios;
     }
  
     public function RegistrarUsuario($Usuario){
@@ -69,15 +65,14 @@ class CRUDusuario{
         $Sql->bindValue('IdRol',$Usuario->getIdRol());
         
 
-        //var_dump($Usuario);
 
         try{
 
             $Sql->execute();
-            echo "registro exitoso";
+            //echo "registro exitoso";
         }
         catch(Exception $e){
-            echo $e->getMessage();
+            //echo $e->getMessage();
             die();
         }
 
@@ -88,10 +83,9 @@ class CRUDusuario{
         $Db = Db::Conectar();
         $Sql = $Db->prepare('SELECT * FROM usuarios WHERE IdUsuarios=:IdUsuarios');
         $Sql->bindValue(':IdUsuarios',$IdUsuarios);
-        //se ejecuta la consulta
         $Sql->execute();
         foreach($Sql->fetchAll() as $Usuario){
-            $U = new Usuarios(); //crear un objeto de tipo cliente
+            $U = new Usuarios();
             $U->setIdUsuarios($Usuario['IdUsuarios']);
             $U->setNumeroDocumento($Usuario['NumeroDocumento']);
             $U->setNombre($Usuario['Nombre']);
@@ -101,7 +95,7 @@ class CRUDusuario{
             $U->setIdEstado($Usuario['IdEstado']);
             $U->setIdRol($Usuario['IdRol']);
         }
-        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
+        Db::cerrarconexion($Db);
         return $U;
 
 
@@ -129,20 +123,18 @@ class CRUDusuario{
        
         
         
-        //var_dump($Sql);
-        //var_dump($Usuario);
 
         try{
 
             $Sql->execute();
-            echo "Actualizacion exitosa";
+            //echo "Actualizacion exitosa";
         }
         catch(Exception $e){
-            echo $e->getMessage();
+            //echo $e->getMessage();
             die();
         }
 
-        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
+        Db::cerrarconexion($Db);
     } 
 
 

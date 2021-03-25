@@ -11,41 +11,17 @@ require_once("../Modelo/crudCliente.php");
 class controladorlogin{
 
 
-
-/*public function VerificarLogin($Correo,$Contrasena){
-        $Clientes = new Clientes();
-        $CRUDcliente = new CRUDcliente();
-        $Clientes->setCorreo($Correo);
-        $Clientes->setContrasena($Contrasena);
-        $Clientes=$CRUDcliente->VerificarLogin($Clientes);
-        
-        if($Clientes->getExiste() == 1)
-        {
-            session_start();
-            $_SESSION["idCliente"] = $Clientes->getidCliente();
-            $_SESSION["Nombre"] = $Clientes->getNombre();
-
-            header("Location:../menu.php");
-        }
-        else{
-            header("Location:../index.php");
-        }
-
-    }
-    */
-
     public function VerificarLogin($Correo,$Contrasena){
 
         //$salt = md5($Contrasena);
         //$password = crypt($Contrasena,$salt);
 
-        //From Usuario
         $Usuario = new Usuarios();
         $CRUDUsuario = new CRUDusuario();
         $Usuario->setCorreo($Correo);
         $Usuario->setContrasena($Contrasena);
         $Usuario = $CRUDUsuario->VerificarLogin($Usuario);
-        //From Cliente
+
         $Cliente = new Clientes();
         $CRUDCliente = new CRUDcliente();
         $Cliente->setCorreo($Correo);
@@ -53,9 +29,9 @@ class controladorlogin{
         $Cliente = $CRUDCliente->VerificarLogin($Cliente);
 
           if($Usuario->getExiste()==1){
-             //VARIABLES DE SESION
+    
               session_start();
-              //DEFINIR VARIABLES DE SESION
+
               $_SESSION["IdUsuarios"] = $Usuario->getIdUsuarios();
               $_SESSION["Nombre"] = $Usuario->getNombre();
               $_SESSION["Correo"] = $Usuario->getCorreo();
@@ -64,9 +40,9 @@ class controladorlogin{
               header("Location:../menu.php");
           }
           elseif($Cliente->getExiste()==1){
-              //VARIABLES DE SESION
+ 
                session_start();
-               //DEFINIR VARIABLES DE SESION
+
                $_SESSION["idCliente"] = $Cliente->getidCliente();
                $_SESSION["Nombre"] = $Cliente->getNombre();
                $_SESSION["Correo"] = $Cliente->getCorreo();
