@@ -57,7 +57,6 @@ if(isset($_POST["editarUsuario"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-<<<<<<< HEAD
 
     <form name="frmeditarusuario" id="frmeditarusuario" method="POST"> 
     
@@ -65,10 +64,6 @@ if(isset($_POST["editarUsuario"])){
     <form name="frmeditarusuario" id="frmeditarusuario"> 
     <input type="hidden" name="editarUsuario"/>
 
-=======
-    <form name="frmeditarusuario" id="frmeditarusuario"> 
-    <input type="hidden" name="editarUsuario" />
->>>>>>> 635694a9b7940844f01fc2cf3133fa6c92d77c08
     <input type="hidden" name="IdUsuarios" id="IdUsuarios" class="form-control" value="<?php echo $buscarusuario->getIdUsuarios() ?>" readonly>
     <label for="">Número Documento:</label>  
     <input type="text" name="NumeroDocumento" id="NumeroDocumento" class="form-control" value="<?php echo $buscarusuario->getNumeroDocumento() ?>">
@@ -122,15 +117,10 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
     $("#editarUsuario").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
         e.preventDefault();
         if(validarDatoseditarusurio()){    
-<<<<<<< HEAD
         var dataString = $("#frmeditarusuario").serialize()
         $.post("editarUsuario.php", dataString, function(response) { 
           //alert(response); 
           console.log(dataString);
-=======
-        var dataString = $('#frmeditarusuario').serialize();
-        $.post("editarUsuario.php",dataString, function(response) {  
->>>>>>> 635694a9b7940844f01fc2cf3133fa6c92d77c08
             $(document).ready(function() {
             Swal.fire({
             position: 'top-center',
