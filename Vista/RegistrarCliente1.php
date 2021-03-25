@@ -62,9 +62,17 @@ $crudcliente = new CRUDcliente();
                     
                     if(strlen($Contrasena) < 8){
                         array_push($campos, "El campo contraseña no debe tener menos de 8 caracteres");
+                    if(!preg_match('/^[a-z]*$/',$Nombre)){
+                        array_push($campos, "El campo Nombre solo permite texto");
+                    }  
+                    if(strlen($Telefono) > 10){
+                        array_push($campos, "El campo Telefono no debe tener mas de 10 caracteres");
                     }
                     if(strpos($Correo, "@")==false){
                         array_push($campos, "ingrese un correo electronico valido");
+                    }
+                    if(strpos($Correo, ".com") == false) {
+                        array_push($campos, "ingrese un correo electronico valido '.com'");
                     }
                     if(!preg_match('/^[0-9]*$/',$Telefono)){
                         array_push($campos, "El campo Telefono solo permite numeros");
@@ -120,4 +128,3 @@ $crudcliente = new CRUDcliente();
                 </form>
             </div>
         </div>
-    </div>

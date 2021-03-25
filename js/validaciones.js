@@ -128,11 +128,17 @@ function validarDatoseditarusurio() {
         swal({ icon: 'error', text: "El campo Contraseña está vacío" });
         comprobacion++;
     }
+    if ($("#Contrasena").val().length <= 6) {
+        swal({ icon: 'error', text: "El campo Contraseña debe contener 7 caracteres" });
+        comprobacion++;
+    }
     if (comprobacion > 0) {
         return false;
     } else {
         return true;
     }
+
+
 
 }
 

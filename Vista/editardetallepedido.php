@@ -140,4 +140,14 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
     });    
 });
 </script>
+<script>
+$(document).ready( function() {
+$("#cantidad").on("keyup", function(){//Garantizar que solo se acepten numeros
+    
+    $("#cantidad").val($("#cantidad").val().replace(/\D/g,""));
+
+});
+
+});
+</script>
 </html>
