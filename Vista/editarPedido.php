@@ -46,8 +46,8 @@ $buscarPedido= $ControladorPedido->buscarPedido($_GET["idPedido"]);
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frmpedido" id="frmpedido" > 
-    <input type="hidden" name="editarPedido" />
+    <form name="frmpedido" id="frmpedido"> 
+    <input type="hidden" name="editarPedido"/> 
     <input type="hidden" name="idPedido" id="idPedido" class="form-control" value="<?php echo $buscarPedido->getidPedido() ?>" readonly>
     <label for="">Cliente:</label>  
     <select type="text" name="idCliente" id="idCliente" class="form-control">

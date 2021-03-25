@@ -109,8 +109,8 @@ $listarestados = $controlador->listarestados();
 
                     $campos = array();
 
-                    if (strlen($Contrasena) < 6) {
-                        array_push($campos, "El campo contraseña no debe tener menos de 6 caracteres");
+                    if (strlen($Contrasena) < 8) {
+                        array_push($campos, "El campo contraseña no debe tener menos de 8 caracteres");
                     }
                     if (strlen($NumeroDocumento) > 10) {
                         array_push($campos, "El campo NumeroDocumento no debe tener mas de 10 caracteres");

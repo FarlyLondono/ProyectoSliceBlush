@@ -55,8 +55,8 @@ elseif(isset($_POST["editarCliente"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frmcliente" id="frmcliente"     > 
-    <input type="hidden" name="editarCliente" />  
+    <form name="frmcliente" id="frmcliente" > 
+    <input type="hidden" name="editarCliente"/>
     <input type="hidden" name="idCliente" id="idCliente" class="form-control" value="<?php echo $buscarCliente->getidCliente() ?>" readonly>
     <label for="">Nombre:</label>  
     <input type="text" name="Nombre" id="Nombre" class="form-control" value="<?php echo $buscarCliente->getNombre() ?>">

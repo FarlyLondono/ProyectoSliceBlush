@@ -13,6 +13,11 @@ $crudcliente = new CRUDcliente();
 
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
 <title>Registro</title>
 <link rel="icon" type="image/png" href="../Img/hamburguer.png" />
 <link rel="stylesheet" href="../Css/styleregistro.css">
@@ -20,6 +25,8 @@ $crudcliente = new CRUDcliente();
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
     <div class="container mt-5 mb-5">
         <div class="body"></div>
         <div class="grad"></div>
@@ -59,12 +66,9 @@ $crudcliente = new CRUDcliente();
                     $Contrasena = $_POST['Contrasena'];
 
                     $campos = array();
-
-                    if(!preg_match('/^[a-z]*$/',$Nombre)){
-                        array_push($campos, "El campo Nombre solo permite texto");
-                    }
-                    if(strlen($Contrasena) < 6){
-                        array_push($campos, "El campo contraseña no debe tener menos de 6 caracteres");
+                    
+                    if(strlen($Contrasena) < 8){
+                        array_push($campos, "El campo contraseña no debe tener menos de 8 caracteres");
                     }
                     if(strlen($Telefono) > 10){
                         array_push($campos, "El campo Telefono no debe tener mas de 10 caracteres");
@@ -121,7 +125,6 @@ $crudcliente = new CRUDcliente();
                             }
                         }
                     }
-                    echo "</div>";
                 }
 
                 ?>
@@ -129,4 +132,5 @@ $crudcliente = new CRUDcliente();
                 </form>
             </div>
         </div>
-    </div>
+    </body>
+</html>

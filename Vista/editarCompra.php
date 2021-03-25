@@ -57,8 +57,8 @@ if(isset($_POST["editarcompra"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frminsumo" id="frminsumo" method="POST" action="editarCompra.php"> 
-    <input type="hidden" name="editarcompra" />  
+    <form name="frminsumo" id="frminsumo" > 
+    <input type="hidden" name="editarcompra"/> 
     <input type="hidden" name="idcompra" id="idcompra" class="form-control" value="<?php echo $buscarcompra->getidcompra() ?>" readonly>
     <label for="">Nombre Usuario:</label>  
     <select type="text" name="IdUsuarios" id="IdUsuarios" class="form-control" onchange="mostrarprecio(this.value)">

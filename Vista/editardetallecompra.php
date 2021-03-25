@@ -55,8 +55,8 @@ if(isset($_POST["editardetallecompra"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frmdetallecompra" id="frmdetallecompra">
-    <input type="hidden" name="editardetallecompra" /> 
+    <form name="frmdetallecompra" id="frmdetallecompra" >
+    <input type="hidden" name="editardetallecompra"/>  
     <label for=""></label>  
     <input type="hidden" readonly name="iddetallecompra" id="iddetallecompra" class="form-control" value="<?php echo $buscardetallecompra->getiddetallecompra() ?>" readonly>
     <label for=""></label>  

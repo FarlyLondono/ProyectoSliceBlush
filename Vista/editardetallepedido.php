@@ -56,7 +56,7 @@ if(isset($_POST["editardetallepedido"])){
     <div class="card-bordy">
 
     <form name="frmdetallepedido" id="frmdetallepedido">
-    <input type="hidden" name="editardetallepedido" /> 
+    <input type="hidden" name="editardetallepedido"/>  
     <label for=""></label>  
     <input type="hidden" readonly name="idDetallePedido" id="idDetallePedido" class="form-control" value="<?php echo $buscardetallepedido->getidDetallePedido(); ?>" readonly>
     <label for=""></label>  

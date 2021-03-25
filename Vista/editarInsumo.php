@@ -52,8 +52,8 @@ if(isset($_POST["editarinsumo"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frminsumo" id="frminsumo"> 
-    <input type="hidden" name="editarinsumo" />
+    <form name="frminsumo" id="frminsumo" > 
+    <input type="hidden" name="editarinsumo"/> 
     <input type="hidden" name="idinsumo" id="idinsumo" class="form-control" value="<?php echo $buscarinsumo->getidinsumo() ?>" readonly>
     <label for="">Nombre Producto:</label>  
     <input type="text" name="nombreProducto" id="nombreProducto" class="form-control" value="<?php echo $buscarinsumo->getnombreProducto() ?>">

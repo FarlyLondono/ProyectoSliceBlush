@@ -23,7 +23,11 @@ function desplegarVista2($ruta){
 
 if(isset($_POST["editarUsuario"])){
     $controlador->editarusuario();
+
+    desplegarVista("../menu.php");
+
     //desplegarVista("../menu.php");
+
 }
 
 
@@ -53,8 +57,13 @@ if(isset($_POST["editarUsuario"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
+
+    <form name="frmeditarusuario" id="frmeditarusuario" method="POST"> 
+    
+
     <form name="frmeditarusuario" id="frmeditarusuario"> 
-    <input type="hidden" name="editarUsuario" />
+    <input type="hidden" name="editarUsuario"/>
+
     <input type="hidden" name="IdUsuarios" id="IdUsuarios" class="form-control" value="<?php echo $buscarusuario->getIdUsuarios() ?>" readonly>
     <label for="">Número Documento:</label>  
     <input type="text" name="NumeroDocumento" id="NumeroDocumento" class="form-control" value="<?php echo $buscarusuario->getNumeroDocumento() ?>">
@@ -99,14 +108,19 @@ if(isset($_POST["editarUsuario"])){
 </div>
 </div>
 </body>
+
+
+
 <script src="../js/validaciones.js"></script>
 <script >
 $(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
     $("#editarUsuario").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
         e.preventDefault();
         if(validarDatoseditarusurio()){    
-        var dataString = $('#frmeditarusuario').serialize();
-        $.post("editarUsuario.php",dataString, function(response) {  
+        var dataString = $("#frmeditarusuario").serialize()
+        $.post("editarUsuario.php", dataString, function(response) { 
+          //alert(response); 
+          console.log(dataString);
             $(document).ready(function() {
             Swal.fire({
             position: 'top-center',
@@ -132,5 +146,6 @@ $("#NumeroDocumento").on("keyup", function(){//Garantizar que solo se acepten nu
 
 });
 </script>
+
 
 </html>
