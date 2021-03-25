@@ -55,8 +55,8 @@ elseif(isset($_POST["editarCliente"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frmcliente" id="frmcliente" method="POST" action="editarCliente.php"> 
-     
+    <form name="frmcliente" id="frmcliente"     > 
+    <input type="hidden" name="editarCliente" />  
     <input type="hidden" name="idCliente" id="idCliente" class="form-control" value="<?php echo $buscarCliente->getidCliente() ?>" readonly>
     <label for="">Nombre:</label>  
     <input type="text" name="Nombre" id="Nombre" class="form-control" value="<?php echo $buscarCliente->getNombre() ?>">
@@ -93,7 +93,7 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
             Swal.fire({
             position: 'top-center',
             icon: 'success',
-            title: 'Registro Exitoso!!!',
+            title: 'Actualización Exitosa!!!',
             showConfirButton: true,
             //timer: 2000
             }).then(function() {
