@@ -122,5 +122,15 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
     });    
 });
 </script>
+<script>
+$(document).ready( function() {
+$("#NumeroDocumento").on("keyup", function(){//Garantizar que solo se acepten numeros
+    
+    $("#NumeroDocumento").val($("#NumeroDocumento").val().replace(/\D/g,""));
+
+});
+
+});
+</script>
 
 </html>
