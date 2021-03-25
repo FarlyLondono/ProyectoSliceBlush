@@ -166,7 +166,7 @@ $listarestados = $controlador->listarestados();
         let IdEstadoaux = 0;
         <?php
         foreach ($listarestados as $I) { ?>
-            IdEstadoaux = <?php echo $I->getIdEstado(); ?>; //asignar a una variable jscript una variable php
+            IdEstadoaux = <?php echo $I->getIdEstado(); ?>;
 
             if (IdEstado == IdEstadoaux) {
                 $("#NombreEstado").val(<?php echo $I->getNombreEstado(); ?>)
