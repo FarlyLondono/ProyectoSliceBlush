@@ -77,8 +77,8 @@ if((isset($_POST['Nombre'])) && (isset($_POST['Correo'])) && (isset($_POST['Dire
 
     $campos = array();
     
-    if(strlen($Contrasena) < 6){
-        array_push($campos, "El campo contraseña no debe tener menos de 6 caracteres");
+    if(strlen($Contrasena) < 8){
+        array_push($campos, "El campo contraseña no debe tener menos de 8 caracteres");
     }
     if(strpos($Correo, "@")==false){
         array_push($campos, "ingrese un correo electronico valido");
