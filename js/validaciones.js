@@ -134,6 +134,8 @@ function validarDatoseditarusurio() {
         return true;
     }
 
+
+
 }
 
 function validarDatoseditarcliente() {
