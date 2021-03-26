@@ -67,6 +67,9 @@ $crudcliente = new CRUDcliente();
 
                     $campos = array();
                     
+                    if(!preg_match('/^[a-z]*$/',$Nombre)){
+                        array_push($campos, "El campo Nombre solo permite letras");
+                    }
                     if(strlen($Contrasena) < 8){
                         array_push($campos, "El campo contraseña no debe tener menos de 8 caracteres");
                     }
