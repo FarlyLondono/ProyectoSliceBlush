@@ -9,6 +9,8 @@ require_once("../Modelo/CRUDproducto.php");
 require_once("../Modelo/detallePedido.php");
 require_once("../Modelo/CRUDdetallePedido.php");
 
+session_start();
+
 class ControladorPedido{
 
     public function _construct(){
@@ -139,7 +141,31 @@ class ControladorPedido{
     return $CRUDdetallePedido->dropdetallepedido($idPedido);
 
 
- }
+    }
+
+    public function RegistrarPedidoCarrito()
+    {
+     $pedido = new pedido();
+     $CRUDPedido = new CRUDPedido();
+     $pedido->setidCliente($_POST["Cliente"]);
+
+     return $CRUDPedido->RegistrarPedidoCarrito($pedido);
+    }
+
+    public function RegistrarDetallePedidoCarrito($idPedido)
+    {
+        
+        $detallePedidos = new detallePedidos();
+        $CRUDdetallePedido = new CRUDdetallePedido();
+        $detallePedidos->setidPedido($idPedido);
+        //
+        foreach($_SESSION['CARRITO'] as $indice=>$producto){
+        $detallePedidos->setidProducto($producto["idProducto"]);
+        $detallePedidos->setcantidad($producto["cantidad"]);
+        $detallePedidos->setprecio($producto["precio"]);
+        $CRUDdetallePedido->RegistrarDetallePedidoCarrito($detallePedidos);
+        }
+    }
 
 
 
@@ -193,6 +219,13 @@ elseif(isset($_POST["editarPedido"])){
     $ControladorPedido->despliegarVista("../menu.php");
 }elseif(isset($_GET["eliminarDetallePedido"])){
   $ControladorPedido->eliminarDetallePedido($_GET["idDetallePedido"]);
+}elseif(isset($_POST["proceder"])){
+    $idPedido = $_POST["idPedido"];
+    if($idPedido==""){
+        $idPedido= $ControladorPedido->RegistrarPedidoCarrito();
+    }
+    //echo $idPedido;
+    $ControladorPedido->RegistrarDetallePedidoCarrito($idPedido);
 }
 ?>
 

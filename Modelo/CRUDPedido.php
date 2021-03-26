@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 class CRUDPedido{
     public function _construct(){
 
@@ -112,6 +112,49 @@ class CRUDPedido{
         Db::CerrarConexion($Db);
         return $idPedidoGenerado;
     }
+
+    public function RegistrarPedidoCarrito(){
+        // if($_POST){
+             $ControladorPedido = new ControladorPedido();
+             $total=0;
+             //$SID=session_id();
+             $Correo=$_POST['email'];
+             //echo $SID;
+             $idCliente = $ControladorPedido->buscaridcliente($Correo);
+             echo'  
+             <script>
+         swal($idCliente, "=)!","success",{
+             button: "OK"
+         }).then(function(){
+         window.location.href="../index.php"
+         })
+             </script>
+             
+             ';
+             foreach($_SESSION['CARRITO'] as $indice=>$producto){
+                 $total=$total+($producto['precio']*$producto['cantidad']);
+                 //var_dump($producto['idProducto']);
+             }
+         
+                 $Db = Db::Conectar();
+                 $idPedidoGenerado = -1;
+                 $sentencia=$Db->prepare("INSERT INTO `pedidos`
+                          (`idCliente`, `fechaRegistro`, `IdEstadoPedido`)
+                 VALUES (:idCliente,NOW(),:IdEstadoPedido)");
+                 $sentencia->bindValue(":idCliente",print_r($idCliente,true));
+                 $sentencia->bindValue(":IdEstadoPedido",3);
+                 
+                 $sentencia->execute();
+                 var_dump($sentencia);
+                 $idPedidoGenerado = $Db->lastInsertId();
+                 //var_dump($idPedidoGenerado);
+ 
+                 //
+                 Db::CerrarConexion($Db);
+                 return $idPedidoGenerado;
+                     
+     //
+     }
 }
 
 ?>

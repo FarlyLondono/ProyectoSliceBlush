@@ -174,6 +174,41 @@ class CRUDdetallePedido{
         return $mensaje;
     }
 
+    public function RegistrarDetallePedidoCarrito($detallePedidos){
+    
+        // foreach($_SESSION['CARRITO'] as $indice=>$detallePedidos){
+             $Db = Db::Conectar();
+             $sentencia2=$Db->prepare('INSERT INTO `detallepedidos`
+                 (`idPedido`, `idProducto`, `cantidad`, `precio`) 
+             VALUES (:idPedido, :idProducto, :cantidad, :precio);');
+     
+             $sentencia2->bindValue("idPedido",$detallePedidos->getidPedido());
+             $sentencia2->bindValue("idProducto",$detallePedidos->getidProducto());
+             $sentencia2->bindValue("cantidad",$detallePedidos->getcantidad());
+             $sentencia2->bindValue("precio",$detallePedidos->getprecio());
+             $sentencia2->execute();
+             //var_dump($sentencia2);
+             //exit();
+             Db::CerrarConexion($Db);
+         //}
+     
+         /*foreach($_SESSION['CARRITO'] as $indice=>$producto){
+             $Db = Db::Conectar();
+             $sentencia=$Db->prepare('INSERT INTO `detallepedidos`
+                 (`idPedido`, `idProducto`, `cantidad`, `precio`) 
+             VALUES (:idPedido, :idProducto, :cantidad, :precio);');
+     
+             $sentencia->bindValue(":idPedido",$detallePedidos->getidPedido());
+             $sentencia->bindValue(":idProducto",$producto['idProducto']);
+             $sentencia->bindValue(":cantidad",$producto['cantidad']);
+             $sentencia->bindValue(":precio",$producto['precio']);
+             $sentencia->execute();
+     
+             Db::CerrarConexion($Db);
+         }*/
+     
+    }   
+
 }
 
 ?>

@@ -11,12 +11,12 @@ if(isset($_POST['btnAccion'])){
     switch($_POST['btnAccion']){
 
         case 'Agregar':
-            if(is_numeric(openssl_decrypt($_POST['id'],COD,KEY))){
-                $ID=openssl_decrypt($_POST['id'],COD,KEY);
-                $mensaje.="OK ID correcto".$ID."</br>";
+            if(is_numeric(openssl_decrypt($_POST['idProducto'],COD,KEY))){
+                $idProducto=openssl_decrypt($_POST['idProducto'],COD,KEY);
+                $mensaje.="OK ID correcto".$idProducto."</br>";
             }else{
 
-                $mensaje.="error.. ID incorrecto".$ID."</br>";
+                $mensaje.="error.. ID incorrecto".$idProducto."</br>";
             }
             if(is_string( openssl_decrypt($_POST['nombre'],COD,KEY))){
                 $NOMBRE=openssl_decrypt($_POST['nombre'],COD,KEY);
@@ -26,26 +26,26 @@ if(isset($_POST['btnAccion'])){
                 $mensaje.="error.. NOMBRE incorrecto".$NOMBRE."</br>";
             }
             if(is_numeric( openssl_decrypt($_POST['cantidad'],COD,KEY))){
-                $CANTIDAD=openssl_decrypt($_POST['cantidad'],COD,KEY);
-                $mensaje.="OK CANTIDAD correcto".$CANTIDAD."</br>";
+                $cantidad=openssl_decrypt($_POST['cantidad'],COD,KEY);
+                $mensaje.="OK CANTIDAD correcto".$cantidad."</br>";
             }else{
 
-                $mensaje.="error.. CANTIDAD incorrecto".$CANTIDAD."</br>";
+                $mensaje.="error.. CANTIDAD incorrecto".$cantidad."</br>";
             }
             if(is_numeric( openssl_decrypt($_POST['precio'],COD,KEY))){
-                $PRECIO=openssl_decrypt($_POST['precio'],COD,KEY);
-                $mensaje.="OK PRECIO correcto".$PRECIO."</br>";
+                $precio=openssl_decrypt($_POST['precio'],COD,KEY);
+                $mensaje.="OK PRECIO correcto".$precio."</br>";
             }else{
 
-                $mensaje.="error.. PRECIO incorrecto".$PRECIO."</br>";
+                $mensaje.="error.. PRECIO incorrecto".$precio."</br>";
             }
 
             if(!isset($_SESSION['CARRITO'])){
                 $producto=array(
-                    'ID'=>$ID,
+                    'idProducto'=>$idProducto,
                     'NOMBRE'=>$NOMBRE,
-                    'CANTIDAD'=>$CANTIDAD,
-                    'PRECIO'=>$PRECIO,                     
+                    'cantidad'=>$cantidad,
+                    'precio'=>$precio,                     
                 );
                 $_SESSION['CARRITO'][0]=$producto;
                 $mensaje= "Producto agregado al carrito";
@@ -53,18 +53,18 @@ if(isset($_POST['btnAccion'])){
 
             }
             else{
-                $idProductos=array_column($_SESSION['CARRITO'],"ID");
-                if(in_array($ID,$idProductos)){
+                $idProductos=array_column($_SESSION['CARRITO'],"idProducto");
+                if(in_array($idProducto,$idProductos)){
                     echo "<script>alert('El producto ya ha sido seleccionado..')</script>";
                     $mensaje="";
                 }else{
                 
                 $Numeroproductos=count($_SESSION['CARRITO']);
                 $producto=array(
-                    'ID'=>$ID,
+                    'idProducto'=>$idProducto,
                     'NOMBRE'=>$NOMBRE,
-                    'CANTIDAD'=>$CANTIDAD,
-                    'PRECIO'=>$PRECIO,                     
+                    'cantidad'=>$cantidad,
+                    'precio'=>$precio,                     
                 );
 
                 $_SESSION['CARRITO'][$Numeroproductos]=$producto;
