@@ -61,7 +61,7 @@ function desplegarVista2($ruta){
                         <th width="20%">ID</th>
                         <th width="40%">Nombre Producto</th>
                         <th width="15%" class="text-center">Cantidad</th>
-                        <th width="20%" class="text-center">Precio</th>
+                        <th width="20%"  class="text-center">Precio</th>
                         <th width="20%" class="text-center">SubTotal</th>
                         <th>--</th>
                     </tr>
@@ -77,7 +77,7 @@ function desplegarVista2($ruta){
                             <tr>
                             <td width="20%"><?php echo $producto['idProducto'] ?></td>
                             <td width="40%"><?php echo $producto['NOMBRE'] ?></td>
-                            <td width="15%" class="text-center"><?php echo $producto['cantidad'] ?></td>
+                            <td width="15%"  class="text-center"><?php echo $producto['cantidad'] ?></td>
                             <td width="20%" class="text-center"><?php echo $producto['precio'] ?></td>
                             <td width="20%" class="text-center"><?php echo number_format($producto['precio']*$producto['cantidad'],2);  ?></td>
                             
@@ -110,32 +110,28 @@ function desplegarVista2($ruta){
                                         <input id="email"
                                         class="form-control"
                                         type="email" value="<?php echo $_SESSION["Correo"]?>" name="email" readonly>
-                                       
                                         <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){ ?>
                                          <input type="hidden" name="idProducto" id="idProducto" value="<?php echo number_format($producto['idProducto']); ?>">
-                                         <?php /*echo '1'*/;?>
                                       
-                                         
-                                        <input type="hidden" name="cantidad" id="cantidad" value="<?php echo number_format( $producto['cantidad']);?>" >   
+                                        <input type="hidden"name="cantidad" id="cantidad" value="<?php echo number_format( $producto['cantidad']);?>" > 
+
                                         <input type="hidden" name="precio" id="precio" value="<?php echo ($producto['precio']);?>" >
                                         
                                          <?php } ?> 
-                                         
-                                        
-                                        
-                                       
-                                </div>
-                                    <small id="emailHelp" class="form-text text-muted">
-                                    Gracias por preferirnos,estaremos en contacto para su entrega.
-                                    </small>
 
-                                </div>
                                     <button class="btn btn-success btn-lg btn-block"
                                     type="submit" value="proceder" name="btnAccion">Pago en efectivo>></button>
                                 </form>
+                                </div>
+                                        <small id="emailHelp" class="form-text text-muted">
+                                    Gracias por preferirnos,estaremos en contacto para su entrega.
+                                    </small>
+                                        </div>
+                                
                                 <form type="hidden" name="frmPagar2" id="frmPagar" action="../Controlador/ControladorPedido.php" method="post" >
                                        
                                 </form>
+                                
                             </td>
                         </tr>
                 </tbody>
@@ -161,5 +157,13 @@ No hay productos en el carrito...
             }) 
         });
         });
+
+
+        function calcularValorDetalle()
+{
+    let cantidad = $("#cantidad").val();
+    let precio = $("#precio").val();
+    $("#valorDetalle").val(cantidad*precio);
+}
     </script>
 </html>
