@@ -77,20 +77,20 @@ if(isset($_POST['btnAccion'])){
             
 
         break;
-        case "Eliminar":
-            if(is_numeric( openssl_decrypt($_POST['idProducto'],COD,KEY))){
-                $ID=openssl_decrypt($_POST['idProducto'],COD,KEY);
-                //$mensaje.="OK ID correcto".$ID."</br>";
-                foreach($_SESSION['CARRITO'] as $indice=>$producto){
-                    if($producto['idProducto']==$ID){
-                        unset($_SESSION['CARRITO'][$indice]);
-                        //echo "<script>alert('Elemento eliminado...')</script>";
+            case "Eliminar":
+                if(is_numeric( openssl_decrypt($_POST['id'],COD,KEY))){
+                    $ID=openssl_decrypt($_POST['id'],COD,KEY);
+                    //$mensaje.="OK ID correcto".$ID."</br>";
+                    foreach($_SESSION['CARRITO'] as $indice=>$producto){
+                        if($producto['idProducto']==$ID){
+                            unset($_SESSION['CARRITO'][$indice]);
+                            echo "<script>alert('Elemento eliminado...')</script>";
+                        }
                     }
+                }else{
+    
+                    $mensaje.="error.. ID incorrecto".$ID."</br>";
                 }
-            }else{
-
-                $mensaje.="error.. ID incorrecto".$ID."</br>";
-            }
         break;
     }
 

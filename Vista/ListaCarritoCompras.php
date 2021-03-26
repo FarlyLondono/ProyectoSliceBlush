@@ -70,7 +70,7 @@ function desplegarVista2($ruta){
 
                         <tr>
                             <td colspan="5">
-                                <form name="frmPagar" id="frmPagar"  >
+                                <form name="frmPagar" id="frmPagar" >
                                 <input type="hidden" name="proceder" />
                                 <?php  $total=0; ?>
                             <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){ ?>
@@ -82,10 +82,9 @@ function desplegarVista2($ruta){
                             <td width="20%" class="text-center"><?php echo number_format($producto['precio']*$producto['cantidad'],2);  ?></td>
                             
                             <td width="5%">
-
-
-
-                           
+                            <form action="ListaCarritoCompras.php" method="post">
+                            <input type="hidden" name="id"
+                            id="id" value="<?php echo openssl_encrypt($producto['idProducto'],COD,KEY); ?>">
 
                                 <button class="btn btn-danger"
                                 type="submit"
@@ -93,12 +92,18 @@ function desplegarVista2($ruta){
                                 value="Eliminar"
                                 >Eliminar</button>
 
-                           
+                            </form>
                             </td>
                         </tr>
                         <?php  $total=$total+($producto['precio']*$producto['cantidad']); ?>
 
                         <?php } ?>
+
+                        <tr>
+                            <td colspan="5">
+                                <form name="frmPagar" id="frmPagar" action="../Controlador/ControladorPedido.php" method="post" >
+                                <input type="hidden" name="proceder" />
+                           
                         <tr>
                             <td colspan="3" align="right"><h3>Total</h3></td>
                             <td align="right"><h3><?php echo number_format($total,2); ?></h3></td>
