@@ -70,7 +70,6 @@ function desplegarVista2($ruta){
 
                         <tr>
                             <td colspan="5">
-                               
                             <?php  $total=0; ?>
                             <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){ ?>
                             <tr>
@@ -124,10 +123,7 @@ function desplegarVista2($ruta){
                                         <input type="hidden" name="precio" id="precio" value="<?php echo ($producto['precio']);?>" >
                                         
                                          <?php } ?> 
-                                         
-                                        
-                                        
-                                       
+                                                                              
                                 </div>
                                     <small id="emailHelp" class="form-text text-muted">
                                     Gracias por preferirnos,estaremos en contacto para su entrega.
@@ -136,9 +132,6 @@ function desplegarVista2($ruta){
                                 </div>
                                     <button class="btn btn-success btn-lg btn-block"
                                     type="submit" value="proceder" name="btnAccion">Pago en efectivo>></button>
-                                </form>
-                                <form type="hidden" name="frmPagar2" id="frmPagar" action="../Controlador/ControladorPedido.php" method="post" >
-                                       
                                 </form>
                             </td>
                         </tr>
