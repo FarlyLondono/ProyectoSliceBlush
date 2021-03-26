@@ -66,8 +66,18 @@ function desplegarVista2($ruta){
                         <th>--</th>
                     </tr>
                 </thead>
+<<<<<<< HEAD
                     <tbody>
                     <?php  $total=0; ?>
+=======
+                <tbody>
+
+                        <tr>
+                            <td colspan="5">
+                                <form name="frmPagar" id="frmPagar" >
+                                <input type="hidden" name="proceder" />
+                                <?php  $total=0; ?>
+>>>>>>> 5e463bef70ec7e4d9e18fe8951c38a11e27601be
                             <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){ ?>
                             <tr>
                             <td width="20%"><?php echo $producto['idProducto'] ?></td>
