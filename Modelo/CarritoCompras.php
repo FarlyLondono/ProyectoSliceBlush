@@ -77,7 +77,6 @@ if(isset($_POST['btnAccion'])){
             
 
         break;
-<<<<<<< HEAD
             case "Eliminar":
                 if(is_numeric( openssl_decrypt($_POST['id'],COD,KEY))){
                     $ID=openssl_decrypt($_POST['id'],COD,KEY);
@@ -87,16 +86,6 @@ if(isset($_POST['btnAccion'])){
                             unset($_SESSION['CARRITO'][$indice]);
                             echo "<script>alert('Elemento eliminado...')</script>";
                         }
-=======
-        case "Eliminar":
-            if(is_numeric( openssl_decrypt($_POST['idProducto'],COD,KEY))){
-                $ID=openssl_decrypt($_POST['idProducto'],COD,KEY);
-                //$mensaje.="OK ID correcto".$ID."</br>";
-                foreach($_SESSION['CARRITO'] as $indice=>$producto){
-                    if($producto['idProducto']==$ID){
-                        unset($_SESSION['CARRITO'][$indice]);
-                        //echo "<script>alert('Elemento eliminado...')</script>";
->>>>>>> 25d5c2196f0339c45f4d9b23b683cb9eb7bfa1fe
                     }
                 }else{
     
