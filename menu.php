@@ -28,6 +28,11 @@ date_default_timezone_set("America/Lima");
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" ></script> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <script src="js/bottton.js"></script>
+  <link href="Css/button.css"
+      rel="stylesheet" type="text/css">
     <style>
         .carousel-inner img {
             width: 100%;
@@ -162,8 +167,15 @@ date_default_timezone_set("America/Lima");
                 <a href="Vista/cerrarSesion.php" class="btn btn-outline-light my-3 my-sm-0 mr-sm-3" aria-pressed="true"
                     type="submit">Cerrar sesión</a>
             </form>
-        </div>
     </nav>
+    </div>
+        <div class="content">
+    <a  href="https://www.youtube.com/watch?v=stJDyZGibgQ&ab_channel=CharlandoTranquilamente">
+<button  class="botonF1 pointer " >
+<span class="material-icons">accessibility</span>
+</button>
+    </a>
+ </div>
     <div id="navigation"></div>
     <div class="container body-content">
         <hr />
@@ -172,6 +184,7 @@ date_default_timezone_set("America/Lima");
         </footer>
     </div>
 </body>
+
 <script type="text/javascript" charset="utf8" src="js/dataTables.js"></script>
 <script src="js/navbar.js"></script>
 </html>
