@@ -71,7 +71,7 @@ function desplegarVista2($ruta){
                         <tr>
                             <td colspan="5">
                                
-                                <?php  $total=0; ?>
+                            <?php  $total=0; ?>
                             <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){ ?>
                             <tr>
                             <td width="20%"><?php echo $producto['idProducto'] ?></td>
