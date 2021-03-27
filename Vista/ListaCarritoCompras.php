@@ -146,6 +146,7 @@ No hay productos en el carrito...
 </div>
 
 <?php } ?>
+
 </body>
     <script >
         $("#proceder").on('click',function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
@@ -171,5 +172,6 @@ function calcularValorDetalle()
             
 
 </script>
-<?php //unset($_SESSION['CARRITO'])?>
+
 </html>
+

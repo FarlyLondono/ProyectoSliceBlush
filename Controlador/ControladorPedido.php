@@ -165,6 +165,7 @@ class ControladorPedido{
         $detallePedidos->setprecio($producto["precio"]);
         $CRUDdetallePedido->RegistrarDetallePedidoCarrito($detallePedidos);
         }
+        $_SESSION['CARRITO'] = [];
     }
 
 

@@ -69,7 +69,7 @@ function desplegarVista2($ruta){
                             <span><strong><?php echo $C->getNombreProducto(); ?></strong></span>
                             <h5 class="card-title"><strong style="color:green;"><?php  echo $C->getPrecioProducto(); ?></strong></h5>
                             
-                            <form action="listarProductosimagen.php" method="post">
+                            <form  method="post">
                             
                             <input type="hidden" name="idProducto" id="idProducto" value="<?php echo openssl_encrypt($C->getidProducto(),COD,KEY); ?>">
                             <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($C->getNombreProducto(),COD,KEY); ?>">
