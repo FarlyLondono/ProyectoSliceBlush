@@ -13,9 +13,6 @@ require_once("../Modelo/CarritoCompras.php");
 
 
 $ControladorPedido = new ControladorPedido();
-//$ListarPedidos = $ControladorPedido->ListarPedidos();
-//$ListaDetallePedido = $ControladorPedido->ListarDetallePedido($_POST["idPedido"]);
-//echo $ListaDetallePedido;
 
 function desplegarVista($ruta){
     header('Location: '.$ruta);
