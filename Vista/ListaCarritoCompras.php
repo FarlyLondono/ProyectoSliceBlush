@@ -158,9 +158,7 @@ No hay productos en el carrito...
                 var dataString = $('#frmPagar').serialize();    
                 $.post("../Controlador/ControladorPedido.php",dataString, function(response) {
                     alert(" Gracia por preferirnos!!! \n En unos instantes nos comunicaremos \n con usted para la confirmacion del pedido"); 
-                    window.location='../menu.php';
-                    <?php unset($_SESSION['CARRITO'])?>
-       
+                    window.location='../menu.php';    
                 }); 
             }
             );
@@ -176,4 +174,5 @@ function calcularValorDetalle()
             
 
 </script>
+<?php //unset($_SESSION['CARRITO'])?>
 </html>
