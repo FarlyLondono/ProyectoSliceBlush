@@ -63,10 +63,10 @@ $listarestado = $controlador->listarestados();
           </select>
           </br>
           <div class="photo">
-              <label for="foto" align="center">Imagen:</label>
+              <label for="foto" align="center"></label>
                     <div class="prevPhoto">
                     <span class="delPhoto notBlock">X</span>
-                    <label for="foto"></label>
+                    <label for="foto" align="center" >Imagen:</label>
                     </div>
                     <div class="upimg">
                     <input type="file" name="imagen" id="foto">
