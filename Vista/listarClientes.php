@@ -76,13 +76,12 @@ function boton(idCliente) {
                            
 
                         <td>
-                        
+                        <a href="Vista/editarCliente.php?editarCliente&idCliente=<?php echo  $C->getidCliente(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
                         <?php
                         $sesion = $_SESSION["IdRol"];
                         if($sesion == 1)
                         {
                             ?>
-                        <a href="Vista/editarCliente.php?editarCliente&idCliente=<?php echo  $C->getidCliente(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
                         <a onclick="boton(<?php echo $C->getIdCliente(); ?>)" type="button" class="btn btn-outline-danger">Inhabilitar</a>
                         <?php
                         }
@@ -97,7 +96,15 @@ function boton(idCliente) {
 
             </table>
             <div class="card-header text-white">
+                <?php
+                $sesion = $_SESSION["IdRol"];
+                        if($sesion == 1)
+                        {
+                            ?>
                 <a href="Vista/registrarCliente.php" class="btn btn-primary">AGREGAR</a>
+            <?php
+            }
+            ?>
             </div> 
     </div>
                     </div>
