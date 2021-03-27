@@ -41,15 +41,15 @@ $listarestados = $controlador->listarestados();
             <form action="RegistrarUsuario.php" method="POST">
 
                 <label for="">Número Documento:</label>
-                <input type="text" name="NumeroDocumento"  id="NumeroDocumento" class="form-control">
+                <input type="text" name="NumeroDocumento" value="<?php echo $_POST['NumeroDocumento'] ?>" id="NumeroDocumento" class="form-control">
                 <label for="">Nombre:</label>
-                <input type="text" name="Nombre" id="Nombre"  class="form-control">
+                <input type="text" name="Nombre" id="Nombre" value="<?php echo $_POST['Nombre'] ?>" class="form-control">
                 <label for="">Apellidos:</label>
-                <input type="text" name="Apellidos" id="Apellidos"  class="form-control">
+                <input type="text" name="Apellidos" id="Apellidos" value="<?php echo $_POST['Apellidos'] ?>" class="form-control">
                 <label for="">Correo:</label>
-                <input type="text" name="Correo" id="Correo"  class="form-control">
+                <input type="text" name="Correo" id="Correo" value="<?php echo $_POST['Correo'] ?>" class="form-control">
                 <label for="">Contraseña:</label>
-                <input type="password" name="Contrasena" id="Contrasena"  class="form-control">
+                <input type="password" name="Contrasena" id="Contrasena" value="<?php echo $_POST['Contrasena'] ?>" class="form-control">
                 <label for="">Estado:</label>
                 <select name="IdEstado" id="IdEstado" onchange="mostrarnombre(this.value)" class="form-control">
                     <option value="">Seleccione</option>
