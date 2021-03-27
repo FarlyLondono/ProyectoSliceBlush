@@ -158,7 +158,7 @@ date_default_timezone_set("America/Lima");
                     ?>
                 
             </ul>
-            <img src="Img/outline_shopping_cart_white_36dp.png" class=" my-3 my-sm-0 mr-sm-3" width="35" height="35">
+            <a href="Vista/ListaCarritoCompras.php"><img src="Img/outline_shopping_cart_white_36dp.png" class=" my-3 my-sm-0 mr-sm-3" width="35" height="35" ></a>
             <form class="form-inline my-2 my-lg-0">
                 <h6 style="color: white;" class=" my-3 my-sm-0 mr-sm-3" color="">Bienvenido(a)  <?php echo $_SESSION["Nombre"]; ?> </h6> 
             </form>
