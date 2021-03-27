@@ -5,7 +5,7 @@ $sesion = $_SESSION["IdRol"];
 if(!isset($_SESSION["Correo"])){
     header("Location:../index.php");
 }
-elseif($sesion == 0){
+elseif($sesion <> 1){
     header("Location:../index.php");
 }
 require_once("../Controlador/controlador.php");
