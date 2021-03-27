@@ -41,7 +41,7 @@ elseif(isset($_POST["editarProducto"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Usuario</title>
+    <title>Editar Producto</title>
     <link rel="icon" type="image/png" href="../Img/hamburguer.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -50,6 +50,7 @@ elseif(isset($_POST["editarProducto"])){
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="../Css/estiloimagen.css">
 </head>
 <body background="../Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
 <div class="container mt-4">
@@ -60,8 +61,8 @@ elseif(isset($_POST["editarProducto"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frmproducto" id="frmproducto" > 
-    <input type="hidden" name="editarProducto"/> 
+    <form name="frmproducto" id="frmproducto" enctype="multipart/form-data"> 
+    <input type="hidden" name="editarProducto" /> 
     <input type="hidden" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>
     <label for="">Nombre Producto:</label>  
     <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>">
@@ -81,24 +82,39 @@ elseif(isset($_POST["editarProducto"])){
                 ?>                 
                 </select>
 </br>
+            <div class="photo">
+              <label for="foto">Imagen:</label>
+                    <div class="prevPhoto">
+                    <span class="delPhoto notBlock">X</span>
+                    <label for="foto" ></label>
+                    </div>
+                    <div class="upimg">
+                    <input type="file" name="imagen" id="foto" >
+                    </div>
+                    <div id="form_alert"></div>
+            </div>
+</br>
+</br>
 
     <button type="submit" name="editarProducto" id="editarProducto" class="btn btn-success">Editar</button>
     <a href="../menu.php" class="btn btn-primary">Regresar</a>     
         
+        <?php  print_r($_FILES);?>
         </form>
 
     </div>
 </div>
 </div>
 </body>
+<script src="../js/estiloimagen.js"></script>
 <script src="../js/validaciones.js"></script>
 <script >
 $(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
     $("#editarProducto").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
         e.preventDefault();
         if(validarDatoseditarproducto()){    
-        var dataString = $('#frmproducto').serialize();
-        $.post("editarProducto.php",dataString, function(response) { 
+        var formData = $('#frmproducto').serialize();
+        $.post("editarProducto.php",formData, function(response) { 
           //alert(response); 
             $(document).ready(function() {
             Swal.fire({

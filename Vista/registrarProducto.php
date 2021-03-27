@@ -30,6 +30,7 @@ $listarestado = $controlador->listarestados();
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="../Css/estiloimagen.css">
 </head>
 
 <body background="../Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
@@ -40,7 +41,7 @@ $listarestado = $controlador->listarestados();
     <div class="container mt-5 mb-5">
       <div class="card-bordy">
 
-        <form name="frmusuario" method="POST" action="registrarProducto.php">
+        <form name="frmusuario" method="POST" action="registrarProducto.php" enctype="multipart/form-data">
           <label for="">Nombre Producto:</label>
           <input type="text" name="NombreProducto" value="<?php echo $_POST['NombreProducto'] ?>" id="NombreProducto" class="form-control">
           <label for="">Descripción:</label>
@@ -60,10 +61,21 @@ $listarestado = $controlador->listarestados();
             }
             ?>
           </select>
-
+          </br>
+          <div class="photo">
+              <label for="foto" align="center">Imagen:</label>
+                    <div class="prevPhoto">
+                    <span class="delPhoto notBlock">X</span>
+                    <label for="foto"></label>
+                    </div>
+                    <div class="upimg">
+                    <input type="file" name="imagen" id="foto">
+                    </div>
+                    <div id="form_alert"></div>
+            </div>
           </br>
 
-          </select>
+
           <button type="submit" name="registrarProducto" class="btn btn-success">Registrar</button>
           <a href="../menu.php" class="btn btn-primary">Regresar</a>
 
@@ -135,5 +147,6 @@ $listarestado = $controlador->listarestados();
     </div>
   </div>
 </body>
+<script src="../js/estiloimagen.js"></script>
 
 </html>

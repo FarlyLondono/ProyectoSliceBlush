@@ -14,6 +14,7 @@ class CRUDproducto{
         //se ejecuta la consulta
         $Sql->execute();
         foreach($Sql->fetchAll() as $Productos){
+            $imagen='../img/'.$Productos['imagen'];
             $C = new Productos(); //crear un objeto de tipo usuario
             $C->setidProducto($Productos['idProducto']);
             $C->setNombreProducto($Productos['NombreProducto']);
@@ -21,7 +22,7 @@ class CRUDproducto{
             $C->setPrecioProducto($Productos['PrecioProducto']);
             $C->setidEstado($Productos['idEstado']);
             $C->setNombreEstado($Productos['NombreEstado']);
-            $C->setimagen($Productos['imagen']);
+            $C->setimagen($imagen);
           
             /*echo "<p>".$Usuario['idUsuarios']."</p>";
             echo "<p>".$Usuario['tipodocumento']."</p>";*/
@@ -52,18 +53,34 @@ class CRUDproducto{
 
     public function registrarProducto($Productos){
         $Db = Db::Conectar();
-        $Sql = $Db->prepare('INSERT INTO productos(NombreProducto,DescripcionProducto,PrecioProducto,idEstado)
-         VALUES(:NombreProducto,:DescripcionProducto,:PrecioProducto,:idEstado)');
+        $imagen= $_FILES['imagen'];
+            $nombreimagen=$imagen['name'];
+            $type=$imagen['type'];
+            $urltemp=$imagen['tmp_name'];
+
+            if($nombreimagen !=''){
+            $destino='../img/';
+            $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
+            $imagenproducto= $imgnombre.'.jpg';
+            $src=$destino.$imagenproducto;
+
+            }
+        $Sql = $Db->prepare('INSERT INTO productos(NombreProducto,DescripcionProducto,PrecioProducto,idEstado,imagen)
+         VALUES(:NombreProducto,:DescripcionProducto,:PrecioProducto,:idEstado,:imagen)');
         $Sql->bindValue('NombreProducto',$Productos->getNombreProducto());
         $Sql->bindValue('DescripcionProducto',$Productos->getDescripcionProducto());
         $Sql->bindValue('PrecioProducto',$Productos->getPrecioProducto());
         $Sql->bindValue('idEstado',$Productos->getidEstado());
+        $Sql->bindValue('imagen',$Productos->getimagen());
 
         //var_dump($Usuario);
 
         try{
 
             $Sql->execute();
+            if($nombreimagen != ''){
+                move_uploaded_file($urltemp,$src);
+            }
             //echo "registro exitoso";
         }
         catch(Exception $e){
@@ -76,16 +93,30 @@ class CRUDproducto{
 
     public function editarProducto($Productos){
         $Db = Db::Conectar();
+        $imagen= $_FILES['imagen'];
+            $nombreimagen=$imagen['name'];
+            $type=$imagen['type'];
+            $urltemp=$imagen['tmp_name'];
+
+            if($nombreimagen !=''){
+            $destino='../img/';
+            $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
+            $imagenproducto= $imgnombre.'.jpg';
+            $src=$destino.$imagenproducto;
+
+            }
         $Sql = $Db->prepare('UPDATE productos SET
         NombreProducto=:NombreProducto,
         DescripcionProducto=:DescripcionProducto,
         PrecioProducto=:PrecioProducto,
-        idEstado=:idEstado
+        idEstado=:idEstado,
+        imagen=:imagen
         WHERE idProducto=:idProducto');
         $Sql->bindValue('NombreProducto',$Productos->getNombreProducto());
         $Sql->bindValue('DescripcionProducto',$Productos->getDescripcionProducto());
         $Sql->bindValue('PrecioProducto',$Productos->getPrecioProducto());
         $Sql->bindValue('idEstado',$Productos->getidEstado());
+        $Sql->bindValue('imagen',$Productos->getimagen());
         $Sql->bindValue('idProducto',$Productos->getidProducto());
         
         
@@ -95,6 +126,9 @@ class CRUDproducto{
         try{
 
             $Sql->execute();
+            if($nombreimagen != ''){
+                move_uploaded_file($urltemp,$src);
+            }
             //echo "Actualizacion exitosa";
         }
         catch(Exception $e){
