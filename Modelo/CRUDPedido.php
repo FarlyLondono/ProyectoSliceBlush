@@ -142,7 +142,7 @@ class CRUDPedido{
                           (`idCliente`, `fechaRegistro`, `IdEstadoPedido`)
                  VALUES (:idCliente,NOW(),:IdEstadoPedido)");
                  $sentencia->bindValue(":idCliente",print_r($idCliente,true));
-                 $sentencia->bindValue(":IdEstadoPedido",3);
+                 $sentencia->bindValue(":IdEstadoPedido",1);
                  
                  $sentencia->execute();
                  var_dump($sentencia);

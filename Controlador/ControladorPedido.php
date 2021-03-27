@@ -224,8 +224,10 @@ elseif(isset($_POST["editarPedido"])){
     if($idPedido==""){
         $idPedido= $ControladorPedido->RegistrarPedidoCarrito();
     }
-    //echo $idPedido;
+    
     $ControladorPedido->RegistrarDetallePedidoCarrito($idPedido);
+
+
 }
 ?>
 

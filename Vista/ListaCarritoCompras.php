@@ -15,7 +15,7 @@ require_once("../Modelo/CarritoCompras.php");
 $ControladorPedido = new ControladorPedido();
 //$ListarPedidos = $ControladorPedido->ListarPedidos();
 //$ListaDetallePedido = $ControladorPedido->ListarDetallePedido($_POST["idPedido"]);
-echo $ListaDetallePedido;
+//echo $ListaDetallePedido;
 
 function desplegarVista($ruta){
     header('Location: '.$ruta);
@@ -38,11 +38,11 @@ function desplegarVista2($ruta){
     <link rel="icon" type="image/png" href="../Img/hamburguer.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="../Css/estyleTables.css">
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="../Css/estyleTables.css">
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 </head>
 <body background="../Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
 <div class="container mt-4">
@@ -99,7 +99,7 @@ function desplegarVista2($ruta){
 
                         <tr>
                             <td colspan="5">
-                                <form name="frmPagar" id="frmPagar" action="../Controlador/ControladorPedido.php" method="post" >
+                                <form name="frmPagar" id="frmPagar"}>
                                 <input type="hidden" name="proceder" />
                            
                         <tr>
@@ -122,8 +122,8 @@ function desplegarVista2($ruta){
                                         
                                          <?php } ?> 
 
-                                    <button class="btn btn-success btn-lg btn-block"
-                                    type="submit" value="proceder" name="btnAccion">Pago en efectivo>></button>
+                                    <button class="btn btn-success btn-lg btn-block" 
+                                    type="submit" value="proceder" id="proceder" name="proceder">Pago en efectivo>></button>
                                 </form>
                                 </div>
                                         <small id="emailHelp" class="form-text text-muted">
@@ -150,23 +150,30 @@ No hay productos en el carrito...
 
 <?php } ?>
 </body>
-    <script>
-        $(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
-        $("#frmPagar").submit(function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
-        //e.preventDefault();
-        //if(validarDatosInsumo()){ 
-            var dataString = $('#frmPagar').serialize();    
-            $.post("../Controlador/ControladorPedido.php",dataString, function(response) {     
-            }) 
-        });
+    <script >
+        $("#proceder").on('click',function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
+            $("#frmPagar").submit(function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
+            //e.preventDefault();
+            //if(validarDatosInsumo()){ 
+                var dataString = $('#frmPagar').serialize();    
+                $.post("../Controlador/ControladorPedido.php",dataString, function(response) {
+                    alert(" Gracia por preferirnos!!! \n En unos instantes nos comunicaremos \n con usted para la confirmacion del pedido"); 
+                    window.location='../menu.php';
+                    <?php unset($_SESSION['CARRITO'])?>
+       
+                }); 
+            }
+            );
         });
 
 
-        function calcularValorDetalle()
-{
-    let cantidad = $("#cantidad").val();
-    let precio = $("#precio").val();
-    $("#valorDetalle").val(cantidad*precio);
-}
-    </script>
+function calcularValorDetalle()
+        {
+            let cantidad = $("#cantidad").val();
+            let precio = $("#precio").val();
+            $("#valorDetalle").val(cantidad*precio);
+        }
+            
+
+</script>
 </html>
