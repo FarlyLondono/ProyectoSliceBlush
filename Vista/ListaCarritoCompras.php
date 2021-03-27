@@ -121,19 +121,10 @@ function desplegarVista2($ruta){
                                         <input type="hidden" name="precio" id="precio" value="<?php echo ($producto['precio']);?>" >
                                         
                                          <?php } ?> 
-<<<<<<< HEAD
-=======
-                                                                              
-                                </div>
-                                    <small id="emailHelp" class="form-text text-muted">
-                                    Gracias por preferirnos,estaremos en contacto para su entrega.
-                                    </small>
->>>>>>> de272b493e03c8f68e681c36ff516881159a4906
 
                                     <button class="btn btn-success btn-lg btn-block"
                                     type="submit" value="proceder" name="btnAccion">Pago en efectivo>></button>
                                 </form>
-<<<<<<< HEAD
                                 </div>
                                         <small id="emailHelp" class="form-text text-muted">
                                     Gracias por preferirnos,estaremos en contacto para su entrega.
@@ -144,8 +135,6 @@ function desplegarVista2($ruta){
                                        
                                 </form>
                                 
-=======
->>>>>>> de272b493e03c8f68e681c36ff516881159a4906
                             </td>
                         </tr>
                 </tbody>

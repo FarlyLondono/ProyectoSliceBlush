@@ -172,7 +172,7 @@ date_default_timezone_set("America/Lima");
         <div class="content">
     <a  href="https://www.youtube.com/watch?v=stJDyZGibgQ&ab_channel=CharlandoTranquilamente">
 <button  class="botonF1 pointer " >
-<span class="material-icons">accessibility</span>
+<span class="material-icons">accessibility_new</span>
 </button>
     </a>
  </div>
