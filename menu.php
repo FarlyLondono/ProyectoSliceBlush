@@ -170,7 +170,7 @@ date_default_timezone_set("America/Lima");
     </nav>
     </div>
         <div class="content">
-    <a  href="https://www.youtube.com/watch?v=stJDyZGibgQ&ab_channel=CharlandoTranquilamente">
+    <a  href="https://www.youtube.com/watch?v=stJDyZGibgQ&ab_channel=CharlandoTranquilamente" target="_blank">
 <button  class="botonF1 pointer " >
 <span class="material-icons">accessibility_new</span>
 </button>
