@@ -13,8 +13,8 @@ class controladorlogin{
 
     public function VerificarLogin($Correo,$Contrasena){
 
-        $salt = md5($Contrasena);
-        $password = crypt($Contrasena,$salt);
+        $password = base64_encode($Contrasena);
+
 
         $Usuario = new Usuarios();
         $CRUDUsuario = new CRUDusuario();
@@ -27,7 +27,7 @@ class controladorlogin{
         $Cliente->setCorreo($Correo);
         $Cliente->setContrasena($password);
         $Cliente = $CRUDCliente->VerificarLogin($Cliente);
-
+        echo $password;
           if($Usuario->getExiste()==1){
     
               session_start();

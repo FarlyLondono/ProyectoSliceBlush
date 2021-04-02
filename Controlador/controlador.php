@@ -60,8 +60,10 @@ public function listarUsuarios(){
 
 
 public function RegistrarUsuario(){
-    $salt = md5($_POST["Contrasena"]);
-    $passwordencriptada = crypt($_POST["Contrasena"],$salt);
+
+    
+    $passwordencriptada = base64_encode($_POST["Contrasena"]);
+
 
     $Usuarios = new Usuarios();
     $CRUDusuario = new CRUDusuario();
@@ -78,6 +80,7 @@ public function RegistrarUsuario(){
 }
 
 public function buscarusuario($IdUsuarios){
+    
     $Usuarios = new Usuarios();
     $CRUDusuario = new CRUDusuario();
     return $CRUDusuario->buscarusuario($IdUsuarios);
@@ -85,8 +88,9 @@ public function buscarusuario($IdUsuarios){
 }
 
 public function editarusuario(){
-    $salt = md5($_POST["Contrasena"]);
-    $passwordencriptada = crypt($_POST["Contrasena"],$salt);
+
+    $passwordencriptada = base64_encode($_POST["Contrasena"]);    
+
     $Usuarios = new Usuarios();
     $CRUDusuario = new CRUDusuario();
         $Usuarios->setIdUsuarios($_POST["IdUsuarios"]);
@@ -97,6 +101,10 @@ public function editarusuario(){
         $Usuarios->setContrasena($passwordencriptada);
         $Usuarios->setIdEstado($_POST["IdEstado"]);
         $Usuarios->setIdRol($_POST["IdRol"]);
+
+        echo $passwordencriptada;
+
+
     
         
     var_dump($Usuarios);
@@ -128,8 +136,7 @@ public function listarClientes(){
 
 public function registrarCliente(){    
 
-    $salt = md5($_POST["Contrasena"]);
-    $passwordencriptada = crypt($_POST["Contrasena"],$salt);
+    $passwordencriptada = base64_encode($_POST["Contrasena"]);
     
 
     $Clientes = new Clientes();
@@ -149,8 +156,7 @@ public function registrarCliente(){
 
     public function editarCliente(){
 
-        $salt = md5($_POST["Contrasena"]);
-        $passwordencriptada = crypt($_POST["Contrasena"],$salt);
+        $passwordencriptada = base64_encode($_POST["Contrasena"]);
 
     $Clientes = new Clientes();
     $CRUDcliente = new CRUDcliente();

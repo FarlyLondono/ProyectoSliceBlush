@@ -26,12 +26,9 @@ function desplegarVista2($ruta){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Productos</title>
     <link rel="icon" type="image/png" href="../Img/hamburguer.png" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     
 </head>
 <body background="../Img/rsz_jaco-pretorius-agzehyx-jfo-unsplash_1.jpg">
@@ -39,20 +36,20 @@ function desplegarVista2($ruta){
         <div class="card text-white bg-secondary mb-3">
         <p class="h1" align="center">Lista Productos</p>  
     </div>
-    <a href="../menu.php" class="btn btn-success" >REGRESAR</a>
-    <a  href="ListaCarritoCompras.php"  ><img src="../Img/outline_shopping_cart_white_36dp.png" class=" my-3 my-sm-0 mr-sm-3" width="50" height="50" style="color:red;"></a> 
+    <a href="menu.php" class="btn btn-success" >REGRESAR</a>
+    <a  href="Vista/ListaCarritoCompras.php"  ><img src="Img/outline_shopping_cart_white_36dp.png" class=" my-3 my-sm-0 mr-sm-3" width="50" height="50" style="color:red;"></a> 
     <br>
     <br>
     <?php if($mensaje != "") { ?>
         <div class="alert alert-success">
         <?php echo $mensaje; ?>
             <br>
-            <a href="ListaCarritoCompras.php" class="badge badge-success">Ver carrito</a>
+            <a href="Vista/ListaCarritoCompras.php" class="badge badge-success">Ver carrito</a>
 
         </div>
     <?php  } ?>
     <div class="row"> 
-        <?php foreach($listarProductos as $C){  ?>
+        <?php foreach($listarProductos as $key=>$C){  ?>
             <div class="col-3">
                     <div class="card">
                         <img
@@ -69,17 +66,19 @@ function desplegarVista2($ruta){
                             <span><strong><?php echo $C->getNombreProducto(); ?></strong></span>
                             <h5 class="card-title"><strong style="color:green;"><?php  echo $C->getPrecioProducto(); ?></strong></h5>
                             
-                            <form  method="post">
+                           
+
                             
-                            <input type="hidden" name="idProducto" id="idProducto" value="<?php echo openssl_encrypt($C->getidProducto(),COD,KEY); ?>">
-                            <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($C->getNombreProducto(),COD,KEY); ?>">
-                            <input type="hidden" name="precio" id="precio" value="<?php  echo openssl_encrypt($C->getPrecioProducto(),COD,KEY); ?>">
-                            <input type="hidden" name="cantidad" id="cantidad" value="<?php  echo openssl_encrypt(1,COD,KEY); ?>">
+                            
+                            <input type="hidden" name="idProducto" id="idProducto<?php echo $key ?>" value="<?php echo openssl_encrypt($C->getidProducto(),COD,KEY); ?>">
+                            <input type="hidden" name="nombre" id="nombre<?php echo $key ?>" value="<?php echo openssl_encrypt($C->getNombreProducto(),COD,KEY); ?>">
+                            <input type="hidden" name="precio" id="precio<?php echo $key ?>" value="<?php  echo openssl_encrypt($C->getPrecioProducto(),COD,KEY); ?>">
+                            <input type="hidden" name="cantidad" id="cantidad<?php echo $key ?>" value="<?php  echo openssl_encrypt(1,COD,KEY); ?>">
 
                             <button class="btn btn-primary" name="btnAccion" id="btnAccion"
-                            value="Agregar" type="submit">Agregar al carrito</button>
+                            value="Agregar" onclick="addcar(<?php echo $key ?>)" type="button">Agregar al carrito</button>
                             
-                            </form>    
+                            
                         </div>
                     </div>
                     <br>
@@ -92,8 +91,27 @@ function desplegarVista2($ruta){
     
 </body>
 <script>
-    $(function () {
-            $('[data-toggle="popover"]').popover()
-        }); 
+
+    function addcar(id){
+        $.ajax({
+            type: "POST",
+            url: "Vista/listarProductosimagen.php",
+            data: {
+                idProducto:$('#idProducto'+id).val(),
+                nombre:$('#nombre'+id).val(),
+                precio:$('#precio'+id).val(),
+                cantidad:$('#cantidad'+id).val(),
+                btnAccion:"Agregar"
+            },
+            success : (data)=>{
+                $('#navigation').html(data);
+            }
+        })
+        console.log($("#nombre"+id).val());
+    }
+
+    /*    $(function () {
+                $('[data-toggle="popover"]').popover()
+            }); */
 </script>
 </html>

@@ -84,7 +84,7 @@ date_default_timezone_set("America/Lima");
                                 >Tabla Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a style="color: white;" class="nav-link pointer"  href="Vista/listarProductosimagen.php"
+                            <a style="color: white;" class="nav-link pointer"  onclick="nativation('#navigation','Vista/listarProductosimagen.php')"
                                 >Productos</a>
                         </li>
                         <li class="nav-item">
@@ -105,7 +105,7 @@ date_default_timezone_set("America/Lima");
                   {
                         ?>
                             <li class="nav-item">
-                            <a style="color: white;" class="nav-link pointer"  href="Vista/listarProductosimagen.php" 
+                            <a style="color: white;" class="nav-link pointer"  onclick="nativation('#navigation','Vista/listarProductosimagen.php')"
                                 >Productos</a>
                             </li>
                             <li class="nav-item">
@@ -126,7 +126,7 @@ date_default_timezone_set("America/Lima");
                                     >Tabla Productos</a>
                             </li>
                             <li class="nav-item">
-                            <a style="color: white;" class="nav-link pointer"  href="Vista/listarProductosimagen.php" 
+                            <a style="color: white;" class="nav-link pointer"  onclick="nativation('#navigation','Vista/listarProductosimagen.php')" 
                                 >Productos</a>
                             </li>
                             <li class="nav-item">
@@ -146,7 +146,7 @@ date_default_timezone_set("America/Lima");
                     {
                             ?>
                             <li class="nav-item">
-                            <a style="color: white;" class="nav-link pointer" href="Vista/listarProductosimagen.php"
+                            <a style="color: white;" class="nav-link pointer" onclick="nativation('#navigation','Vista/listarProductosimagen.php')"
                                 >Productos</a>
                             </li>
                             <li class="nav-item">
@@ -170,7 +170,7 @@ date_default_timezone_set("America/Lima");
     </nav>
     </div>
         <div class="content">
-    <a  href="https://www.youtube.com/watch?v=stJDyZGibgQ&ab_channel=CharlandoTranquilamente">
+    <a  href="https://www.youtube.com/watch?v=stJDyZGibgQ&ab_channel=CharlandoTranquilamente" >
 <button  class="botonF1 pointer " >
 <span class="material-icons">accessibility_new</span>
 </button>
@@ -187,4 +187,22 @@ date_default_timezone_set("America/Lima");
 
 <script type="text/javascript" charset="utf8" src="js/dataTables.js"></script>
 <script src="js/navbar.js"></script>
+
+<script>
+$( document ).ready(function() {
+    function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+let page = getParameterByName('page');
+    if(page != null && page != '' && page != undefined && page != 'undefined'){
+        nativation('#navigation',page);
+        console.log(page);
+    }
+});
+
+</script>
 </html>

@@ -75,6 +75,9 @@ if(isset($_POST["editarUsuario"])){
     <input type="text" name="Correo" id="Correo" class="form-control"  value="<?php echo $buscarusuario->getCorreo() ?>">
     <label for="">Contraseña:</label>  
     <input type="password" name="Contrasena" id="Contrasena" class="form-control"  value="<?php echo $buscarusuario->getContrasena() ?>">
+
+
+
     <label for="">Estado:</label>
     <select type="text" name="IdEstado" id="IdEstado" class="form-control">
                     <option value="" >seleccione</option>

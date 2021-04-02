@@ -80,20 +80,28 @@ class CRUDusuario{
     }
     public function buscarusuario($IdUsuarios){
         //conectar ala DB
+
+        
         $Db = Db::Conectar();
         $Sql = $Db->prepare('SELECT * FROM usuarios WHERE IdUsuarios=:IdUsuarios');
         $Sql->bindValue(':IdUsuarios',$IdUsuarios);
         $Sql->execute();
         foreach($Sql->fetchAll() as $Usuario){
+
+            
+            $passwordesencriptada = base64_decode($Usuario['Contrasena']);
+
             $U = new Usuarios();
             $U->setIdUsuarios($Usuario['IdUsuarios']);
             $U->setNumeroDocumento($Usuario['NumeroDocumento']);
             $U->setNombre($Usuario['Nombre']);
             $U->setApellidos($Usuario['Apellidos']);
             $U->setCorreo($Usuario['Correo']);
-            $U->setContrasena($Usuario['Contrasena']);
+            $U->setContrasena($passwordesencriptada);
             $U->setIdEstado($Usuario['IdEstado']);
             $U->setIdRol($Usuario['IdRol']);
+
+            
         }
         Db::cerrarconexion($Db);
         return $U;
