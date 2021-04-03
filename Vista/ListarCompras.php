@@ -106,7 +106,6 @@ function boton(idcompra) {
             </table>
             <div class="card-header text-white">
             <a href="Vista/RegistrarCompra.php" class="btn btn-primary">AGREGAR</a>    
-            <a href="Vista/Reportecompras.php" target="_black" class="btn btn-warning">Generar Reporte</a>
             
             </div> 
        

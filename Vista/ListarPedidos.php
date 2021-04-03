@@ -66,7 +66,6 @@ function boton(idPedido) {
     if($sesion == 1 || $sesion == 2 )
     {
     ?>
-    <a href="Vista/RegistrarPedido.php" class="btn btn-primary">Nuevo Pedido</a>
     <?php
     }
     ?>
@@ -114,6 +113,8 @@ function boton(idPedido) {
                 </tbody>    
 
             </table> 
+            <a href="Vista/RegistrarPedido.php" class="btn btn-primary">Nuevo Pedido</a>
+            <a href="Vista/reportePedidos.php" target="_black" class="btn btn-warning">Generar Reporte</a>
     </div>
     </div>
                     </div>

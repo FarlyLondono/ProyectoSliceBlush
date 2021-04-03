@@ -12,14 +12,15 @@ function Header()
     // Movernos a la derecha
     $this->Cell(60);
     // Título
-    $this->Cell(70,10,'Reporte De Compras',1,0,'C');
+    $this->Cell(70,10,'Reporte De pedidos',1,0,'C');
     // Salto de línea
     $this->Ln(20);
 
 
-    $this->Cell(90, 10, 'proveedor', 1, 0, 'C', 0);
-    $this->Cell(55, 10, 'numerofactura', 1, 0, 'C', 0);
-    $this->Cell(55, 10, 'fechacompra', 1, 1, 'C', 0);
+    $this->Cell(90, 10, 'idPedido', 1, 0, 'C', 0);
+    $this->Cell(55, 10, 'idCliente', 1, 0, 'C', 0);
+    $this->Cell(55, 10, 'fechaRegistro', 1, 1, 'C', 0);
+
 
 
 }
@@ -37,7 +38,7 @@ function Footer()
 }
 
 require 'cn.php';
-$consulta = "SELECT * FROM compras";
+$consulta = "SELECT * FROM pedidos";
 $resultado = $mysqli->query($consulta);
 
 $pdf = new PDF();
@@ -46,9 +47,10 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','B',16);
 
 while($row = $resultado->fetch_assoc()){
-    $pdf->Cell(90, 10, $row['proveedor'], 1, 0, 'C', 0);
-    $pdf->Cell(55, 10, $row['numerofactura'], 1, 0, 'C', 0);
-    $pdf->Cell(55, 10, $row['fechacompra'], 1, 1, 'C', 0);
+    $pdf->Cell(90, 10, $row['idPedido'], 1, 0, 'C', 0);
+    $pdf->Cell(55, 10, $row['idCliente'], 1, 0, 'C', 0);
+    $pdf->Cell(55, 10, $row['fechaRegistro'], 1, 1, 'C', 0);
+
 }
 
 
