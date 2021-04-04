@@ -27,7 +27,7 @@ class controladorlogin{
         $Cliente->setCorreo($Correo);
         $Cliente->setContrasena($password);
         $Cliente = $CRUDCliente->VerificarLogin($Cliente);
-        echo $password;
+        //echo $password;
           if($Usuario->getExiste()==1){
     
               session_start();
