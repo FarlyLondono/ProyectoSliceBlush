@@ -61,14 +61,14 @@ class CRUDusuario{
  
     public function RegistrarUsuario($Usuario){
         $Db = Db::Conectar();
-        $Sql = $Db->prepare('INSERT INTO usuarios(NumeroDocumento,Nombre,Apellidos,Correo,Contrasena,Estado,IdRol)
-         VALUES(:NumeroDocumento,:Nombre,:Apellidos,:Correo,:Contrasena,:Estado,:IdRol)');
+        $Sql = $Db->prepare('INSERT INTO usuarios(NumeroDocumento,Nombre,Apellidos,Correo,Contrasena,idEstado,IdRol)
+         VALUES(:NumeroDocumento,:Nombre,:Apellidos,:Correo,:Contrasena,:idEstado,:IdRol)');
         $Sql->bindValue('NumeroDocumento',$Usuario->getNumeroDocumento());
         $Sql->bindValue('Nombre',$Usuario->getNombre());
         $Sql->bindValue('Apellidos',$Usuario->getApellidos());
         $Sql->bindValue('Correo',$Usuario->getCorreo());
         $Sql->bindValue('Contrasena',$Usuario->getContrasena());
-        $Sql->bindValue('Estado',$Usuario->getEstado());
+        $Sql->bindValue('idEstado',$Usuario->getidEstado());
         $Sql->bindValue('IdRol',$Usuario->getIdRol());
         
 
@@ -124,7 +124,7 @@ class CRUDusuario{
         Apellidos=:Apellidos,
         Correo=:Correo,
         Contrasena=:Contrasena,
-        Estado=:Estado,
+        idEstado=:idEstado,
         IdRol=:IdRol
         WHERE IdUsuarios=:IdUsuarios');
         $Sql->bindValue('NumeroDocumento',$Usuario->getNumeroDocumento());
@@ -132,7 +132,7 @@ class CRUDusuario{
         $Sql->bindValue('Apellidos',$Usuario->getApellidos());
         $Sql->bindValue('Correo',$Usuario->getCorreo());
         $Sql->bindValue('Contrasena',$Usuario->getContrasena());
-        $Sql->bindValue('Estado',$Usuario->getEstado());
+        $Sql->bindValue('idEstado',$Usuario->getidEstado());
         $Sql->bindValue('IdRol',$Usuario->getIdRol());
         $Sql->bindValue('IdUsuarios',$Usuario->getIdUsuarios());
        

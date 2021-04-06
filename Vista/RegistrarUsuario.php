@@ -51,7 +51,18 @@ $listarestados = $controlador->listarestados();
                 <label for="">Contraseña:</label>
                 <input type="password" name="Contrasena" id="Contrasena" value="<?php echo $_POST['Contrasena'] ?>" class="form-control">
                 <label for="">Estado:</label>
-                <input type="text" name="Estado" id="Estado" value="<?php echo $_POST['Estado'] ?>" class="form-control">
+                <select name="idEstado" id="idEstado" onchange="mostrarnombre(this.value)" class="form-control">
+                    <option value="">Seleccione</option>
+                    <?php
+                    foreach ($listarestados as $estado) {
+                    ?>
+                        <option value="<?php echo $estado->getidEstado() ?>">
+                            <?php echo $estado->getNombreEstado() ?>
+                        </option>
+                    <?php
+                    }
+                    ?>
+                </select>
                 <label for="">Rol:</label>
                 <select name="IdRol" id="IdRol" onchange="mostrarRol(this.value)" class="form-control">
                     <option value="">Seleccione</option>
@@ -85,13 +96,13 @@ $listarestados = $controlador->listarestados();
                 }
 
 
-                if ((isset($_POST['NumeroDocumento'])) && (isset($_POST['Nombre'])) && (isset($_POST['Apellidos'])) && (isset($_POST['Correo'])) && (isset($_POST['Contrasena'])) && (isset($_POST['Estado'])) && (isset($_POST['IdRol']))) {
+                if ((isset($_POST['NumeroDocumento'])) && (isset($_POST['Nombre'])) && (isset($_POST['Apellidos'])) && (isset($_POST['Correo'])) && (isset($_POST['Contrasena'])) && (isset($_POST['idEstado'])) && (isset($_POST['IdRol']))) {
                     $NumeroDocumento = $_POST['NumeroDocumento'];
                     $Nombre = $_POST['Nombre'];
                     $Apellidos = $_POST['Apellidos'];
                     $Correo = $_POST['Correo'];
                     $Contrasena = $_POST['Contrasena'];
-                    $Estado = $_POST['Estado'];
+                    $idEstado = $_POST['idEstado'];
                     $IdRol = $_POST['IdRol'];
 
                    
@@ -110,7 +121,7 @@ $listarestados = $controlador->listarestados();
                     if (strpos($Correo, "@") == false) {
                         array_push($campos, "ingrese un correo electronico valido");
                     }
-                    if (($NumeroDocumento == "") || ($Nombre == "") || ($Apellidos == "") || ($Correo == "") || ($Contrasena == "") || ($Estado == "") || ($IdRol == "")) {
+                    if (($NumeroDocumento == "") || ($Nombre == "") || ($Apellidos == "") || ($Correo == "") || ($Contrasena == "") || ($idEstado == "") || ($IdRol == "")) {
                         array_push($campos,  "Los campos no pueden quedar vacios");
                     }
                     if (count($campos) > 0) {

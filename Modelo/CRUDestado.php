@@ -15,7 +15,7 @@ class CRUDestado{
         $Sql->execute();
         foreach($Sql->fetchAll() as $Estado){
             $E = new Estado(); //crear un objeto de tipo usuario
-            $E->setIdEstado($Estado['IdEstado']);
+            $E->setidEstado($Estado['idEstado']);
             $E->setNombreEstado($Estado['NombreEstado']);
 
             $listaestado[]=$E;
