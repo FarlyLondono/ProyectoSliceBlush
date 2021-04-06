@@ -38,7 +38,7 @@ $listarProductos = $ControladorPedido->listarProductos();
     </div>
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
-        <form name="frmpedido" id="frmpedido" method="POST" action="../Controlador/ControladorPedido    .php"> 
+        <form name="frmpedido" id="frmpedido" method="POST" action="../Controlador/ControladorPedido.php"> 
         <input type="hidden" name="RegistrarPedido" id="RegistrarPedido" />
         <label for="">Número pedido:</label>  
         <input type="text" name="idPedido" id="idPedido" class="form-control" readonly />
@@ -48,7 +48,7 @@ $listarProductos = $ControladorPedido->listarProductos();
             <?php 
                 foreach($listarClientes as $Cliente){
                     ?>
-                    <option value="<?php echo $Cliente -> getidCliente() ?>">
+                    <option value="<?php echo $Cliente ->getidCliente() ?>">
                     <?php echo $Cliente->getNombre() ?>
                     </option>
                     <?php

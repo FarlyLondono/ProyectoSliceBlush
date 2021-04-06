@@ -39,7 +39,7 @@ class CRUDcliente{
         $Db = Db::Conectar();
         $listarClientes = [];
         //se define la consulta
-        $Sql = $Db->query('SELECT f.idEstado,f.IdCliente,f.Nombre,f.Correo,f.Direccion,f.Telefono,e.idEstado,e.NombreEstado FROM clientes AS f INNER JOIN estado AS e ON f.idEstado=e.idEstado');
+        $Sql = $Db->query('SELECT f.idEstado,f.idCliente,f.Nombre,f.Correo,f.Direccion,f.Telefono,e.idEstado,e.NombreEstado FROM clientes AS f INNER JOIN estado AS e ON f.idEstado=e.idEstado');
         //se ejecuta la consulta
         $Sql->execute();
         foreach($Sql->fetchAll() as $cliente){
