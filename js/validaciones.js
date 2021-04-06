@@ -129,7 +129,7 @@ function validarDatoseditarusurio() {
         comprobacion++;
     }
     if ($("#Contrasena").val().length <= 6) {
-        swal({ icon: 'error', text: "El campo Contraseña debe contener 7 caracteres" });
+        swal({ icon: 'error', text: "Apreciado Usuario Todos los campos son Obligatorios" });
         comprobacion++;
     }
     if (comprobacion > 0) {
@@ -162,7 +162,7 @@ function validarDatoseditarcliente() {
         comprobacion++;
     }
     if ($("#Contrasena").val().length == 0) {
-        swal({ icon: 'error', text: "El campo Contraseña está vacío" });
+        swal({ icon: 'error', text: "Apreciado Usuario Todos los campos son Obligatorios" });
         comprobacion++;
     }
     if (comprobacion > 0) {
@@ -208,7 +208,7 @@ function validarDatoseditarpedido() {
         comprobacion++;
     }
     if ($("#idCliente").val().length == 0) {
-        swal({ icon: 'error', text: "El campo Cliente está vacío" });
+        swal({ icon: 'error', text: "Apreciado Usuario Todos los campos son Obligatorios" });
         comprobacion++;
     }
     if (comprobacion > 0) {
@@ -231,7 +231,7 @@ function validarDatoseditarinsumo() {
         comprobacion++;
     }
     if ($("#precio").val().length == 0) {
-        swal({ icon: 'error', text: "El campo precio está vacío" });
+        swal({ icon: 'error', text: "Apreciado Usuario Todos los campos son Obligatorios" });
         comprobacion++;
     }
     if (comprobacion > 0) {
@@ -254,7 +254,7 @@ function validarDatoseditarcompra() {
         comprobacion++;
     }
     if ($("#numerofactura").val().length == 0) {
-        swal({ icon: 'error', text: "El campo número factura está vacío" });
+        swal({ icon: 'error', text: "Apreciado Usuario Todos los campos son Obligatorios" });
         comprobacion++;
     }
     if (comprobacion > 0) {
@@ -273,7 +273,7 @@ function validarDatosdetallecompra() {
         comprobacion++;
     }
     if ($("#Cantidad").val().length == 0) {
-        swal({ icon: 'error', text: "El campo Cantidad está vacío" });
+        swal({ icon: 'error', text: "Apreciado Usuario Todos los campos son Obligatorios" });
         comprobacion++;
     }
     if (comprobacion > 0) {
@@ -292,7 +292,7 @@ function validarDatosdetallepedido() {
         comprobacion++;
     }
     if ($("#cantidad").val().length == 0) {
-        swal({ icon: 'error', text: "El campo Cantidad está vacío" });
+        swal({ icon: 'error', text: "Apreciado Usuario Todos los campos son Obligatorios" });
         comprobacion++;
     }
     if (comprobacion > 0) {
