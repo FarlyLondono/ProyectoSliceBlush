@@ -50,6 +50,7 @@ class ControladorPedido{
         $detallePedidos->setidProducto($_POST["producto"]);
         $detallePedidos->setcantidad($_POST["cantidad"]);
         $detallePedidos->setprecio($_POST["valorDetalle"]);
+        
         $CRUDdetallePedido->RegistrarDetallePedido($detallePedidos);
     }
 
