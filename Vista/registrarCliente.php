@@ -49,7 +49,7 @@ $listarCliente = $controlador->listarClientes();
         <input type="text" name="Telefono" id="Telefono" value="<?php echo $_POST['Telefono'] ?>" class="form-control"/>
         <label for="">Contraseña:</label>
         <input type="password" name="Contrasena" value="<?php echo $_POST['Contrasena'] ?>" id="Contrasena" class="form-control"/>
-      
+
 
 </br>
         
