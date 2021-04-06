@@ -59,7 +59,7 @@ class controladorlogin{
                   Swal.fire({
                   position: 'top-center',
                   icon: 'error',
-                  title: 'Usuario o Contraseña Incorrectas!!!',
+                  title: 'Correo o contraseña incorrectos!!!',
                   showConfirButton: false,
                   timer: 2000
               }).then(function() {
