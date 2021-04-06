@@ -14,7 +14,7 @@ class CRUDPedido{
         sum(p.precio) as TotalPedido 
         FROM pedidos AS f INNER JOIN estadopedido AS e ON f.IdEstadoPedido=e.IdEstadoPedido
         INNER JOIN clientes AS r ON f.idCliente=r.idCliente INNER JOIN detallepedidos AS p ON f.idPedido=p.idPedido
-        GROUP BY p.idPedido');
+        GROUP BY p.idPedido ORDER BY f.IdEstadoPedido');
        
         $Sql->execute();
         foreach($Sql->fetchAll() as $Registro){

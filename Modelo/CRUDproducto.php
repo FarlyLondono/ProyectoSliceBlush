@@ -14,7 +14,7 @@ class CRUDproducto{
         //se ejecuta la consulta
         $Sql->execute();
         foreach($Sql->fetchAll() as $Productos){
-            $imagen='../img/'.$Productos['imagen'];
+            $imagen='img2/'.$Productos['imagen'];
             $C = new Productos(); //crear un objeto de tipo usuario
             $C->setidProducto($Productos['idProducto']);
             $C->setNombreProducto($Productos['NombreProducto']);
@@ -59,7 +59,7 @@ class CRUDproducto{
             $urltemp=$imagen['tmp_name'];
 
             if($nombreimagen !=''){
-            $destino='../img/';
+            $destino='../img2/';
             $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
             $imagenproducto= $imgnombre.'.jpg';
             $src=$destino.$imagenproducto;
@@ -99,7 +99,7 @@ class CRUDproducto{
             $urltemp=$imagen['tmp_name'];
 
             if($nombreimagen !=''){
-            $destino='../img/';
+            $destino='../img2/';
             $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
             $imagenproducto= $imgnombre.'.jpg';
             $src=$destino.$imagenproducto;

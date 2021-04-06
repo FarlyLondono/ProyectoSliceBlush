@@ -192,7 +192,7 @@ public function registrarCliente(){
             $urltemp=$imagen['tmp_name'];
 
             if($nombreimagen !=''){
-            $destino='../img/';
+            $destino='../img2/';
             $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
             $imagenproducto= $imgnombre.'.jpg';
             $src=$destino.$imagenproducto;
@@ -244,7 +244,7 @@ public function registrarCliente(){
             $urltemp=$imagen['tmp_name'];
 
             if($nombreimagen !=''){
-            $destino='../img/';
+            $destino='../img2/';
             $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
             $imagenproducto= $imgnombre.'.jpg';
             $src=$destino.$imagenproducto;

@@ -55,7 +55,7 @@ function desplegarVista2($ruta){
                 <thead class="thead-dark">
                 <hr>
                     <tr>
-                        <th width="20%">ID</th>
+                        
                         <th width="40%">Nombre Producto</th>
                         <th width="15%" class="text-center">Cantidad</th>
                         <th width="20%"  class="text-center">Precio</th>
@@ -70,7 +70,7 @@ function desplegarVista2($ruta){
                             <?php  $total=0; ?>
                             <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){ ?>
                             <tr>
-                            <td width="20%"><?php echo $producto['idProducto'] ?></td>
+                            
                             <td width="40%"><?php echo $producto['NOMBRE'] ?></td>
                             <td width="15%"  class="text-center"><?php echo $producto['cantidad'] ?></td>
                             <td width="20%" class="text-center"><?php echo $producto['precio'] ?></td>

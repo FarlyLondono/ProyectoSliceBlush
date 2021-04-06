@@ -26,9 +26,8 @@ function desplegarVista2($ruta){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Productos</title>
     <link rel="icon" type="image/png" href="../Img/hamburguer.png" />
-   
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
+    
     
 </head>
 <body background="../Img/rsz_jaco-pretorius-agzehyx-jfo-unsplash_1.jpg">
@@ -36,9 +35,7 @@ function desplegarVista2($ruta){
         <div class="card text-white bg-secondary mb-3">
         <p class="h1" align="center">Lista Productos</p>  
     </div>
-    <a href="menu.php" class="btn btn-success" >REGRESAR</a>
-    <a  href="Vista/ListaCarritoCompras.php"  ><img src="Img/outline_shopping_cart_white_36dp.png" class=" my-3 my-sm-0 mr-sm-3" width="50" height="50" style="color:red;"></a> 
-    <br>
+    
     <br>
     <?php if($mensaje != "") { ?>
         <div class="alert alert-success">
@@ -50,8 +47,8 @@ function desplegarVista2($ruta){
     <?php  } ?>
     <div class="row"> 
         <?php foreach($listarProductos as $key=>$C){  ?>
-            <div class="col-3">
-                    <div class="card">
+            <div class="col-3"  >
+                    <div class="card" >
                         <img
                         title="<?php echo $C->getNombreProducto(); ?>" 
                         alt="<?php  echo $C->getNombreProducto(); ?>"
@@ -60,11 +57,12 @@ function desplegarVista2($ruta){
                         data-trigger="hover"
                         data-content="<?php  echo $C->getDescripcionProducto(); ?>"
                         height="250px"
-                        
                         >
                         <div class="card-body">
                             <span><strong><?php echo $C->getNombreProducto(); ?></strong></span>
+                            <p class="card-text"><?php  echo $C->getDescripcionProducto(); ?></p>
                             <h5 class="card-title"><strong style="color:green;"><?php  echo $C->getPrecioProducto(); ?></strong></h5>
+                            
                             
                            
 

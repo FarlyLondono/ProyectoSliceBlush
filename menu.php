@@ -82,11 +82,11 @@ date_default_timezone_set("America/Lima");
                     
                         <li class="nav-item">
                             <a style="color: white;" class="nav-link pointer" onclick="nativation('#navigation','Vista/listarProductos.php')"
-                                >Tabla Productos</a>
+                                >Productos</a>
                         </li>
                         <li class="nav-item">
                             <a style="color: white;" class="nav-link pointer"  onclick="nativation('#navigation','Vista/listarProductosimagen.php')"
-                                >Productos</a>
+                                >Menu Productos</a>
                         </li>
                         <li class="nav-item">
                             <a style="color: white;" class="nav-link pointer" onclick="nativation('#navigation','Vista/ListarPedidos.php')"
@@ -107,7 +107,7 @@ date_default_timezone_set("America/Lima");
                         ?>
                             <li class="nav-item">
                             <a style="color: white;" class="nav-link pointer"  onclick="nativation('#navigation','Vista/listarProductosimagen.php')"
-                                >Productos</a>
+                                >Menu Productos</a>
                             </li>
                             <li class="nav-item">
                                 <a style="color: white;"  class="nav-link pointer" onclick="nativation('#navigation','Vista/ListarPedidos.php')"
@@ -124,11 +124,11 @@ date_default_timezone_set("America/Lima");
                     
                             <li class="nav-item">
                                 <a style="color: white;" class="nav-link pointer" onclick="nativation('#navigation','Vista/listarProductos.php')"
-                                    >Tabla Productos</a>
+                                    >Productos</a>
                             </li>
                             <li class="nav-item">
                             <a style="color: white;" class="nav-link pointer"  onclick="nativation('#navigation','Vista/listarProductosimagen.php')" 
-                                >Productos</a>
+                                >Menu Productos</a>
                             </li>
                             <li class="nav-item">
                                 <a style="color: white;" class="nav-link pointer" onclick="nativation('#navigation','Vista/ListarPedidos.php')"
