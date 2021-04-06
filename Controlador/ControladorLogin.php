@@ -14,18 +14,18 @@ class controladorlogin
 
     public function VerificarLogin($Correo,$Contrasena)
     {
-       // $password = base64_encode($Contrasena);
+        $password = base64_encode($Contrasena);
 
         $Usuario = new Usuarios();
         $CRUDUsuario = new CRUDusuario();
         $Usuario->setCorreo($Correo);
-        $Usuario->setContrasena($Contrasena);
+        $Usuario->setContrasena($password);
         $Usuario = $CRUDUsuario->VerificarLogin($Usuario);
 
         $Cliente = new Clientes();
         $CRUDCliente = new CRUDcliente();
         $Cliente->setCorreo($Correo);
-        $Cliente->setContrasena($Contrasena);
+        $Cliente->setContrasena($password);
         $Cliente = $CRUDCliente->VerificarLogin($Cliente);
 
 
