@@ -81,7 +81,7 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
         if(validarDatosInsumo()){    
         var dataString = $('#frminsumo').serialize();
         $.post("../Controlador/ControladorInsumos.php",dataString, function(response) { 
-          alert(response); 
+          //alert(response); 
             $(document).ready(function() {
             Swal.fire({
             position: 'top-center',

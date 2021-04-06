@@ -121,7 +121,7 @@ $listarestados = $controlador->listarestados();
                     if (strpos($Correo, "@") == false) {
                         array_push($campos, "ingrese un correo electronico valido");
                     }
-                    if (($NumeroDocumento == "") || ($Nombre == "") || ($Apellidos == "") || ($Correo == "") || ($Contrasena == "") || ($idEstado == "") ) {
+                    if (($NumeroDocumento == "") || ($Nombre == "") || ($Apellidos == "") || ($Correo == "") || ($Contrasena == "") ) {
                         array_push($campos,  "Los campos no pueden quedar vacios");
                     }
                     if (count($campos) > 0) {
