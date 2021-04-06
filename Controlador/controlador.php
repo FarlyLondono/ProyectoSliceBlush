@@ -116,14 +116,14 @@ public function editarusuario(){
 
     }
 
-public function eliminarUsuario($IdUsuarios){
+/*public function eliminarUsuario($IdUsuarios){
 
     $Usuarios = new Usuarios();
     $CRUDusuario = new CRUDusuario();
     return $CRUDusuario->eliminarUsuario($IdUsuarios);
     
 
-    }
+    }*/
 
 public function listarClientes(){
 
@@ -281,15 +281,15 @@ public function registrarCliente(){
 $controlador = new controlador();
 
 
-if(isset($_GET["eliminarCliente"])){
+/*if(isset($_GET["eliminarCliente"])){
     $controlador->eliminarCliente($_GET["idCliente"]);
-}
-elseif(isset($_GET["eliminarProducto"])){
+}*/
+if(isset($_GET["eliminarProducto"])){
     $controlador->eliminarProducto($_GET["idProducto"]);
 }
-elseif(isset($_GET["eliminarUsuario"])){
+/*elseif(isset($_GET["eliminarUsuario"])){
     $controlador->eliminarUsuario($_GET["IdUsuarios"]);
 }elseif(isset($_POST["editarUsuario"])){
     //$controlador->editarusuario();
     //desplegarVista("../menu.php");
-}
+}*/
