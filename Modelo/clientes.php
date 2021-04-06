@@ -8,7 +8,8 @@ class Clientes{
     private $Direccion;
     private $Telefono;
     private $Contrasena;
-    private $IdEstado;
+    private $idEstado;
+    private $NombreEstado;
     private $Existe;
     
     
@@ -63,12 +64,12 @@ class Clientes{
     public function getContrasena(){
         return $this ->Contrasena;
     }
-    public function setIdEstado($IdEstado){
-        $this->IdEstado = $IdEstado;
+    public function setidEstado($idEstado){
+        $this->idEstado = $idEstado;
     }
 
-    public function getIdEstado(){
-        return $this ->IdEstado;
+    public function getidEstado(){
+        return $this ->idEstado;
     }
     public function setExiste($Existe){
         $this->Existe = $Existe;
@@ -76,6 +77,13 @@ class Clientes{
 
     public function getExiste(){
         return $this ->Existe;
+    }
+    public function setNombreEstado($NombreEstado){
+        $this->NombreEstado = $NombreEstado;
+    }
+
+    public function getNombreEstado(){
+        return $this ->NombreEstado;
     }
 
 }

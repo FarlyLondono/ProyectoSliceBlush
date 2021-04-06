@@ -2,7 +2,7 @@
 
 class CRUDestado{
     public function __construct(){}
-
+    
     public function listarestados(){
         //conectar ala DB
         $Db = Db::Conectar();
@@ -26,5 +26,5 @@ class CRUDestado{
 
 }
 
-
+  
 ?>

@@ -78,17 +78,7 @@ if(isset($_POST["editarUsuario"])){
 
 
 
-    <label for="">Estado:</label>
-    <select type="text" name="IdEstado" id="IdEstado" class="form-control">
-                    <option value="" >seleccione</option>
-                    <?php
-                foreach($listarestado as $estado){
-                    ?>
-                    <option value="<?php echo $estado->getIdEstado() ?>" <?php if($estado->getIdEstado() == $buscarusuario->getIdEstado()){ ?> selected <?php } ?> > <?php echo $estado->getNombreEstado();  ?></option>
-                    <?php
-                }
-                ?>                 
-                </select>
+   
     <label for="">Rol:</label>  
     <select type="text" name="IdRol" id="IdRol" class="form-control">
                     <option value="" >seleccione</option>

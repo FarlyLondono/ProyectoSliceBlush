@@ -9,7 +9,7 @@ class Usuarios{
     private $Apellidos;
     private $Correo;
     private $Contrasena;
-    private $IdEstado;
+    private $idEstado;
     private $NombreEstado;
     private $IdRol;
     private $NombreRol;
@@ -65,12 +65,12 @@ class Usuarios{
     public function getContrasena(){
         return $this ->Contrasena;
     }
-    public function setIdEstado($IdEstado){
-        $this->IdEstado = $IdEstado;
+    public function setidEstado($idEstado){
+        $this->idEstado = $idEstado;
     }
 
-    public function getIdEstado(){
-        return $this ->IdEstado;
+    public function getidEstado(){
+        return $this ->idEstado;
     }
     public function setNombreEstado($NombreEstado){
         $this->NombreEstado = $NombreEstado;

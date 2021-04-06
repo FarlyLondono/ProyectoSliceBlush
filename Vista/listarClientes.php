@@ -10,6 +10,8 @@ elseif($sesion == 0){
     header("Location:../index.php");
 }
 require_once("../Controlador/controlador.php");
+require_once("../Modelo/clientes.php");
+
 $controlador = new controlador();
 $listarCliente = $controlador->listarClientes();
 
@@ -28,16 +30,16 @@ function desplegarVista2($ruta){
     <script>
 function boton(idCliente) {
      Swal.fire({
-  title: 'Esta seguro que desea eliminar el registro?',
+  title: 'Esta seguro que desea cambiar el registro?',
   text: "Esta decision es irreversible!",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, Eliminar!'
+  confirmButtonText: 'Si, cambialo!'
 }).then((result) => {
   if (result.isConfirmed) {
-    $.ajax({url:"../ProyectoSliceBlush/Controlador/controlador.php?eliminarCliente&idCliente="+idCliente,
+    $.ajax({url:"../ProyectoSliceBlush/Controlador/controlador.php?editarEstado &idCliente="+idCliente,
         success:()=>{
             window.location.href="../ProyectoSliceBlush/menu.php"
         }})
@@ -63,6 +65,7 @@ function boton(idCliente) {
                         <th>Correo</th>
                         <th>Dirección</th>
                         <th>Teléfono</th>
+                        <th>Estado</th>
                         <th>..</th>
                     </tr>
                 </thead>
@@ -73,6 +76,7 @@ function boton(idCliente) {
                         <td><?php echo $C->getCorreo()  ?></td>
                         <td><?php echo $C->getDireccion()  ?></td>
                         <td><?php echo $C->getTelefono()  ?></td>
+                        <td><?php echo $C->getNombreEstado() ?></td>
                            
 
                         <td>
@@ -82,7 +86,10 @@ function boton(idCliente) {
                         if($sesion == 1)
                         {
                             ?>
-                        <a onclick="boton(<?php echo $C->getIdCliente(); ?>)" type="button" class="btn btn-outline-danger">Inhabilitar</a>
+                       <label class="switch">
+                                    <input type="checkbox" onclick="boton(<?php echo $C->getidCliente(); ?>)">
+                                    <span class="slider round"></span>
+                                </label>
                         <?php
                         }
                         ?> 

@@ -9,10 +9,11 @@ class CRUDcliente{
     {
         $Db = Db::Conectar();
         $Sql = $Db->prepare('SELECT * FROM clientes
-        WHERE Correo=:Correo AND 
+        WHERE Correo=:Correo AND
         Contrasena=:Contrasena');
           $Sql->bindValue('Correo',$Clientes->getCorreo());
           $Sql->bindValue('Contrasena',$Clientes->getContrasena());
+
           
           $Sql->execute();
           $C = new Clientes();
@@ -22,6 +23,7 @@ class CRUDcliente{
               $C->setidCliente($DatosCliente['idCliente']);
               $C->setNombre($DatosCliente['Nombre']);
               $C->setCorreo($DatosCliente['Correo']);
+              $C->setidEstado($DatosCliente['idEstado']);
               $C->setExiste(1);
           }
           else{
@@ -37,7 +39,7 @@ class CRUDcliente{
         $Db = Db::Conectar();
         $listarClientes = [];
         //se define la consulta
-        $Sql = $Db->query('SELECT * FROM clientes');
+        $Sql = $Db->query('SELECT f.idEstado,f.IdCliente,f.Nombre,f.Correo,f.Direccion,f.Telefono,e.idEstado,e.NombreEstado FROM clientes AS f INNER JOIN estado AS e ON f.idEstado=e.idEstado');
         //se ejecuta la consulta
         $Sql->execute();
         foreach($Sql->fetchAll() as $cliente){
@@ -48,6 +50,7 @@ class CRUDcliente{
             $C->setDireccion($cliente['Direccion']);
             $C->setTelefono($cliente['Telefono']);
             $C->setContrasena($cliente['Contrasena']);
+            $C->setNombreEstado($cliente['NombreEstado']);
             
           
             /*echo "<p>".$Usuario['idUsuarios']."</p>";
@@ -59,7 +62,30 @@ class CRUDcliente{
         return $listarClientes;//retornar el array de objetos.
     }
 
-   
+   public function editarEstado($Clientes){
+    $Db = Db::Conectar();
+    $Sql = $Db->prepare('UPDATE clientes SET
+    Estado=:Estado
+    WHERE idCliente=:idCliente');
+    $Sql->bindValue('Estado',$Clientes->getEstado());
+    $Sql->bindValue('idCliente',$Clientes->getidCliente());
+    
+    
+    //var_dump($Sql);
+    //var_dump($Usuario);
+
+    try{
+
+        $Sql->execute();
+        echo "Actualizacion exitosa";
+    }
+    catch(Exception $e){
+        echo $e->getMessage();
+        die();
+    }
+
+    Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
+}
 
     public function registrarCliente($Clientes){
 
@@ -67,13 +93,14 @@ class CRUDcliente{
             
 
         $Db = Db::Conectar();
-        $Sql = $Db->prepare('INSERT INTO clientes(Nombre,Correo,Direccion,Telefono,Contrasena)
-         VALUES(:Nombre,:Correo,:Direccion,:Telefono,:Contrasena)');
+        $Sql = $Db->prepare('INSERT INTO clientes(Nombre,Correo,Direccion,Telefono,Contrasena,Estado)
+         VALUES(:Nombre,:Correo,:Direccion,:Telefono,:Contrasena,:Estado)');
         $Sql->bindValue('Nombre',$Clientes->getNombre());
         $Sql->bindValue('Correo',$Clientes->getCorreo());
         $Sql->bindValue('Direccion',$Clientes->getDireccion());
         $Sql->bindValue('Telefono',$Clientes->getTelefono());
         $Sql->bindValue('Contrasena',$Clientes->getContrasena());
+        $Sql->bindValue('Estado',$Clientes->getEstado());
 
         //var_dump($Usuario);
 
@@ -123,24 +150,7 @@ class CRUDcliente{
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
     }
 
-    public function eliminarCliente($idCliente){
-        $Db = Db::Conectar();
-        $Sql = $Db->prepare('DELETE FROM `clientes` WHERE idCliente =:idCliente ');
-        $Sql->bindValue('idCliente',$idCliente);
-
-        try{ 
-
-            $Sql->execute();
-            echo "Eliminacion exitosa";
-        }
-        catch(Exception $e){
-            echo $e->getMessage();
-            die();
-        }
-
-        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
-    }
-
+  
     public function buscarCliente($idCliente){
         //conectar ala DB
         $Db = Db::Conectar();

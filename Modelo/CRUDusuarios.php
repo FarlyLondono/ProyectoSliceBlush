@@ -9,7 +9,8 @@ class CRUDusuario{
         //echo  
         $Usuario->getContrasena();
         $Db = Db::Conectar();
-        $Sql = $Db->prepare("SELECT * FROM usuarios where Correo=:Correo AND Contrasena=:Contrasena");
+        $Sql = $Db->prepare("SELECT * FROM usuarios where Correo=:Correo AND
+        Contrasena=:Contrasena");
         $Sql->bindvalue('Correo',$Usuario->getCorreo());
         $Sql->bindvalue('Contrasena',$Usuario->getContrasena());
         $Sql->execute();
@@ -21,6 +22,7 @@ class CRUDusuario{
             $C->setNombre($DatosCliente['Nombre']);
             $C->setCorreo($DatosCliente['Correo']);
             $C->setIdRol($DatosCliente['IdRol']);
+            $C->setidEstado($DatosCliente['idEstado']);
             $C->setExiste(1);
         }
         else{
@@ -31,12 +33,15 @@ class CRUDusuario{
     }
 
     public function listarUsuarios(){
+        //conectar ala DB
         $Db = Db::Conectar();
         $listaUsuarios = [];
-        $Sql = $Db->query('SELECT f.IdEstado,f.IdRol,f.IdUsuarios, f.NumeroDocumento, f.Nombre, f.Apellidos, f.Correo, e.idEstado,e.NombreEstado,r.idRol,r.NombreRol FROM usuarios AS f INNER JOIN estado AS e ON f.IdEstado=e.IdEstado INNER JOIN rol AS r ON f.IdRol=r.idRol');
+        //se define la consulta
+        $Sql = $Db->query('SELECT f.idEstado,f.IdRol,f.IdUsuarios, f.NumeroDocumento, f.Nombre, f.Apellidos, f.Correo, e.idEstado,e.NombreEstado,r.idRol,r.NombreRol FROM usuarios AS f INNER JOIN estado AS e ON f.idEstado=e.idEstado INNER JOIN rol AS r ON f.IdRol=r.idRol');
+        //se ejecuta la consulta
         $Sql->execute();
         foreach($Sql->fetchAll() as $Usuario){
-            $U = new Usuarios();
+            $U = new Usuarios(); //crear un objeto de tipo usuario
             $U->setIdUsuarios($Usuario['IdUsuarios']);
             $U->setNumeroDocumento($Usuario['NumeroDocumento']);
             $U->setNombre($Usuario['Nombre']);
@@ -45,23 +50,25 @@ class CRUDusuario{
             $U->setNombreEstado($Usuario['NombreEstado']);
             $U->setNombreRol($Usuario['NombreRol']);
             
-            
-            $listaUsuarios[]= $U;
+            /*echo "<p>".$Usuario['idUsuarios']."</p>";
+            echo "<p>".$Usuario['tipodocumento']."</p>";*/
+
+            $listaUsuarios[]= $U;//asignar ala lista el objeto.
         }
-        Db::cerrarconexion($Db);
-        return $listaUsuarios;
+        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
+        return $listaUsuarios;//retornar el array de objetos.
     }
  
     public function RegistrarUsuario($Usuario){
         $Db = Db::Conectar();
-        $Sql = $Db->prepare('INSERT INTO usuarios(NumeroDocumento,Nombre,Apellidos,Correo,Contrasena,IdEstado,IdRol)
-         VALUES(:NumeroDocumento,:Nombre,:Apellidos,:Correo,:Contrasena,:IdEstado,:IdRol)');
+        $Sql = $Db->prepare('INSERT INTO usuarios(NumeroDocumento,Nombre,Apellidos,Correo,Contrasena,Estado,IdRol)
+         VALUES(:NumeroDocumento,:Nombre,:Apellidos,:Correo,:Contrasena,:Estado,:IdRol)');
         $Sql->bindValue('NumeroDocumento',$Usuario->getNumeroDocumento());
         $Sql->bindValue('Nombre',$Usuario->getNombre());
         $Sql->bindValue('Apellidos',$Usuario->getApellidos());
         $Sql->bindValue('Correo',$Usuario->getCorreo());
         $Sql->bindValue('Contrasena',$Usuario->getContrasena());
-        $Sql->bindValue('IdEstado',$Usuario->getIdEstado());
+        $Sql->bindValue('Estado',$Usuario->getEstado());
         $Sql->bindValue('IdRol',$Usuario->getIdRol());
         
 
@@ -98,7 +105,7 @@ class CRUDusuario{
             $U->setApellidos($Usuario['Apellidos']);
             $U->setCorreo($Usuario['Correo']);
             $U->setContrasena($passwordesencriptada);
-            $U->setIdEstado($Usuario['IdEstado']);
+            $U->setidEstado($Usuario['idEstado']);
             $U->setIdRol($Usuario['IdRol']);
 
             
@@ -117,7 +124,7 @@ class CRUDusuario{
         Apellidos=:Apellidos,
         Correo=:Correo,
         Contrasena=:Contrasena,
-        IdEstado=:IdEstado,
+        Estado=:Estado,
         IdRol=:IdRol
         WHERE IdUsuarios=:IdUsuarios');
         $Sql->bindValue('NumeroDocumento',$Usuario->getNumeroDocumento());
@@ -125,7 +132,7 @@ class CRUDusuario{
         $Sql->bindValue('Apellidos',$Usuario->getApellidos());
         $Sql->bindValue('Correo',$Usuario->getCorreo());
         $Sql->bindValue('Contrasena',$Usuario->getContrasena());
-        $Sql->bindValue('IdEstado',$Usuario->getIdEstado());
+        $Sql->bindValue('Estado',$Usuario->getEstado());
         $Sql->bindValue('IdRol',$Usuario->getIdRol());
         $Sql->bindValue('IdUsuarios',$Usuario->getIdUsuarios());
        
@@ -146,25 +153,7 @@ class CRUDusuario{
     } 
 
 
-    public function eliminarUsuario($IdUsuarios){
-        $mensaje="";
-        $Db = Db::Conectar();
-        $Sql = $Db->prepare('DELETE FROM usuarios WHERE IdUsuarios=:IdUsuarios');
-        $Sql->bindValue('IdUsuarios',$IdUsuarios);
-
-        try{
-
-            $Sql->execute();
-            $mensaje="Usuario eliminado";
-        }
-        catch(Exception $e){
-            $mensaje=$e->getMessage();
-            
-        }
-
-        Db::cerrarconexion($Db);
-        return $mensaje;
-    }
+    
 
 
 

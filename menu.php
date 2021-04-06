@@ -33,6 +33,7 @@ date_default_timezone_set("America/Lima");
   <script src="js/bottton.js"></script>
   <link href="Css/button.css"
       rel="stylesheet" type="text/css">
+      <link href="css/switch.css" rel="stylesheet" type="text/css">
     <style>
         .carousel-inner img {
             width: 100%;

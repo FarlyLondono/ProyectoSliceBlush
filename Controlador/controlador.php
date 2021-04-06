@@ -21,6 +21,9 @@ class controlador{
 
 public function __construct(){}
 
+
+
+
 public function listarRoles(){
 
     $Rol = new Rol();
@@ -72,7 +75,7 @@ public function RegistrarUsuario(){
     $Usuarios->setApellidos($_POST["Apellidos"]);
     $Usuarios->setCorreo($_POST["Correo"]);
     $Usuarios->setContrasena($passwordencriptada);
-    $Usuarios->setIdEstado($_POST["IdEstado"]);
+    $Usuarios->setidEstado($_POST["idEstado"]);
     $Usuarios->setIdRol($_POST["IdRol"]);
     
         //var_dump($Usuario);
@@ -99,7 +102,7 @@ public function editarusuario(){
         $Usuarios->setApellidos($_POST["Apellidos"]);
         $Usuarios->setCorreo($_POST["Correo"]);
         $Usuarios->setContrasena($passwordencriptada);
-        $Usuarios->setIdEstado($_POST["IdEstado"]);
+        $Usuarios->setidEstado($_POST["idEstado"]);
         $Usuarios->setIdRol($_POST["IdRol"]);
 
         echo $passwordencriptada;
@@ -145,6 +148,7 @@ public function registrarCliente(){
     $Clientes->setCorreo($_POST["Correo"]);
     $Clientes->setDireccion($_POST["Direccion"]);
     $Clientes->setTelefono($_POST["Telefono"]);
+    $Clientes->setidEstado($_POST["idEstado"]=1);
     $Clientes->setContrasena($passwordencriptada);
     
         //var_dump($Usuario);
@@ -160,7 +164,7 @@ public function registrarCliente(){
 
     $Clientes = new Clientes();
     $CRUDcliente = new CRUDcliente();
-    $Clientes->setidCliente($_POST["idCliente"]);
+        $Clientes->setidCliente($_POST["idCliente"]);
         $Clientes->setNombre($_POST["Nombre"]);
         $Clientes->setCorreo($_POST["Correo"]);
         $Clientes->setDireccion($_POST["Direccion"]);
@@ -175,14 +179,7 @@ public function registrarCliente(){
     }
 
 
-    public function eliminarCliente($idCliente){
-
-        $Clientes = new Clientes();
-        $CRUDcliente = new CRUDcliente();
-        return $CRUDcliente->eliminarCliente($idCliente);
-        
-    
-        }
+ 
 
         public function registrarProducto(){
 
