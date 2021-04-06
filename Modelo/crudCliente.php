@@ -100,7 +100,7 @@ class CRUDcliente{
         $Sql->bindValue('Direccion',$Clientes->getDireccion());
         $Sql->bindValue('Telefono',$Clientes->getTelefono());
         $Sql->bindValue('Contrasena',$Clientes->getContrasena());
-        $Sql->bindValue('Estado',$Clientes->getEstado());
+        $Sql->bindValue('idEstado',$Clientes->getidEstado());
 
         //var_dump($Usuario);
 
