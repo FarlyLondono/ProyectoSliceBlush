@@ -167,8 +167,9 @@ var dataString = $('#frmImg').serialize();
             $(document).ready(function() {
             Swal.fire({
             position: 'top-center',
-            icon: 'success',
             title: 'Imagen cargada con Exitoso!!!',
+            icon: 'success',
+            input: 'Dar clic en Enviar imagen',
             showConfirButton: false,
             timer: 2000
             }).then(function() {

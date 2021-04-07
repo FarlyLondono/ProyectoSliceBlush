@@ -73,6 +73,7 @@ function boton(iddetallecompra) {
                 <hr>
                     <tr align="center">
                             <th align="center" >Nombre Insumo</th>
+                            <th align="center">Unidad de medida</th>
                             <th align="center">Cantidad</th>
                             <th >..</th>
                     </tr>
@@ -81,6 +82,7 @@ function boton(iddetallecompra) {
                     <?php foreach($verdetalleproducto as $C){ ?>
                         <tr align="center" >
                         <td align="center"><strong><?php echo $C->getNombreInsumo()  ?></strong></td>
+                        <td align="center"><strong><?php echo $C->getunidadMedida()  ?></strong></td>
                         <td align="center"><strong><?php echo $C->getCantidad()  ?></strong></td>
                         <td>
                         <a href="../Vista/editardetallecompra.php?editardetallecompra&iddetallecompra=<?php echo  $C->getiddetalleproducto(); ?>" class="btn btn-outline-warning">Editar</a>

@@ -20,7 +20,6 @@ $(document).ready(function() {
                 data: $("#frmproducto").serialize(),
                 success: function(data) {
                     $("#idProducto").val(data);
-                    alert(data);
                     Detalleproducto();
 
                     Swal.fire({

@@ -42,6 +42,7 @@ class cruddetalleproducto{
             $D->setidinsumo($objeto['idinsumo']);
             $D->setNombreInsumo($objeto['nombreProducto']);
             $D->setCantidad($objeto['Cantidad']);
+            $D->setunidadMedida($objeto['UnidadMedida']);
             
     
             $listardetalleproducto[]= $D;      
@@ -59,7 +60,7 @@ class cruddetalleproducto{
          f.Correo, e.idEstado,e.NombreEstado,r.idRol,r.NombreRol FROM usuarios AS f INNER JOIN
           estado AS e ON f.IdEstado=e.IdEstado INNER JOIN rol AS r ON f.IdRol=r.idRol'*/
         $Sql = $Db->query("SELECT f.iddetalleproducto,f.idProducto,f.idinsumo,
-        f.Cantidad,i.idinsumo,i.nombreProducto
+        f.Cantidad,f.UnidadMedida,i.idinsumo,i.nombreProducto
         FROM detalleproducto  AS f INNER JOIN insumos AS i ON f.idinsumo=i.idinsumo WHERE f.idProducto = $idProducto ");
         //$Sql = $Db->query("SELECT  * FROM detallecompra WHERE idcompra=:idcompra ");
         //$Sql->bindValue('idcompra',$idcompra);
@@ -71,6 +72,7 @@ class cruddetalleproducto{
             $D->setidinsumo($objeto['idinsumo']);
             $D->setNombreInsumo($objeto['nombreProducto']);
             $D->setCantidad($objeto['Cantidad']);
+            $D->setunidadMedida($objeto['UnidadMedida']);
     
     
             $listadetalleproducto[]= $D;      
