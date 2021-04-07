@@ -25,11 +25,11 @@ function desplegarVista2($ruta){
 if(isset($_GET["editarProducto"])){
     desplegarVista2("editarProducto.php");
 }
-elseif(isset($_POST["editarProducto"])){
+/*elseif(isset($_POST["editarProducto"])){
     $controlador->editarProducto();
     desplegarVista("../menu.php");
 }
-
+*/
 
 
 ?> 
@@ -123,8 +123,8 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
     $("#editarProducto").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
         e.preventDefault();
         if(validarDatoseditarproducto()){    
-        var formData = $('#frmproducto').serialize();
-        $.post("editarProducto.php",formData, function(response) { 
+        var datdataStringa = $('#frmproducto').serialize();
+        $.post("editarProducto.php",dataString, function(response) { 
           //alert(response); 
             $(document).ready(function() {
             Swal.fire({
@@ -140,13 +140,11 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
         }
     });    
 });
-</script>
 
-<script >
 function prueba(){
 
 var dataString = $('#frmImg').serialize();
-        $.post("registrarProducto.php",dataString, function(response) { 
+        $.post("../Controlador/controlador.php",dataString, function(response) { 
           //alert(response); 
             $(document).ready(function() {
             Swal.fire({
@@ -161,7 +159,6 @@ var dataString = $('#frmImg').serialize();
             })});
         }) 
 }
-
 
 </script>
 

@@ -296,5 +296,8 @@ if(isset($_GET["eliminarProducto"])){
     
     $controlador->registrardetalleproducto($idProducto);
 
+}elseif(isset($_POST["editarProducto"])){
+    $controlador->editarProducto();
+    desplegarVista("../menu.php");
 }
 
