@@ -188,7 +188,7 @@ function validarDatoseditarproducto() {
         swal({ icon: 'error', text: "El campo PrecioProducto está vacío" });
         comprobacion++;
     }
-    if ($("#foto").val().length == 0) {
+    if ($("#imagen").val().length == 0) {
         swal({ icon: 'error', text: "El campo imagen está vacío" });
         comprobacion++;
     }

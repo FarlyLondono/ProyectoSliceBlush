@@ -60,9 +60,32 @@ elseif(isset($_POST["editarProducto"])){
 
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
+    <div class="photo">
+              <!--<label for="foto" align="center">Imagen:</label>-->
+                    <div class="prevPhoto" id="prevPhoto">
+                    
+                    <span class="delPhoto notBlock">X</span>
+                    <label for="foto" align="center">Imagen:</label>
+                    </div>
+                    
+                    <form name="frmImg" id="frmImg" method="POST" action="editarProducto.php" enctype="multipart/form-data">
+                    <div class="upimg" id="upimg">
+                    <input type="hidden" name="editarProductos" id="editarProductos">
+                    <input type="hidden" name="frmimgn" id="frmimgn">
+                    <input type="file" name="imagenn" id="foto" onchange="prueba(this.value)">                               
+                    <!--<input type="file" name="imagen" id="foto">-->
+
+                    </div>
+                    <button type="submit" name="editarProductos" class="btn btn-primary">Enviar Imagen</button>
+                    </form>
+                    
+                    <div id="form_alert"></div>
+            </div>
+    </br>        
 
     <form name="frmproducto" id="frmproducto" enctype="multipart/form-data"> 
-    <input type="hidden" name="editarProducto" /> 
+    <input type="hidden" name="editarProducto" />
+    <input type="text" name="imagen" id="imagen" value="<?php $imagenn['name'] ?>"  >  
     <input type="hidden" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>
     <label for="">Nombre Producto:</label>  
     <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>">
@@ -82,24 +105,11 @@ elseif(isset($_POST["editarProducto"])){
                 ?>                 
                 </select>
 </br>
-            <div class="photo">
-              <label for="foto">Imagen:</label>
-                    <div class="prevPhoto">
-                    <span class="delPhoto notBlock">X</span>
-                    <label for="foto" ></label>
-                    </div>
-                    <div class="upimg">
-                    <input type="file" name="imagen" id="foto" >
-                    </div>
-                    <div id="form_alert"></div>
-            </div>
-</br>
-</br>
 
     <button type="submit" name="editarProducto" id="editarProducto" class="btn btn-success">Editar</button>
     <a href="../menu.php" class="btn btn-primary">Regresar</a>     
         
-        <?php  print_r($_FILES);?>
+        
         </form>
 
     </div>
@@ -131,6 +141,30 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
     });    
 });
 </script>
+
+<script >
+function prueba(){
+
+var dataString = $('#frmImg').serialize();
+        $.post("registrarProducto.php",dataString, function(response) { 
+          //alert(response); 
+            $(document).ready(function() {
+            Swal.fire({
+            position: 'top-center',
+            title: 'Imagen cargada con Exitoso!!!',
+            icon: 'success',
+            input: 'Dar clic en Enviar imagen',
+            showConfirButton: false,
+            timer: 2000
+            }).then(function() {
+            //window.location.href = "../index.php";
+            })});
+        }) 
+}
+
+
+</script>
+
 <script>
 $(document).ready( function() {
 $("#PrecioProducto").on("keyup", function(){//Garantizar que solo se acepten numeros
@@ -141,4 +175,36 @@ $("#PrecioProducto").on("keyup", function(){//Garantizar que solo se acepten num
 
 });
 </script>
+
+<?php
+
+if(isset($_POST["editarProductos"])){
+  
+  $imagenn= $_FILES['imagenn'];
+  $nombreimagen=$imagenn['name'];
+  $type=$imagenn['type'];
+  $urltemp=$imagenn['tmp_name'];
+
+  if($nombreimagen !=''){
+  $destino='../img2/';
+  $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
+  $imagenproducto= $imgnombre.'.jpg';
+  $src=$destino.$imagenproducto;
+  }
+  if($nombreimagen != ''){
+    move_uploaded_file($urltemp,$src);
+  }
+  
+        echo "<script src='https://code.jquery.com/jquery-3.5.1.js'></script>
+        <script type='text/javascript'>
+        
+        $('#upimg').css('display', 'none');
+        $('#prevPhoto').css('display', 'none');
+        $('#imagen').val('$imagenproducto');
+        
+        </script>"
+        ;
+}       
+  ?>
+
 </html>
