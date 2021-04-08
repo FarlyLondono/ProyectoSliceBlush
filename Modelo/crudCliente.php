@@ -5,6 +5,28 @@ class CRUDcliente{
     
     public function __construct(){}
 
+
+    public function cambiarEstado($Clientes){
+        $Db = Db::Conectar();
+        $Sql = $Db->prepare('UPDATE clientes SET
+        idEstado=:idEstado
+        WHERE idCliente = :idCliente ');
+        $Sql->bindValue('idEstado',$Clientes->getidEstado());
+        $Sql->bindValue('idCliente',$Clientes->getidCliente());
+        
+        try{
+
+            $Sql->execute();
+        }
+        catch(Exception $e){
+            echo $e->getMessage();
+            die();
+        }
+
+        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
+    } 
+
+
     public function VerificarLogin($Clientes)
     {
         $Db = Db::Conectar();
