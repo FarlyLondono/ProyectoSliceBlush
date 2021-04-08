@@ -82,7 +82,7 @@ function boton(idinsumo) {
                         {
                             ?>
                         <a href="Vista/editarInsumo.php?editarinsumo&idinsumo=<?php echo  $I->getidinsumo(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
-                        <a onclick="boton(<?php echo $I->getidinsumo(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
+                        <a onclick="boton(<?php echo $I->getidinsumo(); ?>)" type="button" class="btn btn-outline-danger"><img style="width: 25px; height: 25px;" src="Img/eliminar.png" alt="">Eliminar</a>
                         <?php
                         }
                         ?>  
