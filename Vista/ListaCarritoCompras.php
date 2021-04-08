@@ -155,7 +155,7 @@ No hay productos en el carrito...
             //if(validarDatosInsumo()){ 
                 var dataString = $('#frmPagar').serialize();    
                 $.post("../Controlador/ControladorPedido.php",dataString, function(response) {
-                    alert(" Gracia por preferirnos!!! \n En unos instantes nos comunicaremos \n con usted para la confirmacion del pedido"); 
+                    alert(" Gracia por preferirnos!!! \n En unos instantes nos comunicaremos \n con usted para confirmar  su pedido"); 
                     window.location='../menu.php';    
                 }); 
             }
