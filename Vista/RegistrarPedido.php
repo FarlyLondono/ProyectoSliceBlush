@@ -71,7 +71,7 @@ $listarProductos = $ControladorPedido->listarProductos();
         <label>Precio:</label>
         <input type="text" name="precio" id="precio" class="form-control" readonly />
         <label>Cantidad:</label>
-        <input type="text" name="cantidad" id="cantidad" class="form-control" min=1 value=1 onkeypress="calcularValorDetalle()" onkeyup="calcularValorDetalle()" onkeydown="calcularValorDetalle()"/>
+        <input type="number" name="cantidad" id="cantidad" class="form-control" min=1 value=1 onkeypress="calcularValorDetalle()" onkeyup="calcularValorDetalle()" onkeydown="calcularValorDetalle()"/>
         <label>Valor Detalle:</label>
         <input type="text" name="valorDetalle" id="valorDetalle" class="form-control" readonly/>
 

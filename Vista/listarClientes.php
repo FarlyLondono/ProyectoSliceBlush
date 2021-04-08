@@ -14,7 +14,7 @@ require_once("../Modelo/clientes.php");
 
 $controlador = new controlador();
 $listarCliente = $controlador->listarClientes();
-
+$buscarCliente= $controlador->buscarCliente($_GET["idCliente"]);
 
 
 function desplegarVista($ruta){
@@ -23,23 +23,20 @@ function desplegarVista($ruta){
 function desplegarVista2($ruta){
     require_once($ruta);
 }
-
 ?>
-
-
-    <script>
-function boton(idCliente) {
+<script>
+function boton() {
      Swal.fire({
-  title: 'Esta seguro que desea cambiar el registro?',
+  title: 'Esta seguro que desea Cambiar el registro?',
   text: "Esta decision es irreversible!",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, cambialo!'
+  confirmButtonText: 'Si, Cambiar!'
 }).then((result) => {
   if (result.isConfirmed) {
-    $.ajax({url:"../ProyectoSliceBlush/Controlador/controlador.php?editarEstado &idCliente="+idCliente,
+    $.ajax({url:"../ProyectoSliceBlush/Controlador/controlador.php",
         success:()=>{
             window.location.href="../ProyectoSliceBlush/menu.php"
         }})
@@ -47,6 +44,7 @@ function boton(idCliente) {
 })
     }
         </script>
+
 
 
 <link rel="stylesheet" href="Css/estyleTables.css">
@@ -87,8 +85,8 @@ function boton(idCliente) {
                         {
                             ?>
                        <label class="switch">
-                                    <input type="checkbox" onclick="boton(<?php echo $C->getidCliente(); ?>)">
-                                    <span class="slider round"></span>
+                                    <input type="checkbox" type="submit" name="cambiarEstado"  value="<?php echo $_POST['idEstado'] ?>" >
+                                    <span class="slider round"></span>  
                                 </label>
                         <?php
                         }
@@ -116,6 +114,7 @@ function boton(idCliente) {
     </div>
                     </div>
 </body>
+
 <script>
     $(document).ready(function() {
     $('#listadousuarios').DataTable();

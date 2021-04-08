@@ -7,7 +7,7 @@ if(isset($_POST['recuperarContra'])){
     $Correo = $_POST['Correo'];
     $NombreCorreo = $crudcliente->buscarCorreoCliente($Correo);
         if ($NombreCorreo == 1){
-            $Contrasena = $crudcliente->buscarContrasena($Correo);
+            $Contrasena = $crudcliente->buscarContrasena($Contrasena);
             if($Contrasena <> ""){
                 $para = $Correo;
                 $titulo = 'recuperacion contra';

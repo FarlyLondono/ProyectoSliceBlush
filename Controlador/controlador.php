@@ -24,6 +24,21 @@ class controlador{
 public function __construct(){}
 
 
+public function cambiarEstado(){
+
+    $Clientes = new Clientes();
+    $CRUDcliente = new CRUDcliente();
+    if($Clientes->getidEstado()==1){
+    $Clientes->setidEstado($_POST["idEstado"]=2);
+    }elseif($Clientes->getidEstado()==2){
+        $Clientes->setidEstado($_POST["idEstado"]=1);  
+    }
+   
+    $CRUDcliente->cambiarEstado($Clientes);
+
+
+    }
+
 
 
 public function listarRoles(){
