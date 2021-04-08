@@ -9,11 +9,11 @@ if(isset($_POST['recuperarContra'])){
         if ($NombreCorreo == 1){
             $Contrasena = $crudcliente->buscarContrasena($Correo);
             if($Contrasena <> ""){
-                $para = 'julianhs1994@gmail.com';
+                $para = 'farlylondono@gmail.com';
                 $titulo = 'recuperacion contra';
                 $mensaje =  'hola';
-                $cabeceras = 'From: webmaster@example.com' . "\r\n" .
-                         'Reply-To: webmaster@example.com' . "\r\n" .
+                $cabeceras = 'From: sliceblushtest@gmail.com' . "\r\n" .
+                         'Reply-To: sliceblushtest@gmail.com' . "\r\n" .
                          'X-Mailer: PHP/' . phpversion();
                          
                 ini_set("SMTP","smtp.gmail.com");         
