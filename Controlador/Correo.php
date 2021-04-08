@@ -20,6 +20,8 @@ if(isset($_POST['recuperarContra'])){
                 ini_set('sendmail_from','SliceBlushTest@gmail.com');
                 mail($para,$titulo,$mensaje,$cabeceras);
                 echo "Realizado";
+                echo $Contrasena;
+                echo $Correo;
             }else{
                 echo "Ha ocurrido un error!"; 
                 "<script src='https://code.jquery.com/jquery-3.5.1.js'></script>";
