@@ -189,7 +189,7 @@ function validarDatoseditarproducto() {
         comprobacion++;
     }
     if ($("#imagen").val().length == 0) {
-        swal({ icon: 'error', text: "El campo imagen está vacío" });
+        swal({ icon: 'error', text: "Apreciado Usuario Todos los campos son Obligatorios" });
         comprobacion++;
     }
     if (comprobacion > 0) {
