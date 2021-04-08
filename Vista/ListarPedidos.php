@@ -112,9 +112,17 @@ function boton(idPedido) {
 
                 </tbody>    
 
-            </table> 
+            </table>
+            <?php
+                $sesion = $_SESSION["IdRol"];
+                if($sesion == 1 || $sesion == 2)
+                {
+            ?> 
             <a href="Vista/RegistrarPedido.php" class="btn btn-primary">Nuevo Pedido</a>
             <a href="Vista/reportePedidos.php" target="_black" class="btn btn-warning">Generar Reporte</a>
+            <?php
+                        }
+                        ?>
     </div>
     </div>
                     </div>
