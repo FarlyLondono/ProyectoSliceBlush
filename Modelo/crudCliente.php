@@ -176,7 +176,7 @@ class CRUDcliente{
     public function buscaridcliente($Correo){
         //conectar ala DB
         $Db = Db::Conectar();
-        $$listarClientes = [];
+        //$$listarClientes = [];
         $Sql = $Db->prepare('SELECT idCliente FROM clientes WHERE Correo=:Correo');
         $Sql->bindValue(':Correo',$Correo);
         //se ejecuta la consulta
@@ -213,6 +213,28 @@ class CRUDcliente{
           Db::cerrarconexion($Db);
           return $var;
         }
+    
+    public function buscarContrasena($Correo)
+    {
+        $Db = Db::Conectar();
+        $Contra = [];
+        //se define la consulta
+        /*$Sql = $Db->prepare('SELECT * FROM roles WHERE idrol:idrol');
+        $Sql->binValue('idrol',$idrol);*/
+        $Sql = $Db->prepare('SELECT * FROM clientes WHERE Correo=:Correo');
+        $Sql->bindValue(':Correo',$Correo);
+        //se ejecuta la consulta
+        $Sql->execute();
+        foreach($Sql->fetchAll() as $Cliente){
+            $C = new Clientes(); //crear un objeto de tipo usuario
+            $C->setContrasena($Cliente['Contrasena']);
+           
+
+            $Contra[]=$C;
+        }
+        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
+        return $Contra;
+    }
 
    
 }

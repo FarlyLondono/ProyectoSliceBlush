@@ -12,6 +12,8 @@ require_once("../Modelo/Usuarios.php");
 require_once("../Modelo/CRUDusuarios.php");
 require_once("../Modelo/EstadoPedido.php");
 require_once("../Modelo/CRUDestadopedido.php");
+require_once("../Modelo/detalleproducto.php");
+require_once("../Modelo/CRUDdetalleproducto.php");
 
 
 
@@ -196,35 +198,25 @@ public function registrarCliente(){
 
  
 
-        public function registrarProducto(){
+    public function registrarProducto(){
+        $Productos = new Productos();
+        $CRUDproducto = new CRUDproducto();
 
-            $Productos = new Productos();
-            $CRUDproducto = new CRUDproducto();
-
-            $imagen= $_FILES['imagen'];
-            $nombreimagen=$imagen['name'];
-            $type=$imagen['type'];
-            $urltemp=$imagen['tmp_name'];
-
-            if($nombreimagen !=''){
-            $destino='../img2/';
-            $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
-            $imagenproducto= $imgnombre.'.jpg';
-            $src=$destino.$imagenproducto;
-
-            }
-
-            $Productos->setNombreProducto($_POST["NombreProducto"]);
-            $Productos->setDescripcionProducto($_POST["DescripcionProducto"]);
-            $Productos->setPrecioProducto($_POST["PrecioProducto"]);
-            $Productos->setidEstado($_POST["idEstado"]);
-            $Productos->setimagen($imagenproducto);
-            
-                //var_dump($Usuario);
-            $CRUDproducto->registrarProducto($Productos);
         
         
-            }
+        $Productos->setNombreProducto($_POST["NombreProducto"]);
+        $Productos->setDescripcionProducto($_POST["DescripcionProducto"]);
+        $Productos->setPrecioProducto($_POST["PrecioProducto"]);
+        $Productos->setidEstado($_POST["idEstado"]);
+        //$Productos->setimagen($imagenproducto);
+        $Productos->setimagen($_POST['imagen']);
+        //var_dump($imagen);
+        //var_dump($Productos);
+        //$CRUDproducto->registrarProducto($Productos);
+        return $CRUDproducto->registrarProducto($Productos);
+        
+    
+}
 
     public function buscarCliente($idCliente){
         $Clientes = new Clientes();
@@ -253,7 +245,7 @@ public function registrarCliente(){
             $Productos = new Productos();
             $CRUDproducto = new CRUDproducto();
             
-            $imagen= $_FILES['imagen'];
+            /*$imagen= $_FILES['imagen'];
             $nombreimagen=$imagen['name'];
             $type=$imagen['type'];
             $urltemp=$imagen['tmp_name'];
@@ -264,13 +256,13 @@ public function registrarCliente(){
             $imagenproducto= $imgnombre.'.jpg';
             $src=$destino.$imagenproducto;
 
-            } 
+            }*/ 
                 $Productos->setidProducto($_POST["idProducto"]);
                 $Productos->setNombreProducto($_POST["NombreProducto"]);
                 $Productos->setDescripcionProducto($_POST["DescripcionProducto"]);
                 $Productos->setPrecioProducto($_POST["PrecioProducto"]);
                 $Productos->setidEstado($_POST["idEstado"]);
-                $Productos->setimagen($imagenproducto);
+                $Productos->setimagen($_POST["imagen"]);
                 
                     //var_dump($Usuario);
             $CRUDproducto->editarProducto($Productos);
@@ -287,6 +279,16 @@ public function registrarCliente(){
         return $listarProductos;
     
         }
+        public function registrardetalleproducto($idProducto){
+            $Detalleproducto = new detalleproducto();
+            $CRUDDetallePedido = new cruddetalleproducto();
+            $Detalleproducto->setidProducto($idProducto);
+            $Detalleproducto->setidinsumo($_POST["insumo"]);
+            //$Detalleproducto->setNombreInsumo("prueba");   //($_POST["Precio"]);
+            $Detalleproducto->setcantidad($_POST["cantidad"]);
+            $Detalleproducto->setunidadMedida($_POST["unidadMedida"]);
+            $CRUDDetallePedido->RegistrarDetalleProducto($Detalleproducto);
+        }
 
 
     
@@ -296,15 +298,21 @@ public function registrarCliente(){
 $controlador = new controlador();
 
 
-/*if(isset($_GET["eliminarCliente"])){
-    $controlador->eliminarCliente($_GET["idCliente"]);
-}*/
+
 if(isset($_GET["eliminarProducto"])){
     $controlador->eliminarProducto($_GET["idProducto"]);
+}elseif(isset($_POST["registrarProducto"])){
+    $idProducto = $_POST["idProducto"];
+    if($idProducto==""){
+        $idProducto = $controlador->registrarProducto();
+        //swal "producto registrado
+    }
+    echo $idProducto;
+    
+    $controlador->registrardetalleproducto($idProducto);
+
+}elseif(isset($_POST["editarProducto"])){
+    $controlador->editarProducto();
+    desplegarVista("../menu.php");
 }
-/*elseif(isset($_GET["eliminarUsuario"])){
-    $controlador->eliminarUsuario($_GET["IdUsuarios"]);
-}elseif(isset($_POST["editarUsuario"])){
-    //$controlador->editarusuario();
-    //desplegarVista("../menu.php");
-}*/
+

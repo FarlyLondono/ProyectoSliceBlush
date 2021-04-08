@@ -53,7 +53,8 @@ class CRUDproducto{
 
     public function registrarProducto($Productos){
         $Db = Db::Conectar();
-        $imagen= $_FILES['imagen'];
+        $idProductoGenerado = -1;
+        /*$imagen= $_FILES['imagen'];
             $nombreimagen=$imagen['name'];
             $type=$imagen['type'];
             $urltemp=$imagen['tmp_name'];
@@ -64,7 +65,7 @@ class CRUDproducto{
             $imagenproducto= $imgnombre.'.jpg';
             $src=$destino.$imagenproducto;
 
-            }
+            }*/
         $Sql = $Db->prepare('INSERT INTO productos(NombreProducto,DescripcionProducto,PrecioProducto,idEstado,imagen)
          VALUES(:NombreProducto,:DescripcionProducto,:PrecioProducto,:idEstado,:imagen)');
         $Sql->bindValue('NombreProducto',$Productos->getNombreProducto());
@@ -78,9 +79,10 @@ class CRUDproducto{
         try{
 
             $Sql->execute();
-            if($nombreimagen != ''){
+            $idProductoGenerado = $Db->lastInsertid();
+            /*if($nombreimagen != ''){
                 move_uploaded_file($urltemp,$src);
-            }
+            }*/
             //echo "registro exitoso";
         }
         catch(Exception $e){
@@ -89,6 +91,7 @@ class CRUDproducto{
         }
 
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
+        return $idProductoGenerado;
     }
 
     public function editarProducto($Productos){

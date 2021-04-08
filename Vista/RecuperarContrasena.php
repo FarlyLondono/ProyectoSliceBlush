@@ -18,11 +18,42 @@
 </br>
 <div class="login">
     <div id="formContent">
-        <input type="text" placeholder="Correo" name="Correo">
+      <form name="frmRec" id="frmRec" >
+        <input type="text" placeholder="Correo" name="Correo" id="Correo">
+        <input type="hidden" name="recuperarContra" />
     </br>
     </br>
-        <a type="submit"  onclick="validanDatos()">Enviar</a><br />
+    <button type="submit" name="recuperarContra" id="recuperarContra" class="btn btn-success">Enviar</button>
+        </form>
     </div>
 </div>
 
 <script src="../js/validarrecuperacion.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script >
+$(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
+    $("#recuperarContra").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
+        e.preventDefault();
+        //alert('A');
+        //if(validanDatos()){    
+        //alert('B');
+        var dataString = $('#frmRec').serialize();
+        $.post("../Controlador/Correo.php",dataString, function(response) { 
+          alert(response); 
+            $(document).ready(function() {
+            Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Exitoso!!!',
+            showConfirButton: false,
+            timer: 2000
+            }).then(function() {
+            //window.location.href = "../index.php";
+            })});
+        }) 
+        //}
+    });    
+});
+</script>
