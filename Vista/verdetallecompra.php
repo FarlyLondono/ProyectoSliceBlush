@@ -30,12 +30,12 @@ function desplegarVista2($ruta){
 function boton(iddetallecompra) {
      Swal.fire({
   title: 'Estas seguro?',
-  text: "Tu no podras revertir esto!",
+  text: "No podrás revertir esto!!",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'si, Borralo!'
+  confirmButtonText: 'si, bórralo'
 }).then((result) => {
   if (result.isConfirmed) {
     $.ajax({url:"../Controlador/Controladordetallecompra.php?eliminardetallecompra&iddetallecompra="+iddetallecompra,

@@ -31,13 +31,13 @@ function desplegarVista2($ruta){
 <script>
 function boton(idcompra) {
      Swal.fire({
-  title: 'Esta seguro que desea eliminar el registro?',
-  text: "Esta decision es irreversible!",
+  title: 'Estas seguro?',
+  text: "No podrás revertir esto!",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, Eliminar!'
+  confirmButtonText: 'si, bórralo'
 }).then((result) => {
   if (result.isConfirmed) {
     $.ajax({url:"../ProyectoSliceBlush/Controlador/ControladorCompra.php?eliminarcompra&idcompra="+idcompra,

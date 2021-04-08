@@ -28,13 +28,13 @@ function desplegarVista2($ruta){
 <script>
 function boton(idPedido) {
      Swal.fire({
-  title: 'Estas Seguro??',
-  text: "Tu no podras revertir esto!",
+  title: 'Estas seguro?',
+  text: "No podrás revertir esto!",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, Borralo!'
+  confirmButtonText: 'si, bórralo'
 }).then((result) => {
   if (result.isConfirmed) {
     $.ajax({url:"../ProyectoSliceBlush/Controlador/ControladorPedido.php?eliminarPedido&idPedido="+idPedido,
