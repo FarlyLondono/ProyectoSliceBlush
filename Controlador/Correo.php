@@ -9,9 +9,9 @@ if(isset($_POST['recuperarContra'])){
         if ($NombreCorreo == 1){
             $Contrasena = $crudcliente->buscarContrasena($Correo);
             if($Contrasena <> ""){
-                $para = 'farlylondono@gmail.com';
+                $para = $Correo;
                 $titulo = 'recuperacion contra';
-                $mensaje =  'hola';
+                $mensaje =  $Contrasena;
                 $cabeceras = 'From: sliceblushtest@gmail.com' . "\r\n" .
                          'Reply-To: sliceblushtest@gmail.com' . "\r\n" .
                          'X-Mailer: PHP/' . phpversion();
@@ -20,6 +20,8 @@ if(isset($_POST['recuperarContra'])){
                 ini_set('sendmail_from','SliceBlushTest@gmail.com');
                 mail($para,$titulo,$mensaje,$cabeceras);
                 echo "Realizado";
+                echo $Contrasena;
+                echo $Correo;
             }else{
                 echo "Ha ocurrido un error!"; 
                 "<script src='https://code.jquery.com/jquery-3.5.1.js'></script>";
