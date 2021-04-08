@@ -216,20 +216,27 @@ class CRUDcliente{
     
     public function buscarContrasena($Correo)
     {
-        $Db = Db::Conectar();
-        $Contra = [];
-        $Sql = $Db->prepare('SELECT * FROM clientes WHERE Correo=:Correo');
-        $Sql->bindValue(':Correo',$Correo);
-        $Sql->execute();
-        foreach($Sql->fetchAll() as $Cliente){
-            $C = new Clientes(); 
-            $C->setContrasena($Cliente['Contrasena']);
-           
+      //conectar ala DB
+      $Db = Db::Conectar();
+      $buscarContrasena = [];
+      //se define la consulta
+      $Sql = $Db->query('SELECT Contrasena FROM clientes');
+      //se ejecuta la consulta
+      $Sql->execute();
+      foreach($Sql->fetchAll() as $cliente){
+          $C = new Clientes(); //crear un objeto de tipo usuario
+          $C->setContrasena($cliente['Contrasena']);
 
-        }
-        Db::cerrarconexion($Db);
-        return $C;
-    }
+          
+        
+          /*echo "<p>".$Usuario['idUsuarios']."</p>";
+          echo "<p>".$Usuario['tipodocumento']."</p>";*/
+
+          $listarClientes[]= $C;//asignar ala lista el objeto.
+      }
+      Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
+      return $buscarContrasena;//retornar el array de objetos.
+  }
 
    
 }
