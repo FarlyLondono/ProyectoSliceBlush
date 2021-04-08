@@ -25,11 +25,11 @@ function desplegarVista2($ruta){
 if(isset($_GET["editarProducto"])){
     desplegarVista2("editarProducto.php");
 }
-/*elseif(isset($_POST["editarProducto"])){
+elseif(isset($_POST["editarProducto"])){
     $controlador->editarProducto();
     desplegarVista("../menu.php");
 }
-*/
+
 
 
 ?> 
@@ -45,12 +45,11 @@ if(isset($_GET["editarProducto"])){
     <link rel="icon" type="image/png" href="../Img/hamburguer.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <link rel="stylesheet" href="../Css/estiloimagen.css">
+    <link rel="stylesheet" href="../Css/estiloimagen.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
 </head>
 <body background="../Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
 <div class="container mt-4">
@@ -60,32 +59,39 @@ if(isset($_GET["editarProducto"])){
 
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
-    <div class="photo">
+
+    
+            <div class="photo">
               <!--<label for="foto" align="center">Imagen:</label>-->
+              <form name="frmImg" id="frmImg" method="POST" action="editarProducto.php" enctype="multipart/form-data">
                     <div class="prevPhoto" id="prevPhoto">
+                    
                     
                     <span class="delPhoto notBlock">X</span>
                     <label for="foto" align="center">Imagen:</label>
                     </div>
                     
-                    <form name="frmImg" id="frmImg" method="POST" action="editarProducto.php" enctype="multipart/form-data">
+                    
                     <div class="upimg" id="upimg">
                     <input type="hidden" name="editarProductos" id="editarProductos">
-                    <input type="hidden" name="frmimgn" id="frmimgn">
+                    
                     <input type="file" name="imagenn" id="foto" onchange="prueba(this.value)">                               
                     <!--<input type="file" name="imagen" id="foto">-->
 
                     </div>
-                    <button type="submit" name="editarProductos" class="btn btn-primary">Enviar Imagen</button>
+                    <button type="submit" name="editarProductos"  id="editarProductos" class="btn btn-primary">Enviar Imagen</button>
+                    <?php var_dump($_POST["editarProductos"]) ; ?>
                     </form>
+                    
                     
                     <div id="form_alert"></div>
             </div>
+            
     </br>        
 
     <form name="frmproducto" id="frmproducto" enctype="multipart/form-data"> 
-    <input type="hidden" name="editarProducto" />
-    <input type="hidden" name="imagen" id="imagen" value="<?php $imagenn['name'] ?>"  >  
+    <input type="hidden" name="editarProducto" id="editarProducto"/>
+    <input type="text" name="imagen" id="imagen" value="<?php $imagenn['name'] ?>"  >  
     <input type="hidden" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>
     <label for="">Nombre Producto:</label>  
     <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>">
@@ -117,9 +123,29 @@ if(isset($_GET["editarProducto"])){
 </div>
 </body>
 <script src="../js/estiloimagen.js"></script>
-<script src="../js/validaciones.js"></script>
+<script src="../js/validacioneditarproducto.js"></script>
 <script >
-$(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
+function prueba(){
+
+var dataString = $('#frmImg').serialize();
+        $.post("editarProducto.php",dataString, function(response) { 
+          //alert(response); 
+            $(document).ready(function() {
+            Swal.fire({
+            position: 'top-center',
+            title: 'Imagen cargada con Exitoso!!!',
+            icon: 'success',
+            input: 'Dar clic en Enviar imagen',
+            showConfirButton: false,
+            timer: 2000
+            })});
+        }) 
+}
+
+
+
+
+/*$(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
     $("#editarProducto").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
         e.preventDefault();
         if(validarDatoseditarproducto()){    
@@ -139,26 +165,9 @@ $(document).ready( function() {   // Esta parte del código se ejecutará autom�
         }) 
         }
     });    
-});
+});*/
 
-function prueba(){
 
-var dataString = $('#frmImg').serialize();
-        $.post("../Controlador/controlador.php",dataString, function(response) { 
-          //alert(response); 
-            $(document).ready(function() {
-            Swal.fire({
-            position: 'top-center',
-            title: 'Imagen cargada con Exitoso!!!',
-            icon: 'success',
-            input: 'Dar clic en Enviar imagen',
-            showConfirButton: false,
-            timer: 2000
-            }).then(function() {
-            //window.location.href = "../index.php";
-            })});
-        }) 
-}
 
 </script>
 
