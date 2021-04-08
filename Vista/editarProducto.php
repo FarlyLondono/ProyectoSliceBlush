@@ -80,7 +80,7 @@ elseif(isset($_POST["editarProducto"])){
 
                     </div>
                     <button type="submit" name="editarProductos"  id="editarProductos" class="btn btn-primary">Enviar Imagen</button>
-                    <?php var_dump($_POST["editarProductos"]) ; ?>
+                    
                     </form>
                     
                     
