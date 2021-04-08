@@ -66,7 +66,7 @@ class ControladorPedido{
         return $CRUDPedido->buscarPedido($idPedido);
 
     }
-
+ 
     public function buscaridcliente($Correo){
         $crudCliente = new crudCliente(); 
         return $crudCliente->buscaridcliente($Correo);

@@ -101,7 +101,7 @@ function boton(idPedido) {
                             ?>
                         <a href="../ProyectoSliceBlush/Controlador/ControladorPedido.php?editarPedido&idPedido=<?php echo  $Pedido->getidPedido(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
                         <a  href="../ProyectoSliceBlush/Controlador/ControladorPedido.php?verdetallepedido&idPedido=<?php echo  $Pedido->getidPedido(); ?>" class="btn btn-outline-primary"><img style="width: 25px; height: 25px;" src="Img/verdetalle.png" alt="">Ver Detalle</a>
-                        <a onclick="boton(<?php echo $Pedido->getidPedido(); ?>)" type="button" class="btn btn-outline-danger">Inhabilitar</a>
+                        <a onclick="boton(<?php echo $Pedido->getidPedido(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
                         <?php
                         }
                         ?>

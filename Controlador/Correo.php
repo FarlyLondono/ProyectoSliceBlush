@@ -1,26 +1,24 @@
 <?php
 require_once("../Controlador/controlador.php");
 $crudcliente = new CRUDcliente();
-
 if(isset($_POST['recuperarContra'])){
     if(!empty($_POST['Correo'])){
     $Correo = $_POST['Correo'];
     $NombreCorreo = $crudcliente->buscarCorreoCliente($Correo);
-        if ($NombreCorreo == 1){
-            $Contrasena = $crudcliente->buscarContrasena($Correo);
+        if ($NombreCorreo == 1){  
+            $Contrasena = $crudcliente->buscarContrasena($Contrasena);
             if($Contrasena <> ""){
                 $para = $Correo;
                 $titulo = 'recuperacion contra';
-                $mensaje =  $Contrasena;
+                $mensaje =  var_dump($Contrasena);
                 $cabeceras = 'From: sliceblushtest@gmail.com' . "\r\n" .
                          'Reply-To: sliceblushtest@gmail.com' . "\r\n" .
                          'X-Mailer: PHP/' . phpversion();
                          
                 ini_set("SMTP","smtp.gmail.com");         
                 ini_set('sendmail_from','SliceBlushTest@gmail.com');
-                mail($para,$titulo,$mensaje,$cabeceras);
+                mail($para,$titulo,var_dump($Contrasena),$cabeceras);
                 echo "Realizado";
-                echo $Contrasena;
                 echo $Correo;
             }else{
                 echo "Ha ocurrido un error!"; 
