@@ -214,25 +214,23 @@ class CRUDcliente{
           return $var;
         }
     
-    public function buscarContrasena($Contrasena)
+    public function buscarContrasena($Correo)
     {
         $Db = Db::Conectar();
-        $Sql = $Db->prepare('SELECT * FROM clientes
-        WHERE Contrasena=:Contrasena');
-          $Sql->bindValue('Contrasena',$Contrasena);
-          
-          $Sql->execute();
-          $var = 0;
-          if($Sql->rowCount()>0)
-          {
-              $var=1;
-          }
-          else{
-              $var=0;
-          }
-          Db::cerrarconexion($Db);
-          return $var;
+        $Contra = [];
+        $Sql = $Db->prepare('SELECT * FROM clientes WHERE Correo=:Correo');
+        $Sql->bindValue(':Correo',$Correo);
+        $Sql->execute();
+        foreach($Sql->fetchAll() as $Cliente){
+            $C = new Clientes(); 
+            $C->setContrasena($Cliente['Contrasena']);
+           
+
         }
+        Db::cerrarconexion($Db);
+        return $C;
+    }
+
    
 }
 
