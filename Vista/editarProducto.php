@@ -63,7 +63,7 @@ elseif(isset($_POST["editarProducto"])){
     
             <div class="photo">
               <!--<label for="foto" align="center">Imagen:</label>-->
-              <form name="frmImg" id="frmImg" method="POST" action="editarProducto.php" enctype="multipart/form-data">
+              
                     <div class="prevPhoto" id="prevPhoto">
                     
                     
@@ -71,10 +71,10 @@ elseif(isset($_POST["editarProducto"])){
                     <label for="foto" align="center">Imagen:</label>
                     </div>
                     
-                    
+                    <form name="frmImg" id="frmImg" method="POST" action="editarProducto.php" enctype="multipart/form-data">
                     <div class="upimg" id="upimg">
                     <input type="hidden" name="editarProductos" id="editarProductos">
-                    
+                    <input type="hidden" name="frmimgn" id="frmimgn">
                     <input type="file" name="imagenn" id="foto" onchange="prueba(this.value)">                               
                     <!--<input type="file" name="imagen" id="foto">-->
 
@@ -91,7 +91,7 @@ elseif(isset($_POST["editarProducto"])){
 
     <form name="frmproducto" id="frmproducto" enctype="multipart/form-data"> 
     <input type="hidden" name="editarProducto" id="editarProducto"/>
-    <input type="hidden" name="imagen" id="imagen" value="<?php $imagenn['name'] ?>"  >  
+    <input type="text" name="imagen" id="imagen" value="<?php $imagenn['name'] ?>"  >  
     <input type="hidden" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>
     <label for="">Nombre Producto:</label>  
     <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>">

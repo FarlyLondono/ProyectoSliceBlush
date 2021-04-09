@@ -57,7 +57,7 @@ function desplegarVista2($ruta){
                     <tr>
                         
                         <th width="40%">Nombre Producto</th>
-                        <th width="15%" class="text-center">Cantidad</th>
+                        
                         <th width="20%"  class="text-center">Precio</th>
                         <th width="20%" class="text-center">SubTotal</th>
                         <th>--</th>
@@ -72,7 +72,7 @@ function desplegarVista2($ruta){
                             <tr>
                             
                             <td width="40%"><?php echo $producto['NOMBRE'] ?></td>
-                            <td width="15%"  class="text-center"><?php echo $producto['cantidad'] ?></td>
+                            
                             <td width="20%" class="text-center"><?php echo $producto['precio'] ?></td>
                             <td width="20%" class="text-center"><?php echo number_format($producto['precio']*$producto['cantidad'],2);  ?></td>
                             

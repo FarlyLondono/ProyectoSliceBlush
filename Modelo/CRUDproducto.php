@@ -96,7 +96,7 @@ class CRUDproducto{
 
     public function editarProducto($Productos){
         $Db = Db::Conectar();
-        $imagen= $_FILES['imagen'];
+            /*$imagen= $_FILES['imagen'];
             $nombreimagen=$imagen['name'];
             $type=$imagen['type'];
             $urltemp=$imagen['tmp_name'];
@@ -107,7 +107,7 @@ class CRUDproducto{
             $imagenproducto= $imgnombre.'.jpg';
             $src=$destino.$imagenproducto;
 
-            }
+            }*/
         $Sql = $Db->prepare('UPDATE productos SET
         NombreProducto=:NombreProducto,
         DescripcionProducto=:DescripcionProducto,
@@ -129,9 +129,9 @@ class CRUDproducto{
         try{
 
             $Sql->execute();
-            if($nombreimagen != ''){
+            /*if($nombreimagen != ''){
                 move_uploaded_file($urltemp,$src);
-            }
+            }*/
             //echo "Actualizacion exitosa";
         }
         catch(Exception $e){
