@@ -33,13 +33,12 @@ function desplegarVista2($ruta)
 <script>
     function boton(Estado) {
         Swal.fire({
-            title: 'Estas seguro?',
-            text: "Tu no podras revertir esto!",
+            title: 'Estás seguro que desea desactivar?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'si, Desactival!'
+            confirmButtonText: 'sí, Desactivar!'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({

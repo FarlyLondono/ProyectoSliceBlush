@@ -26,13 +26,12 @@ function desplegarVista2($ruta){
 <script>
 function boton(idProducto) {
      Swal.fire({
-  title: 'Esta seguro que desea eliminar el registro?',
-  text: "Esta decision es irreversible!",
+  title: 'Estás seguro que desea desactivar?',
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, Eliminar!'
+  confirmButtonText: 'sí, Desactivar!'
 }).then((result) => {
   if (result.isConfirmed) {
     $.ajax({url:"../ProyectoSliceBlush/Controlador/controlador.php?eliminarProducto&idProducto="+idProducto,
@@ -81,7 +80,7 @@ function boton(idProducto) {
                         <a href="Vista/editarProducto.php?editarProducto&idProducto=<?php echo  $C->getidProducto(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
                         <a  href="Controlador/ControladorProducto.php?verdetalleproducto&idProducto=<?php echo  $C->getidProducto(); ?>" class="btn btn-outline-primary">Ver Detalle</a>
                         <label class="switch">
-                                    <input type="checkbox" type="submit" name="cambiarEstado"  value="<?php echo $_POST['idEstado'] ?>" >
+                                    <input type="checkbox" type="submit" name="cambiarEstado"  value="<?php echo $_POST['idEstado'] ?>" onclick="boton(<?php echo $C->getidEstado(); ?>)" >
                                     <span class="slider round"></span>  
                                 </label>
                         <?php

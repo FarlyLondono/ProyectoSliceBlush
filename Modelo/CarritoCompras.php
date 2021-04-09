@@ -87,7 +87,7 @@ if(isset($_POST['btnAccion'])){
                         if($producto['idProducto']==$ID){
                             unset($_SESSION['CARRITO'][$indice]);
                             
-                            echo "<script>alert('Producto eliminado...')</script>";
+                            echo "<script>alert('Producto eliminado de carrito de compras...')</script>";
                         }
                     }
                 }else{

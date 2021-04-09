@@ -43,7 +43,7 @@ function boton() {
   }
 })
     }
-        </script>
+</script>
 
 
 
@@ -85,7 +85,7 @@ function boton() {
                         {
                             ?>
                        <label class="switch">
-                                    <input type="checkbox" type="submit" name="cambiarEstado"  value="<?php echo $_POST['idEstado'] ?>" >
+                                    <input type="checkbox" type="submit" name="cambiarEstado"  onclick="boton(<?php echo $C->getidEstado(); ?>)" >
                                     <span class="slider round"></span>  
                                 </label>
                         <?php
@@ -119,5 +119,7 @@ function boton() {
     $(document).ready(function() {
     $('#listadousuarios').DataTable();
 } );
-</script>    
+</script>
+
+
 </html>
