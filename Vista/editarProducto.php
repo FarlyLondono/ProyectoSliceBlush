@@ -100,8 +100,7 @@ elseif(isset($_POST["editarProducto"])){
     </br>   
 
     <form name="frmproducto" id="frmproducto" enctype="multipart/form-data"> 
-    <input type="hidden" name="editarProducto" id="editarProducto"/>
-    <input type="text" name="imagen" id="imagen" value="<?php $imagenn['name'] ?>"  >  
+    <input type="hidden" name="editarProducto" id="editarProducto"/>  
     <input type="hidden" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>
     <label for="">Nombre Producto:</label>  
     <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>">
@@ -135,23 +134,6 @@ elseif(isset($_POST["editarProducto"])){
 <script src="../js/estiloimagen.js"></script>
 <script src="../js/validacioneditarproducto.js"></script>
 <script >
-function prueba(){
-
-var dataString = $('#frmImg').serialize();
-        $.post("editarProducto.php",dataString, function(response) { 
-          //alert(response); 
-            $(document).ready(function() {
-            Swal.fire({
-            position: 'top-center',
-            title: 'Imagen cargada con Exitoso!!!',
-            icon: 'success',
-            input: 'Dar clic en Enviar imagen',
-            showConfirButton: false,
-            timer: 2000
-            })});
-        }) 
-}
-
 
 
 
@@ -191,36 +173,5 @@ $("#PrecioProducto").on("keyup", function(){//Garantizar que solo se acepten num
 
 });
 </script>
-
-<?php
-
-if(isset($_POST["editarProductos"])){
-  
-  $imagenn= $_FILES['imagenn'];
-  $nombreimagen=$imagenn['name'];
-  $type=$imagenn['type'];
-  $urltemp=$imagenn['tmp_name'];
-
-  if($nombreimagen !=''){
-  $destino='../img2/';
-  $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
-  $imagenproducto= $imgnombre.'.jpg';
-  $src=$destino.$imagenproducto;
-  }
-  if($nombreimagen != ''){
-    move_uploaded_file($urltemp,$src);
-  }
-  
-        echo "<script src='https://code.jquery.com/jquery-3.5.1.js'></script>
-        <script type='text/javascript'>
-        
-        $('#upimg').css('display', 'none');
-        $('#prevPhoto').css('display', 'none');
-        $('#imagen').val('$imagenproducto');
-        
-        </script>"
-        ;
-}       
-  ?>
 
 </html>
