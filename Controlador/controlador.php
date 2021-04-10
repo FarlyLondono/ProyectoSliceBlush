@@ -244,31 +244,34 @@ public function registrarCliente(){
 
             $Productos = new Productos();
             $CRUDproducto = new CRUDproducto();
-            
-            /*$imagen= $_FILES['imagen'];
+
+            $imagen= $_FILES['imagen'];
             $nombreimagen=$imagen['name'];
             $type=$imagen['type'];
             $urltemp=$imagen['tmp_name'];
 
             if($nombreimagen !=''){
-            $destino='../img2/';
+            $destino='../img/';
             $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
             $imagenproducto= $imgnombre.'.jpg';
             $src=$destino.$imagenproducto;
 
-            }*/ 
+            }
+ 
                 $Productos->setidProducto($_POST["idProducto"]);
                 $Productos->setNombreProducto($_POST["NombreProducto"]);
                 $Productos->setDescripcionProducto($_POST["DescripcionProducto"]);
                 $Productos->setPrecioProducto($_POST["PrecioProducto"]);
                 $Productos->setidEstado($_POST["idEstado"]);
-                $Productos->setimagen($_POST["imagen"]);
-                
-                    //var_dump($Usuario);
+                $Productos->setimagen($imagenproducto);
+           
+            //var_dump($Usuario);
             $CRUDproducto->editarProducto($Productos);
+            
         
         
             }
+
     
     public function listarProductos(){ 
 

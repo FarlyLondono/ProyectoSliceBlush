@@ -95,19 +95,44 @@ class CRUDproducto{
     }
 
     public function editarProducto($Productos){
+       
         $Db = Db::Conectar();
-            /*$imagen= $_FILES['imagen'];
-            $nombreimagen=$imagen['name'];
-            $type=$imagen['type'];
-            $urltemp=$imagen['tmp_name'];
+        $Sql = $Db->prepare('UPDATE productos SET
+        NombreProducto=:NombreProducto,
+        DescripcionProducto=:DescripcionProducto,
+        PrecioProducto=:PrecioProducto,
+        idEstado=:idEstado
+        WHERE idProducto=:idProducto');
+        $Sql->bindValue('NombreProducto',$Productos->getNombreProducto());
+        $Sql->bindValue('DescripcionProducto',$Productos->getDescripcionProducto());
+        $Sql->bindValue('PrecioProducto',$Productos->getPrecioProducto());
+        $Sql->bindValue('idEstado',$Productos->getidEstado());
+        $Sql->bindValue('idProducto',$Productos->getidProducto());
+        
 
-            if($nombreimagen !=''){
-            $destino='../img2/';
-            $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
-            $imagenproducto= $imgnombre.'.jpg';
-            $src=$destino.$imagenproducto;
+        try{
 
-            }*/
+            $Sql->execute();
+           
+        }
+        catch(Exception $e){
+            echo $e->getMessage();
+            die();
+        }
+
+
+
+        $imagen= $_FILES['imagen'];
+        $nombreimagen=$imagen['name'];
+        $type=$imagen['type'];
+        $urltemp=$imagen['tmp_name'];
+
+        if($nombreimagen !=''){
+        $destino='../img2/';
+        $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
+        $imagenproducto= $imgnombre.'.jpg';
+        $src=$destino.$imagenproducto;
+
         $Sql = $Db->prepare('UPDATE productos SET
         NombreProducto=:NombreProducto,
         DescripcionProducto=:DescripcionProducto,
@@ -115,31 +140,28 @@ class CRUDproducto{
         idEstado=:idEstado,
         imagen=:imagen
         WHERE idProducto=:idProducto');
+        $Sql->bindValue('imagen',$imagenproducto);
         $Sql->bindValue('NombreProducto',$Productos->getNombreProducto());
         $Sql->bindValue('DescripcionProducto',$Productos->getDescripcionProducto());
         $Sql->bindValue('PrecioProducto',$Productos->getPrecioProducto());
         $Sql->bindValue('idEstado',$Productos->getidEstado());
-        $Sql->bindValue('imagen',$Productos->getimagen());
         $Sql->bindValue('idProducto',$Productos->getidProducto());
-        
-        
-        //var_dump($Sql);
-        //var_dump($Usuario);
 
         try{
 
             $Sql->execute();
-            /*if($nombreimagen != ''){
+            if($nombreimagen != ''){
                 move_uploaded_file($urltemp,$src);
-            }*/
-            //echo "Actualizacion exitosa";
+            }
         }
         catch(Exception $e){
             echo $e->getMessage();
             die();
         }
 
-        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
+            }
+  
+        Db::cerrarconexion($Db);
     } 
 
 
