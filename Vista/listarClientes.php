@@ -55,7 +55,7 @@ function boton() {
   }
 })
     }
-        </script>
+</script>
 
 
 
@@ -150,5 +150,7 @@ function active(isActive,idCliente){
     $(document).ready(function() {
     $('#listadousuarios').DataTable();
 } );
-</script>    
+</script>
+
+
 </html>

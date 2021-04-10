@@ -28,6 +28,9 @@ if(isset($_GET["editarProducto"])){
 elseif(isset($_POST["editarProducto"])){
     $controlador->editarProducto();
     desplegarVista("../menu.php");
+}elseif(isset($_POST["editarimagen"])){
+    $controlador->editarProducto();
+    desplegarVista("../menu.php");
 }
 
 
@@ -61,33 +64,40 @@ elseif(isset($_POST["editarProducto"])){
     <div class="card-bordy">
 
     
-            <div class="photo">
-              <!--<label for="foto" align="center">Imagen:</label>-->
-              <form name="frmImg" id="frmImg" method="POST" action="editarProducto.php" enctype="multipart/form-data">
-                    <div class="prevPhoto" id="prevPhoto">
-                    
-                    
-                    <span class="delPhoto notBlock">X</span>
-                    <label for="foto" align="center">Imagen:</label>
-                    </div>
-                    
-                    
-                    <div class="upimg" id="upimg">
-                    <input type="hidden" name="editarProductos" id="editarProductos">
-                    
-                    <input type="file" name="imagenn" id="foto" onchange="prueba(this.value)">                               
-                    <!--<input type="file" name="imagen" id="foto">-->
+    <div>
+            <form name="frmImg" id="frmImg" method="POST" action="editarProducto.php" enctype="multipart/form-data">
+                    </br>
+                        <div class="photo">
+                        <label for="foto">Imagen:</label>
+                        <div class="prevPhoto">
+                        <span class="delPhoto notBlock">X</span>
+                        <label for="foto" ></label>
+                        </div>
+                        <div class="upimg">
+                        <input type="text" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>   
+                        <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>">
+                        <input type="text" name="DescripcionProducto" id="DescripcionProducto" class="form-control" value="<?php echo $buscarProducto->getDescripcionProducto() ?>">
+                        <input  type="text" name="PrecioProducto" id="PrecioProducto" class="form-control" value="<?php echo $buscarProducto->getPrecioProducto() ?>" >
+                        <select type="text" name="idEstado" id="idEstado" class="form-control">
+                                        <option value="" >seleccione</option>
+                                        <?php
+                                    foreach($listarestado as $estado){
+                                        ?>
+                                        <option value="<?php echo $estado->getIdEstado() ?>" <?php if($estado->getIdEstado() == $buscarProducto->getidEstado()){ ?> selected <?php } ?> > <?php echo $estado->getNombreEstado();  ?></option>
+                                        <?php
+                                    }
+                                    ?>                 
+                        </select>
+                        <input type="file" name="imagen" id="foto" >
+                        </div>
+                        <div id="form_alert"></div>
+                        </div>
+                        </br>
+                    <button type="submit" name="editarimagen" class="btn btn-primary">Editar Imagen</button>
+            </form>
+    </div>
 
-                    </div>
-                    <button type="submit" name="editarProductos"  id="editarProductos" class="btn btn-primary">Enviar Imagen</button>
-                    <?php var_dump($_POST["editarProductos"]) ; ?>
-                    </form>
-                    
-                    
-                    <div id="form_alert"></div>
-            </div>
-            
-    </br>        
+    </br>   
 
     <form name="frmproducto" id="frmproducto" enctype="multipart/form-data"> 
     <input type="hidden" name="editarProducto" id="editarProducto"/>
@@ -125,23 +135,6 @@ elseif(isset($_POST["editarProducto"])){
 <script src="../js/estiloimagen.js"></script>
 <script src="../js/validacioneditarproducto.js"></script>
 <script >
-function prueba(){
-
-var dataString = $('#frmImg').serialize();
-        $.post("editarProducto.php",dataString, function(response) { 
-          //alert(response); 
-            $(document).ready(function() {
-            Swal.fire({
-            position: 'top-center',
-            title: 'Imagen cargada con Exitoso!!!',
-            icon: 'success',
-            input: 'Dar clic en Enviar imagen',
-            showConfirButton: false,
-            timer: 2000
-            })});
-        }) 
-}
-
 
 
 
@@ -181,36 +174,5 @@ $("#PrecioProducto").on("keyup", function(){//Garantizar que solo se acepten num
 
 });
 </script>
-
-<?php
-
-if(isset($_POST["editarProductos"])){
-  
-  $imagenn= $_FILES['imagenn'];
-  $nombreimagen=$imagenn['name'];
-  $type=$imagenn['type'];
-  $urltemp=$imagenn['tmp_name'];
-
-  if($nombreimagen !=''){
-  $destino='../img2/';
-  $imgnombre= 'img_'.md5(date('d-m-Y H:m:s'));
-  $imagenproducto= $imgnombre.'.jpg';
-  $src=$destino.$imagenproducto;
-  }
-  if($nombreimagen != ''){
-    move_uploaded_file($urltemp,$src);
-  }
-  
-        echo "<script src='https://code.jquery.com/jquery-3.5.1.js'></script>
-        <script type='text/javascript'>
-        
-        $('#upimg').css('display', 'none');
-        $('#prevPhoto').css('display', 'none');
-        $('#imagen').val('$imagenproducto');
-        
-        </script>"
-        ;
-}       
-  ?>
 
 </html>

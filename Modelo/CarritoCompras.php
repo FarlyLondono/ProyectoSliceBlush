@@ -53,24 +53,26 @@ if(isset($_POST['btnAccion'])){
 
             }
             else{
-                $idProductos=array_column($_SESSION['CARRITO'],"idProducto");
+            /*$idProductos=array_column($_SESSION['CARRITO'],"idProducto");
                 if(in_array($idProducto,$idProductos)){
-                    echo "<script>alert('El producto ya ha sido seleccionado..')</script>";
-                    $mensaje="";
+                    //echo "<script>alert('El producto ya ha sido seleccionado..')</script>";
+                    //$mensaje="";
                 }else{
+                    
+
                 
-                $Numeroproductos=count($_SESSION['CARRITO']);
-                $producto=array(
-                    'idProducto'=>$idProducto,
-                    'NOMBRE'=>$NOMBRE,
-                    'cantidad'=>$cantidad,
-                    'precio'=>$precio,                     
-                );
-
-                $_SESSION['CARRITO'][$Numeroproductos]=$producto;
+            } */
+            $Numeroproductos=count($_SESSION['CARRITO']);
+                    $producto=array(
+                        'idProducto'=>$idProducto,
+                        'NOMBRE'=>$NOMBRE,
+                        'cantidad'=>$cantidad,
+                        'precio'=>$precio,                     
+                    );
+                
+                    $_SESSION['CARRITO'][$Numeroproductos]=$producto;
                 $mensaje= "<strong>Producto agregado al carrito</strong>";
-            } 
-
+            
             }
 
             //$mensaje= print_r($_SESSION,true);
@@ -85,7 +87,7 @@ if(isset($_POST['btnAccion'])){
                         if($producto['idProducto']==$ID){
                             unset($_SESSION['CARRITO'][$indice]);
                             
-                            echo "<script>alert('Producto eliminado...')</script>";
+                            echo "<script>alert('Producto eliminado de carrito de compras...')</script>";
                         }
                     }
                 }else{

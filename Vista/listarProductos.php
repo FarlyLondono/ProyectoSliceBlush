@@ -26,13 +26,12 @@ function desplegarVista2($ruta){
 <script>
 function boton(idProducto) {
      Swal.fire({
-  title: 'Esta seguro que desea eliminar el registro?',
-  text: "Esta decision es irreversible!",
+  title: 'Estás seguro que desea desactivar?',
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, Eliminar!'
+  confirmButtonText: 'sí, Desactivar!'
 }).then((result) => {
   if (result.isConfirmed) {
     $.ajax({url:"../ProyectoSliceBlush/Controlador/controlador.php?eliminarProducto&idProducto="+idProducto,
