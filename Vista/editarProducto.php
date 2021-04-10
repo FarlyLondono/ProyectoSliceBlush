@@ -68,7 +68,7 @@ elseif(isset($_POST["editarProducto"])){
             <form name="frmImg" id="frmImg" method="POST" action="editarProducto.php" enctype="multipart/form-data">
                     </br>
                         <div class="photo">
-                        <label for="foto">Imagen:</label>
+                        <label for="foto" >Imagen:</label>
                         <div class="prevPhoto">
                         <span class="delPhoto notBlock">X</span>
                         <label for="foto" ></label>
@@ -93,7 +93,7 @@ elseif(isset($_POST["editarProducto"])){
                         <div id="form_alert"></div>
                         </div>
                         </br>
-                    <button type="submit" name="editarimagen" class="btn btn-primary">Editar Imagen</button>
+                    <button type="submit" name="editarimagen" class="btn btn-success">Editar Imagen</button>
             </form>
     </div>
 
