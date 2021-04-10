@@ -3,6 +3,30 @@
 class CRUDusuario{
     public function __construct(){}
 
+    public function cambiarEstado($Usuario){
+        $Db = Db::Conectar();
+        $Sql = $Db->prepare('UPDATE usuarios SET
+        idEstado=:idEstado     
+        WHERE IdUsuarios=:IdUsuarios');
+        $Sql->bindValue('idEstado',$Usuario->getidEstado());
+        $Sql->bindValue('IdUsuarios',$Usuario->getIdUsuarios());
+       
+         
+        
+
+        try{
+
+            $Sql->execute();
+            //echo "Actualizacion exitosa";
+        }
+        catch(Exception $e){
+            //echo $e->getMessage();
+            die();
+        }
+
+        Db::cerrarconexion($Db);
+    }
+
     public function VerificarLogin($Usuario)
     {
 
@@ -42,11 +66,12 @@ class CRUDusuario{
         $Sql->execute();
         foreach($Sql->fetchAll() as $Usuario){
             $U = new Usuarios(); //crear un objeto de tipo usuario
-            $U->setIdUsuarios($Usuario['IdUsuarios']);
+            $U->setIdUsuarios($Usuario['IdUsuarios']);  
             $U->setNumeroDocumento($Usuario['NumeroDocumento']);
             $U->setNombre($Usuario['Nombre']);
             $U->setApellidos($Usuario['Apellidos']);
             $U->setCorreo($Usuario['Correo']);
+            $U->setidEstado($Usuario['idEstado']);
             $U->setNombreEstado($Usuario['NombreEstado']);
             $U->setNombreRol($Usuario['NombreRol']);
             
@@ -124,7 +149,6 @@ class CRUDusuario{
         Apellidos=:Apellidos,
         Correo=:Correo,
         Contrasena=:Contrasena,
-        idEstado=:idEstado,
         IdRol=:IdRol
         WHERE IdUsuarios=:IdUsuarios');
         $Sql->bindValue('NumeroDocumento',$Usuario->getNumeroDocumento());
@@ -132,7 +156,6 @@ class CRUDusuario{
         $Sql->bindValue('Apellidos',$Usuario->getApellidos());
         $Sql->bindValue('Correo',$Usuario->getCorreo());
         $Sql->bindValue('Contrasena',$Usuario->getContrasena());
-        $Sql->bindValue('idEstado',$Usuario->getidEstado());
         $Sql->bindValue('IdRol',$Usuario->getIdRol());
         $Sql->bindValue('IdUsuarios',$Usuario->getIdUsuarios());
        

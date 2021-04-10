@@ -11,7 +11,7 @@ require_once("../Modelo/CRUDestado.php");
 class controladorlogin
 {            
 
-    
+     
 
     public function VerificarLogin($Correo,$Contrasena)
     {
@@ -74,7 +74,7 @@ class controladorlogin
                 });
             </script>
 <?php
-        }
+        } 
     }
 
     public function DesplegarVista($ruta)

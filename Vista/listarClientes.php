@@ -23,7 +23,19 @@ function desplegarVista($ruta){
 function desplegarVista2($ruta){
     require_once($ruta);
 }
+
+if(isset($_POST["cambiarEstado"])){
+    $controlador->cambiarEstado();
+
+    desplegarVista("../menu.php");
+
+    //desplegarVista("../menu.php");
+
+}
+
 ?>
+
+
 <script>
 function boton() {
      Swal.fire({
@@ -79,15 +91,17 @@ function boton() {
 
                         <td>
                         <a href="Vista/editarCliente.php?editarCliente&idCliente=<?php echo  $C->getidCliente(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
+                        <label class="switch">
+                                    <input type="checkbox" <?php echo $C->getidEstado()==1 ? "checked" : "" ?> onclick="active(<?php echo ($C->getidEstado()) ?>,<?php echo ($C->getidCliente()) ?>);" >
+                                    <span class="slider round"></span> 
+                                </label>
                         <?php
                         $sesion = $_SESSION["IdRol"];
-                        if($sesion == 1)
+                        if($sesion == 1) 
                         {
                             ?>
-                       <label class="switch">
-                                    <input type="checkbox" type="submit" name="cambiarEstado"  value="<?php echo $_POST['idEstado'] ?>" >
-                                    <span class="slider round"></span>  
-                                </label>
+                               
+                                
                         <?php
                         }
                         ?> 
@@ -114,7 +128,24 @@ function boton() {
     </div>
                     </div>
 </body>
+<script>
+function active(isActive,idCliente){
+    console.log(isActive,idCliente);
+    $.ajax({
+            type: "POST",
+            url: "./Controlador/controlador.php",
+            data: {
+                idCliente : idCliente,
+                idEstado: isActive==1 ? 2 : 1,
+                actionc: "active"
+            },
+            success : (data)=>{
+                nativation('#navigation','Vista/listarClientes.php')
+            }
+        })
 
+}
+</script>
 <script>
     $(document).ready(function() {
     $('#listadousuarios').DataTable();

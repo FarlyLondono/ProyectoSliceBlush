@@ -1,30 +1,34 @@
 <?php
 
-
 class CRUDcliente{
     
     public function __construct(){}
 
 
-    public function cambiarEstado($Clientes){
+    public function cambiarEstadoC($Cliente){
         $Db = Db::Conectar();
         $Sql = $Db->prepare('UPDATE clientes SET
-        idEstado=:idEstado
-        WHERE idCliente = :idCliente ');
-        $Sql->bindValue('idEstado',$Clientes->getidEstado());
-        $Sql->bindValue('idCliente',$Clientes->getidCliente());
+        idEstado=:idEstado     
+        WHERE idCliente=:idCliente');
+        $Sql->bindValue('idEstado',$Cliente->getidEstado());
+        $Sql->bindValue('idCliente',$Cliente->getidCliente());
         
+         
+         
+
         try{
 
             $Sql->execute();
+            //echo "Actualizacion exitosa";
         }
         catch(Exception $e){
-            echo $e->getMessage();
+            //echo $e->getMessage();
             die();
         }
 
-        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
-    } 
+        Db::cerrarconexion($Db);
+    }
+
 
 
     public function VerificarLogin($Clientes)
@@ -72,6 +76,7 @@ class CRUDcliente{
             $C->setDireccion($cliente['Direccion']);
             $C->setTelefono($cliente['Telefono']);
             $C->setContrasena($cliente['Contrasena']);
+            $C->setidEstado($cliente['idEstado']);
             $C->setNombreEstado($cliente['NombreEstado']);
             
           
@@ -165,6 +170,7 @@ class CRUDcliente{
             $C->setDireccion($Cliente['Direccion']);
             $C->setTelefono($Cliente['Telefono']);
             $C->setContrasena($Cliente['Contrasena']);
+            $C->setidEstado($Cliente['idEstado']);
         }
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
         return $C;
@@ -214,18 +220,19 @@ class CRUDcliente{
           return $var;
         }
     
-    public function buscarContrasena($Contrasena)
+    public function buscarContrasena($Correo)
     {
         $Db = Db::Conectar();
-        $Sql = $Db->prepare('SELECT * FROM clientes');
-          $Sql->bindValue('Contrasena',$Contrasena);
-          $Sql->execute();
-          foreach($Sql->fetchAll() as $Cliente){
+        $Sql = $Db->prepare('SELECT * FROM clientes where Correo=:Correo');
+        $Sql->bindValue(':Correo',$Correo);
+        //se ejecuta la consulta
+        $Sql->execute();
+        foreach($Sql->fetchAll() as $Cliente){
             $C = new Clientes(); //crear un objeto de tipo cliente
             $C->setContrasena($Cliente['Contrasena']);
         }
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
-        return $C;
+        return $C->getContrasena();
     }
 
    

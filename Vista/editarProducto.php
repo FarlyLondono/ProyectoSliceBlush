@@ -91,7 +91,7 @@ elseif(isset($_POST["editarProducto"])){
 
     <form name="frmproducto" id="frmproducto" enctype="multipart/form-data"> 
     <input type="hidden" name="editarProducto" id="editarProducto"/>
-    <input type="text" name="imagen" id="imagen" value="<?php $imagenn['name'] ?>"  >  
+    <input type="hidden" class="form-control" name="imagen" id="imagen" value="<?php $imagenn['name'] ?>"  >  
     <input type="hidden" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>
     <label for="">Nombre Producto:</label>  
     <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>">

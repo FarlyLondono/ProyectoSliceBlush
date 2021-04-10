@@ -5,6 +5,30 @@ class CRUDproducto{
 
     }
 
+    public function cambiarEstadoP($Productos){
+        $Db = Db::Conectar();
+        $Sql = $Db->prepare('UPDATE productos SET
+        idEstado=:idEstado     
+        WHERE idProducto=:idProducto');
+        $Sql->bindValue('idEstado',$Productos->getidEstado());
+        $Sql->bindValue('idProducto',$Productos->getidProducto());
+        
+         
+         
+
+        try{
+
+            $Sql->execute();
+            //echo "Actualizacion exitosa";
+        }
+        catch(Exception $e){
+            //echo $e->getMessage();
+            die();
+        }
+
+        Db::cerrarconexion($Db);
+    }
+
     public function listarProductos(){
         //conectar ala DB
         $Db = Db::Conectar();
@@ -22,7 +46,8 @@ class CRUDproducto{
             $C->setPrecioProducto($Productos['PrecioProducto']);
             $C->setidEstado($Productos['idEstado']);
             $C->setNombreEstado($Productos['NombreEstado']);
-            $C->setimagen($imagen);
+            $C->setimagen($imagen);     
+            
           
             /*echo "<p>".$Usuario['idUsuarios']."</p>";
             echo "<p>".$Usuario['tipodocumento']."</p>";*/

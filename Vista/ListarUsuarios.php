@@ -88,8 +88,8 @@ function desplegarVista2($ruta)
                             <td>
                                 <a href="Vista/editarUsuario.php?editarUsuario&IdUsuarios=<?php echo  $C->getIdUsuarios(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
                                 <label class="switch">
-                                    <input type="checkbox" onclick="boton(<?php echo $C->getidEstado(); ?>)" >
-                                    <span class="slider round"></span>
+                                    <input type="checkbox" <?php echo $C->getidEstado()==1 ? "checked" : "" ?> onclick="active(<?php echo ($C->getidEstado()) ?>,<?php echo ($C->getIdUsuarios()) ?>);" >
+                                    <span class="slider round"></span> 
                                 </label>
                             </td>
                         </tr>
@@ -120,6 +120,24 @@ function estados($Existe)
     }
 }
 ?>
+<script>
+function active(isActive,idUsuario){
+    console.log(isActive,idUsuario);
+    $.ajax({
+            type: "POST",
+            url: "./Controlador/controlador.php",
+            data: {
+                IdUsuarios : idUsuario,
+                idEstado: isActive==1 ? 2 : 1,
+                action: "active"
+            },
+            success : (data)=>{
+                nativation('#navigation','Vista/ListarUsuarios.php')
+            }
+        })
+
+}
+</script>
 <script>
     $(document).ready(function() {
         $('#listadousuarios').DataTable();

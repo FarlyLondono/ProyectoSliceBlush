@@ -26,18 +26,39 @@ public function __construct(){}
 
 public function cambiarEstado(){
 
-    $Clientes = new Clientes();
-    $CRUDcliente = new CRUDcliente();
-    if($Clientes->getidEstado()==1){
-    $Clientes->setidEstado($_POST["idEstado"]=2);
-    }elseif($Clientes->getidEstado()==2){
-        $Clientes->setidEstado($_POST["idEstado"]=1);  
-    }
    
-    $CRUDcliente->cambiarEstado($Clientes);
+    $Usuarios = new Usuarios();
+    $CRUDusuario = new CRUDusuario();
+    $Usuarios->setIdUsuarios($_POST["IdUsuarios"]);
+    $Usuarios->setidEstado($_POST["idEstado"]);
+    
 
-
+    $CRUDusuario->cambiarEstado($Usuarios);
     }
+
+    public function cambiarEstadoC(){
+
+   
+        $Cliente = new Clientes();
+        $CRUDcliente = new CRUDcliente();
+        $Cliente->setidCliente($_POST["idCliente"]);
+        $Cliente->setidEstado($_POST["idEstado"]);
+        
+    
+        $CRUDcliente->cambiarEstadoC($Cliente);
+        }
+
+        public function cambiarEstadoP(){
+
+   
+            $Productos = new Productos();
+            $CRUDproducto = new CRUDproducto();
+            $Productos->setidProducto($_POST["idProducto"]);
+            $Productos->setidEstado($_POST["idEstado"]);
+            
+        
+            $CRUDproducto->cambiarEstadoP($Productos);
+            }
 
 
 
@@ -119,7 +140,6 @@ public function editarusuario(){
         $Usuarios->setApellidos($_POST["Apellidos"]);
         $Usuarios->setCorreo($_POST["Correo"]);
         $Usuarios->setContrasena($passwordencriptada);
-        $Usuarios->setidEstado($_POST["idEstado"]);
         $Usuarios->setIdRol($_POST["IdRol"]);
 
         echo $passwordencriptada;
@@ -279,6 +299,8 @@ public function registrarCliente(){
         return $listarProductos;
     
         }
+
+        
         public function registrardetalleproducto($idProducto){
             $Detalleproducto = new detalleproducto();
             $CRUDDetallePedido = new cruddetalleproducto();
@@ -314,5 +336,13 @@ if(isset($_GET["eliminarProducto"])){
 }elseif(isset($_POST["editarProducto"])){
     $controlador->editarProducto();
     desplegarVista("../menu.php");
+}elseif(isset($_POST["action"])){
+$controlador->cambiarEstado();
+}elseif(isset($_POST["actionc"])){
+    $controlador->cambiarEstadoC();
 }
+elseif(isset($_POST["actionp"])){
+    $controlador->cambiarEstadoP();
+    }
+
 

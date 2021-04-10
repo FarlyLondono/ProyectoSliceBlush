@@ -81,7 +81,6 @@ $listarinsumos = $ControladorInsumo->listarinsumos();
         <form name="frmproducto" id="frmproducto" method="POST" action="../Controlador/controlador.php" enctype="multipart/form-data">
           <input type="hidden" name="registrarProducto" id="registrarProducto">
           <input type="hidden" name="imagen" id="imagen" value="<?php $imagenn['name'] ?>"  > 
-          </br>
           <label for="">Numero Producto</label> 
           <input type="text" name="idProducto" id="idProducto"  class="form-control" readonly>
           <label for="">Nombre Producto:</label>

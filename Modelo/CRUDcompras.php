@@ -16,8 +16,7 @@ public function listarcompras(){
         foreach($Sql->fetchAll() as $compras){
             $C = new compras();
             $C->setidcompra($compras['idcompra']);
-            $C->setIdUsuarios($compras['IdUsuarios']);
-            $C->setNombre($compras['Nombre']);
+            $C->setNombre($compras['Nombre']); 
             $C->setproveedor($compras['proveedor']);
             $C->setnumerofactura($compras['numerofactura']);
             $C->setfechacompra($compras['fechacompra']);
