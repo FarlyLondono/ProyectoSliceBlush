@@ -100,17 +100,16 @@ elseif(isset($_POST["editarProducto"])){
     </br>   
 
     <form name="frmproducto" id="frmproducto" enctype="multipart/form-data"> 
-    <input type="hidden" name="editarProducto" id="editarProducto"/>
-    <input type="hidden" class="form-control" name="imagen" id="imagen" value="<?php $imagenn['name'] ?>"  >  
+    <input type="hidden" name="editarProducto" id="editarProducto"/>  
     <input type="hidden" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>
     <label for="">Nombre Producto:</label>  
-    <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>">
+    <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>"  required  >
     <label for="">Descripción:</label>  
-    <input type="text" name="DescripcionProducto" id="DescripcionProducto" class="form-control" value="<?php echo $buscarProducto->getDescripcionProducto() ?>">
+    <input type="text" name="DescripcionProducto" id="DescripcionProducto" class="form-control" value="<?php echo $buscarProducto->getDescripcionProducto() ?>" required>
     <label for="">Precio:</label>  
-    <input  type="text" name="PrecioProducto" id="PrecioProducto" class="form-control" value="<?php echo $buscarProducto->getPrecioProducto() ?>" >
+    <input  type="text" name="PrecioProducto" id="PrecioProducto" class="form-control" value="<?php echo $buscarProducto->getPrecioProducto() ?>" required>
     <label for="">Estado:</label>
-    <select type="text" name="idEstado" id="idEstado" class="form-control">
+    <select type="text" name="idEstado" id="idEstado" class="form-control" required>
                     <option value="" >seleccione</option>
                     <?php
                 foreach($listarestado as $estado){
@@ -142,7 +141,7 @@ elseif(isset($_POST["editarProducto"])){
     $("#editarProducto").on('click', function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
         e.preventDefault();
         if(validarDatoseditarproducto()){    
-        var datdataStringa = $('#frmproducto').serialize();
+        var dataStringa = $('#frmproducto').serialize();
         $.post("editarProducto.php",dataString, function(response) { 
           //alert(response); 
             $(document).ready(function() {

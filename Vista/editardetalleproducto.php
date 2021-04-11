@@ -8,13 +8,13 @@ if(!isset($_SESSION["Correo"])){
 elseif($sesion <> 1){
     header("Location:../index.php");
 }
-require_once("../Controlador/Controladordetallecompra.php");
+require_once("../Controlador/ControladorProducto.php");
 require_once("../Controlador/ControladorInsumos.php");
 $ControladorInsumo = new ControladorInsumo();
-$controladordetallecompra = new controladordetallecompra();
+$controladordetalleproducto = new controladordetalleproducto();
 /*$ListarPedidos = $ControladorPedido->ListarPedidos();*/
 $listarinsumos = $ControladorInsumo->listarinsumos();
-$buscardetallecompra= $controladordetallecompra->buscardetallecompra($_GET["iddetallecompra"]);
+$buscardetalleproducto= $controladordetalleproducto->buscardetalleproducto($_GET["iddetalleproducto"]);
 
 function desplegarVista($ruta){
     header('Location: '.$ruta);
@@ -38,7 +38,7 @@ if(isset($_POST["editardetallecompra"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Detalle Compra</title>
+    <title>Editar Detalle Producto</title>
     <link rel="icon" type="image/png" href="../Img/hamburguer.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -49,38 +49,30 @@ if(isset($_POST["editardetallecompra"])){
 <body background="../Img/rsz_shapelined-_jbkdviwexi-unsplash.jpg">
 <div class="container mt-4">
     <div class="card text-white bg-secondary mb-3">    
-    <p class="h1" align="center">Editar Detalle Compra</p>
+    <p class="h1" align="center">Editar Detalle Producto</p>
     </div>
 
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frmdetallecompra" id="frmdetallecompra" >
-    <input type="hidden" name="editardetallecompra"/>  
+    <form name="frmdetalleproducto" id="frmdetalleproducto" >
+    <input type="hidden" name="editardetallecompra"/>
     <label for=""></label>  
-    <input type="hidden" readonly name="iddetallecompra" id="iddetallecompra" class="form-control" value="<?php echo $buscardetallecompra->getiddetallecompra() ?>" readonly>
+    <input type="text" readonly name="iddetallecompra" id="iddetallecompra" class="form-control" value="<?php echo $buscardetalleproducto->getiddetalleproducto(); ?>" readonly>
     <label for=""></label>  
-    <input type="hidden" readonly name="idcompra" id="idcompra" class="form-control" value="<?php echo $buscardetallecompra->getidcompra() ?>">
     <label for="">Insumo:</label>
-    <select type="text" name="idinsumo" id="idinsumo" class="form-control" onchange="mostrarprecio(this.value)" >
+   <select type="text" name="idinsumo" id="idinsumo" class="form-control" >
                     <option value="" >seleccione</option>
                     <?php
                 foreach($listarinsumos as $insumo){
                     ?>
-                    <option value="<?php echo $insumo->getidinsumo() ?>" <?php if($insumo->getidinsumo() == $buscardetallecompra->getidinsumo()){ ?> selected <?php } ?> > <?php echo $insumo->getnombreProducto();  ?></option>
+                    <option value="<?php echo $insumo->getidinsumo() ?>" <?php if($insumo->getidinsumo() == $buscardetalleproducto->getidinsumo()){ ?> selected <?php } ?> > <?php echo $insumo->getnombreProducto();  ?></option>
                     <?php
                 }
                 ?>                 
     </select>
-    <label for="">Precio:</label>
-    <input type="text" name="precio" id="precio"  class="form-control" value="<?php echo $buscardetallecompra->getprecio() ?>" readonly > 
-    <label for="">Cantidad:</label>  
-    <input type="text" name="Cantidad" id="Cantidad" class="form-control" value="<?php echo $buscardetallecompra->getCantidad() ?>"  onkeypress="calcularvalordetalle()"
-                onkeyup= "calcularValorDetalle()" onkeydown="calcularValorDetalle()">
-    <label for="">Total:</label>  
-    <input type="text" readonly name="Total" id="Total" class="form-control" value="<?php echo $buscardetallecompra->getTotal() ?>">
-    <label for="">Observaciones:</label>  
-    <input type="text" name="observaciones" id="observaciones" class="form-control" value="<?php echo $buscardetallecompra->getobservaciones() ?>">
+     <label for="">Cantidad</label>  
+    <input type="hidden" readonly name="Cantidad" id="Cantida" class="form-control" value="<?php echo $buscardetalleproducto->getCantidad() ?>">
     
     </br>
 

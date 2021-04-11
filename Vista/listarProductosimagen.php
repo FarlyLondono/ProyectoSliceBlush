@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+$sesion = $_SESSION["IdRol"];
 if (!isset($_SESSION["Correo"])) {
     header("Location:../index.php");
 }
@@ -67,9 +69,16 @@ function desplegarVista2($ruta)
                                 <input type="hidden" name="precio" id="precio<?php echo $key ?>" value="<?php echo openssl_encrypt($C->getPrecioProducto(), COD, KEY); ?>">
                                 <input type="hidden" name="cantidad" id="cantidad<?php echo $key ?>" value="<?php echo openssl_encrypt(1, COD, KEY); ?>">
 
+                                <?php
+                                $sesion = $_SESSION["IdRol"];
+                                if($sesion == 0 ||$sesion == 3 ) 
+                                {
+                                    ?>
+
                                 <button class="btn btn-primary" name="btnAccion" id="btnAccion" value="Agregar" onclick="addcar(<?php echo $key ?>)" type="button">Agregar al carrito</button>
-
-
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     <br>

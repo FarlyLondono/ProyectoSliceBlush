@@ -82,6 +82,30 @@ class cruddetalleproducto{
     
     
     }
+    public function buscardetalleprodcuto($iddetalleproducto){
+        //conectar ala DB
+        $Db = Db::Conectar();
+        //$listaUsuarios = [];
+        //se define la consulta
+        //$Sql = $Db->query("SELECT * FROM ususarios WHERE idUsuarios=$idUsuarios");
+        $Sql = $Db->prepare('SELECT iddetalleproducto,detalleproducto.idinsumo,Cantidad
+        FROM `detalleproducto` join insumos on detalleproducto.idinsumo = insumos.idinsumo WHERE iddetalleproducto=:iddetalleproducto');
+        $Sql->bindValue('iddetalleproducto',$iddetalleproducto);
+        //se ejecuta la consulta
+        $Sql->execute();
+        foreach($Sql->fetchAll() as $detallecompra){
+            $I = new detalleproducto(); //crear un objeto de tipo usuario
+            $I->setiddetalleproducto($detallecompra['iddetalleproducto']);
+            $I->setidinsumo($detallecompra['idinsumo']);
+            $I->setCantidad($detallecompra['Cantidad']);
+            
+            
+    
+            //$listaUsuarios[]= $U;//asignar ala lista el objeto.
+        }
+        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
+        return $I;
+    }
 
 
 

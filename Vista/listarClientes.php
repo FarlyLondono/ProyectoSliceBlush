@@ -91,20 +91,19 @@ function boton() {
 
                         <td>
                         <a href="Vista/editarCliente.php?editarCliente&idCliente=<?php echo  $C->getidCliente(); ?>" class="btn btn-outline-warning"><img style="width: 25px; height: 25px;" src="Img/editar.png" alt="">Editar</a>
-                        <label class="switch">
-                                    <input type="checkbox" <?php echo $C->getidEstado()==1 ? "checked" : "" ?> onclick="active(<?php echo ($C->getidEstado()) ?>,<?php echo ($C->getidCliente()) ?>);" >
-                                    <span class="slider round"></span> 
-                                </label>
                         <?php
                         $sesion = $_SESSION["IdRol"];
                         if($sesion == 1) 
                         {
                             ?>
-                               
-                                
+                        <label class="switch">
+                                    <input type="checkbox" <?php echo $C->getidEstado()==1 ? "checked" : "" ?> onclick="active(<?php echo ($C->getidEstado()) ?>,<?php echo ($C->getidCliente()) ?>);" >
+                                    <span class="slider round"></span> 
+                        </label>
                         <?php
                         }
-                        ?> 
+                        ?>
+ 
                         </td>     
                         </tr>
 

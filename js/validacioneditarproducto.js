@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#frmproducto").submit(function(event) {
         event.preventDefault();
-        if ($("#imagen").val().length == 0 || $("#NombreProducto").val().length == 0 || $("#DescripcionProducto").val().length == 0 || $("#PrecioProducto").val().length == 0 || $("#idEstado").val().length == 0) {
+        if ($("#PrecioProducto").val().length == 0 || $("#idEstado").val().length == 0) {
             Swal.fire({
                 position: 'top-center',
                 icon: 'error',
@@ -10,28 +10,12 @@ $(document).ready(function() {
                 //timer: 1000 
             })
 
-            //alert("Apreciado usuario faltan campos por diligenciar");
+
         } else {
 
-            /*let url = "../Controlador/controlador.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $("#frmproducto").serialize(),
-                
-                    Swal.fire({
-                        position: 'top-center',
-                        icon: 'success',
-                        title: 'Registro Exitoso',
-                        showConfirmButton: true,
-                        //timer: 1000
-                    }).then(function() {
-                        window.location.href = "../menu.php";
-                    })
 
-            });*/
 
-            var datdataStringa = $('#frmproducto').serialize();
+            var dataString = $('#frmproducto').serialize();
             $.post("../Controlador/controlador.php", dataString, function(response) {
                 //alert(response); 
                 $(document).ready(function() {
