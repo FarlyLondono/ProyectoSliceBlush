@@ -103,13 +103,13 @@ elseif(isset($_POST["editarProducto"])){
     <input type="hidden" name="editarProducto" id="editarProducto"/>  
     <input type="hidden" name="idProducto" id="idProducto" class="form-control" value="<?php echo $buscarProducto->getidProducto() ?>"readonly>
     <label for="">Nombre Producto:</label>  
-    <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>">
+    <input type="text" name="NombreProducto" id="NombreProducto" class="form-control" value="<?php echo $buscarProducto->getNombreProducto() ?>"  required  >
     <label for="">Descripción:</label>  
-    <input type="text" name="DescripcionProducto" id="DescripcionProducto" class="form-control" value="<?php echo $buscarProducto->getDescripcionProducto() ?>">
+    <input type="text" name="DescripcionProducto" id="DescripcionProducto" class="form-control" value="<?php echo $buscarProducto->getDescripcionProducto() ?>" required>
     <label for="">Precio:</label>  
-    <input  type="text" name="PrecioProducto" id="PrecioProducto" class="form-control" value="<?php echo $buscarProducto->getPrecioProducto() ?>" >
+    <input  type="text" name="PrecioProducto" id="PrecioProducto" class="form-control" value="<?php echo $buscarProducto->getPrecioProducto() ?>" required>
     <label for="">Estado:</label>
-    <select type="text" name="idEstado" id="idEstado" class="form-control">
+    <select type="text" name="idEstado" id="idEstado" class="form-control" required>
                     <option value="" >seleccione</option>
                     <?php
                 foreach($listarestado as $estado){

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#frmproducto").submit(function(event) {
         event.preventDefault();
-        if ($("#DescripcionProducto").val().length == 0 || $("#PrecioProducto").val().length == 0 || $("#idEstado").val().length == 0) {
+        if ($("#PrecioProducto").val().length == 0 || $("#idEstado").val().length == 0) {
             Swal.fire({
                 position: 'top-center',
                 icon: 'error',
