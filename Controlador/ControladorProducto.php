@@ -21,6 +21,13 @@ class controladordetalleproducto{
         return $cruddetalleproducto->verdetalleproducto($idProducto);
     
     }
+
+    public function buscardetalleproducto($iddetalleproducto){
+        $detalleproducto = new detalleproducto();
+        $cruddetalleproducto = new cruddetalleproducto();
+        return $cruddetalleproducto->buscardetalleprodcuto($iddetalleproducto);
+    
+    }
   
 
 

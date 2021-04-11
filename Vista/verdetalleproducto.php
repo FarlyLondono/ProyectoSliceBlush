@@ -27,7 +27,7 @@ function desplegarVista2($ruta){
 
 
     <script>
-function boton(iddetallecompra) {
+function boton(iddetalleproducto) {
      Swal.fire({
   title: 'Estas seguro?',
   text: "Tu no podras revertir esto!",
@@ -85,7 +85,7 @@ function boton(iddetallecompra) {
                         <td align="center"><strong><?php echo $C->getunidadMedida()  ?></strong></td>
                         <td align="center"><strong><?php echo $C->getCantidad()  ?></strong></td>
                         <td>
-                        <a href="../Vista/editardetallecompra.php?editardetallecompra&iddetallecompra=<?php echo  $C->getiddetalleproducto(); ?>" class="btn btn-outline-warning">Editar</a>
+                        <a href="../Vista/editardetalleproducto.php?editardetalleproducto&iddetallecompra=<?php echo  $C->getiddetalleproducto(); ?>" class="btn btn-outline-warning">Editar</a>
                         <a onclick="boton(<?php echo $C->getiddetalleproducto(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
                         </td>     
                         </tr>
