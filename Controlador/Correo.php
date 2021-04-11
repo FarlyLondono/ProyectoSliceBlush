@@ -18,9 +18,7 @@ if(isset($_POST['recuperarContra'])){
                 ini_set("SMTP","smtp.gmail.com");         
                 ini_set('sendmail_from','SliceBlushTest@gmail.com');
                 mail($para,$titulo,$mensaje,$cabeceras);
-                echo "Realizado";
             }else{
-                echo "Ha ocurrido un error!"; 
                 "<script src='https://code.jquery.com/jquery-3.5.1.js'></script>";
     "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@9'></script>";
     echo "<script>

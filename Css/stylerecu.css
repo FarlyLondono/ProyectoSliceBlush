@@ -54,8 +54,8 @@ body {
 
 .header {
     position: absolute;
-    top: calc(90% - 175px);
-    left: calc(52% - 45px);
+    top: calc(50% - 175px);
+    left: calc(44% - 45px);
     z-index: 2;
 }
 
@@ -74,7 +74,7 @@ body {
 
 .login {
     position: absolute;
-    top: calc(45% - 140px);
+    top: calc(55% - 140px);
     left: calc(48% - 125px);
     height: 150px;
     width: 350px;
