@@ -65,7 +65,7 @@ date_default_timezone_set("America/Lima");
                 if ($sesion == 1) {
                 ?>
                     <div class="content">
-                        <a href="https://www.youtube.com/watch?v=6xUnSVTh8fI&ab_channel=DeccaRecords" target="_blank">
+                        <a href="https://www.youtube.com/watch?v=UHwxlENaPtU&list=PLbr5ZlakwQm1Jr163-GgqjueoygzBZZH3&ab_channel=JuanEstebanQuiroga" target="_blank">
                             <button class="botonF1 pointer ">
                                 <span class="material-icons">accessibility_new</span>
                             </button>
@@ -110,6 +110,13 @@ date_default_timezone_set("America/Lima");
                 <?php
                 } elseif ($sesion == 2) {
                 ?>
+                <div class="content">
+                        <a href="https://www.youtube.com/watch?v=UHwxlENaPtU&list=PLbr5ZlakwQm1Jr163-GgqjueoygzBZZH3&ab_channel=JuanEstebanQuiroga" target="_blank">
+                            <button class="botonF1 pointer ">
+                                <span class="material-icons">accessibility_new</span>
+                            </button>
+                        </a>
+                    </div>
                     <li class="nav-item active">
                         <a style="color: white;" class="nav-link pointer" onclick="nativation('#navigation','Vista/listarClientes.php')">Clientes<span class="sr-only">(current)</span></a>
                     </li>
