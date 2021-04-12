@@ -58,11 +58,7 @@ if(isset($_POST['btnAccion'])){
                     echo "<script>alert('El producto ya ha sido seleccionado..')</script>";
                     $mensaje="";
                 }else{
-                    
-
-                
-            } 
-            $Numeroproductos=count($_SESSION['CARRITO']);
+                    $Numeroproductos=count($_SESSION['CARRITO']);
                     $producto=array(
                         'idProducto'=>$idProducto,
                         'NOMBRE'=>$NOMBRE,
@@ -72,8 +68,11 @@ if(isset($_POST['btnAccion'])){
                 
                     $_SESSION['CARRITO'][$Numeroproductos]=$producto;
                 $mensaje= "<strong>Producto agregado al carrito</strong>";
+                   
+     
+            } 
             
-            }
+    }
 
             //$mensaje= print_r($_SESSION,true);
             
