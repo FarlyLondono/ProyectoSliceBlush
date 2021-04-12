@@ -282,7 +282,6 @@ public function registrarCliente(){
                 $Productos->setNombreProducto($_POST["NombreProducto"]);
                 $Productos->setDescripcionProducto($_POST["DescripcionProducto"]);
                 $Productos->setPrecioProducto($_POST["PrecioProducto"]);
-                $Productos->setidEstado($_POST["idEstado"]);
                 $Productos->setimagen($imagenproducto);
            
             //var_dump($Usuario);

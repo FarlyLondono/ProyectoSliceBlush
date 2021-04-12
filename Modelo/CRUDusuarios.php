@@ -121,7 +121,7 @@ class CRUDusuario{
         foreach($Sql->fetchAll() as $Usuario){
 
             
-            $passwordesencriptada = base64_decode($Usuario['Contrasena']);
+            $passwordesencriptada = base64_decode($Usuario['Contrasena']); 
 
             $U = new Usuarios();
             $U->setIdUsuarios($Usuario['IdUsuarios']);

@@ -38,7 +38,7 @@ function boton(iddetalleproducto) {
   confirmButtonText: 'si, Borralo!'
 }).then((result) => {
   if (result.isConfirmed) {
-    $.ajax({url:"../Controlador/Controladordetallecompra.php?eliminardetallecompra&iddetallecompra="+iddetallecompra,
+    $.ajax({url:"../Controlador/ControladorProducto.php?eliminardetalleproducto&iddetalleproducto="+iddetalleproducto,
         success:()=>{
             window.location.href="../menu.php"
         }})
@@ -85,7 +85,7 @@ function boton(iddetalleproducto) {
                         <td align="center"><strong><?php echo $C->getunidadMedida()  ?></strong></td>
                         <td align="center"><strong><?php echo $C->getCantidad()  ?></strong></td>
                         <td>
-                        <a href="../Vista/editardetalleproducto.php?editardetalleproducto&iddetallecompra=<?php echo  $C->getiddetalleproducto(); ?>" class="btn btn-outline-warning">Editar</a>
+                      
                         <a onclick="boton(<?php echo $C->getiddetalleproducto(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
                         </td>     
                         </tr>

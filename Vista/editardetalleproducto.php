@@ -55,30 +55,23 @@ if(isset($_POST["editardetallecompra"])){
     <div class="container mt-5 mb-5">
     <div class="card-bordy">
 
-    <form name="frmdetalleproducto" id="frmdetalleproducto" >
-    <input type="hidden" name="editardetallecompra"/>
-    <label for=""></label>  
-    <input type="text" readonly name="iddetallecompra" id="iddetallecompra" class="form-control" value="<?php echo $buscardetalleproducto->getiddetalleproducto(); ?>" readonly>
-    <label for=""></label>  
+    <form name="frmdetalleproducto" id="frmdetalleproducto" method="POST"> 
+    
+
+    <form name="frmdetalleproducto" id="frmdetalleproducto"> 
+    <input type="hidden" name="editardetalleproducto"/>
+
     <label for="">Insumo:</label>
-   <select type="text" name="idinsumo" id="idinsumo" class="form-control" >
-                    <option value="" >seleccione</option>
-                    <?php
-                foreach($listarinsumos as $insumo){
-                    ?>
-                    <option value="<?php echo $insumo->getidinsumo() ?>" <?php if($insumo->getidinsumo() == $buscardetalleproducto->getidinsumo()){ ?> selected <?php } ?> > <?php echo $insumo->getnombreProducto();  ?></option>
-                    <?php
-                }
-                ?>                 
-    </select>
-     <label for="">Cantidad</label>  
-    <input type="hidden" readonly name="Cantidad" id="Cantida" class="form-control" value="<?php echo $buscardetalleproducto->getCantidad() ?>">
+    <input type="text" readonly name="idinsumo" id="idinsumo" class="form-control" value="<?php echo $buscardetalleproducto->getidinsumo() ?>">
+    <label for="">Cantidad</label>  
+    <input type="text" readonly name="cantidad" id="cantidad" class="form-control" value="<?php echo $buscardetalleproducto->getcantidad() ?>">
     
     </br>
 
-    <button type="submit" name="editardetallecompra" id="editardetallecompra" class="btn btn-success">Editar</button>
+    <button type="submit" name="editardetalleproducto" id="editardetalleproducto" class="btn btn-success">Editar</button>
     <a href="../menu.php" class="btn btn-primary">Regresar</a>
         </form>
+        
 
     </div>
 </div>

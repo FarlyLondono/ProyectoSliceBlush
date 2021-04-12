@@ -163,13 +163,14 @@ class CRUDcliente{
         //se ejecuta la consulta
         $Sql->execute();
         foreach($Sql->fetchAll() as $Cliente){
+            $passwordesencriptada = base64_decode($Cliente['Contrasena']); 
             $C = new Clientes(); //crear un objeto de tipo cliente
             $C->setidCliente($Cliente['idCliente']);
             $C->setNombre($Cliente['Nombre']);
             $C->setCorreo($Cliente['Correo']);
             $C->setDireccion($Cliente['Direccion']);
             $C->setTelefono($Cliente['Telefono']);
-            $C->setContrasena($Cliente['Contrasena']);
+            $C->setContrasena($passwordesencriptada);
             $C->setidEstado($Cliente['idEstado']);
         }
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.

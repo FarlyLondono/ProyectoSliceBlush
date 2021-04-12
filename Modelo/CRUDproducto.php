@@ -125,13 +125,11 @@ class CRUDproducto{
         $Sql = $Db->prepare('UPDATE productos SET
         NombreProducto=:NombreProducto,
         DescripcionProducto=:DescripcionProducto,
-        PrecioProducto=:PrecioProducto,
-        idEstado=:idEstado
+        PrecioProducto=:PrecioProducto
         WHERE idProducto=:idProducto');
         $Sql->bindValue('NombreProducto',$Productos->getNombreProducto());
         $Sql->bindValue('DescripcionProducto',$Productos->getDescripcionProducto());
         $Sql->bindValue('PrecioProducto',$Productos->getPrecioProducto());
-        $Sql->bindValue('idEstado',$Productos->getidEstado());
         $Sql->bindValue('idProducto',$Productos->getidProducto());
         
 

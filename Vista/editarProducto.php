@@ -108,17 +108,6 @@ elseif(isset($_POST["editarProducto"])){
     <input type="text" name="DescripcionProducto" id="DescripcionProducto" class="form-control" value="<?php echo $buscarProducto->getDescripcionProducto() ?>" required>
     <label for="">Precio:</label>  
     <input  type="text" name="PrecioProducto" id="PrecioProducto" class="form-control" value="<?php echo $buscarProducto->getPrecioProducto() ?>" required>
-    <label for="">Estado:</label>
-    <select type="text" name="idEstado" id="idEstado" class="form-control" required>
-                    <option value="" >seleccione</option>
-                    <?php
-                foreach($listarestado as $estado){
-                    ?>
-                    <option value="<?php echo $estado->getIdEstado() ?>" <?php if($estado->getIdEstado() == $buscarProducto->getidEstado()){ ?> selected <?php } ?> > <?php echo $estado->getNombreEstado();  ?></option>
-                    <?php
-                }
-                ?>                 
-                </select>
 </br>
 
     <button type="submit" name="editarProducto" id="editarProducto" class="btn btn-success">Editar</button>

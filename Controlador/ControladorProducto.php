@@ -15,6 +15,15 @@ class controladordetalleproducto{
     
     }
     
+
+    public function eliminardetalleproducto($iddetalleproducto){
+
+        $detalleproducto = new detalleproducto();
+        $cruddetalleproducto = new cruddetalleproducto(); 
+       return $cruddetalleproducto->eliminardetalleproducto($iddetalleproducto);
+    
+        }
+
     public function verdetalleproducto($idProducto){
         $detalleproducto = new detalleproducto();
         $cruddetalleproducto = new cruddetalleproducto();
@@ -25,7 +34,7 @@ class controladordetalleproducto{
     public function buscardetalleproducto($iddetalleproducto){
         $detalleproducto = new detalleproducto();
         $cruddetalleproducto = new cruddetalleproducto();
-        return $cruddetalleproducto->buscardetalleprodcuto($iddetalleproducto);
+        return $cruddetalleproducto->buscardetalleproducto($iddetalleproducto);
     
     }
   
