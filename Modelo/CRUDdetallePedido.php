@@ -17,6 +17,7 @@ class CRUDdetallePedido{
         $sql->bindValue('cantidad', $detallePedidos->getcantidad());
         $sql->bindValue('precio', $detallePedidos->getprecio());
         $detalleP = $detallePedidos->getidProducto();
+        $cantddProdc = $detallePedidos->getcantidad();
         try{
             $sql->execute();
             $link = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
@@ -28,8 +29,8 @@ class CRUDdetallePedido{
                       $item_1 = $fila['idinsumo'];
                       $item_2 = $fila['idProducto'];
                       $item_5 = $fila['cantidad'];
-                      //echo "-".$item_1;
-                      self::descuentacantidad($item_1,$item_2,$item_5);
+                      //echo "-".$item_2;
+                      self::descuentacantidad($item_1,$item_2,$item_5,$cantddProdc);
                 }
              }
             
@@ -44,7 +45,7 @@ class CRUDdetallePedido{
     }
 
 
-    public static function descuentacantidad($item_1,$item_2,$item_5){
+    public static function descuentacantidad($item_1,$item_2,$item_5,$cantddProdc){
 
         $link2 = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
             
@@ -58,7 +59,7 @@ class CRUDdetallePedido{
             
             }
             
-        $cantidadNueva=abs($num - $item_5);
+        $cantidadNueva=abs($num - ($item_5 * $cantddProdc));
         $sql4 = "UPDATE insumos set Stock = $cantidadNueva WHERE idinsumo = $item_1";
         $result3 = mysqli_query($link2, $sql4);
         mysqli_close($link2);
@@ -228,6 +229,7 @@ class CRUDdetallePedido{
              $sentencia2->bindValue("cantidad",$detallePedidos->getcantidad());
              $sentencia2->bindValue("precio",$detallePedidos->getprecio());
              $detalleP = $detallePedidos->getidProducto();
+             $cantddProdc = $detallePedidos->getcantidad();
              $sentencia2->execute();
              try{
                 $sentencia2->execute();
@@ -241,7 +243,7 @@ class CRUDdetallePedido{
                           $item_2 = $fila['idProducto'];
                           $item_5 = $fila['cantidad'];
                           //echo "-".$item_1;
-                          self::descuentacantidadcarrito($item_1,$item_2,$item_5);
+                          self::descuentacantidadcarrito($item_1,$item_2,$item_5,$cantddProdc);
                     }
                  }
                 
@@ -256,7 +258,7 @@ class CRUDdetallePedido{
      
     }
     
-    public static function descuentacantidadcarrito($item_1,$item_2,$item_5){
+    public static function descuentacantidadcarrito($item_1,$item_2,$item_5,$cantddProdc){
 
         $link2 = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
             
@@ -270,7 +272,7 @@ class CRUDdetallePedido{
             
             }
             
-        $cantidadNueva=abs($num - $item_5);
+        $cantidadNueva=abs($num - ($item_5 * $cantddProdc));
         $sql4 = "UPDATE insumos set Stock = $cantidadNueva WHERE idinsumo = $item_1";
         $result3 = mysqli_query($link2, $sql4);
         mysqli_close($link2);
