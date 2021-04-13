@@ -6,7 +6,7 @@ class CRUDdetallePedido{
 
     }
 
-    public function RegistrarDetallePedido($detallePedidos){
+    public  function RegistrarDetallePedido($detallePedidos){
         $Db = Db::Conectar();
         $sql = $Db->prepare('INSERT INTO detallepedidos(
             idPedido,idProducto,cantidad,precio)
@@ -16,15 +16,56 @@ class CRUDdetallePedido{
         $sql->bindValue('idProducto', $detallePedidos->getidProducto());
         $sql->bindValue('cantidad', $detallePedidos->getcantidad());
         $sql->bindValue('precio', $detallePedidos->getprecio());
-
+        $detalleP = $detallePedidos->getidProducto();
         try{
             $sql->execute();
+            $link = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
+            
+            $sql2 = "SELECT idinsumo, idProducto, cantidad FROM detalleproducto WHERE idProducto='$detalleP'";
+            $result = mysqli_query($link, $sql2);
+            if($result->num_rows>0){
+                while($fila=$result->fetch_assoc()){
+                      $item_1 = $fila['idinsumo'];
+                      $item_2 = $fila['idProducto'];
+                      $item_5 = $fila['cantidad'];
+                      //echo "-".$item_1;
+                      self::descuentacantidad($item_1,$item_2,$item_5);
+                }
+             }
+            
+            
+            
+            mysqli_close($link);
         }
         catch(Exception $e){
             echo $e->getMessage();
         }
         Db::CerrarConexion($Db);
     }
+
+
+    public static function descuentacantidad($item_1,$item_2,$item_5){
+
+        $link2 = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
+            
+            if ( $resultado = $link2->query("SELECT Stock FROM insumos WHERE idinsumo='$item_1'")) {
+               // echo 'Número de resultados: '. $resultado->num_rows;
+
+                /* recorrer los resultados  */
+                while ($fila = $resultado->fetch_row()) {
+                    $num = $fila[0];
+                }
+            
+            }
+            
+        $cantidadNueva=abs($num - $item_5);
+        $sql4 = "UPDATE insumos set Stock = $cantidadNueva WHERE idinsumo = $item_1";
+        $result3 = mysqli_query($link2, $sql4);
+        mysqli_close($link2);
+        
+        }
+
+
     public function buscardetallepedido($idDetallePedido){
         //conectar ala DB
         $Db = Db::Conectar();
@@ -186,28 +227,59 @@ class CRUDdetallePedido{
              $sentencia2->bindValue("idProducto",$detallePedidos->getidProducto());
              $sentencia2->bindValue("cantidad",$detallePedidos->getcantidad());
              $sentencia2->bindValue("precio",$detallePedidos->getprecio());
+             $detalleP = $detallePedidos->getidProducto();
              $sentencia2->execute();
-             //var_dump($sentencia2);
-             //exit();
-             Db::CerrarConexion($Db);
-         //}
+             try{
+                $sentencia2->execute();
+                $link = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
+                
+                $sql2 = "SELECT idinsumo, idProducto, cantidad FROM detalleproducto WHERE idProducto='$detalleP'";
+                $result = mysqli_query($link, $sql2);
+                if($result->num_rows>0){
+                    while($fila=$result->fetch_assoc()){
+                          $item_1 = $fila['idinsumo'];
+                          $item_2 = $fila['idProducto'];
+                          $item_5 = $fila['cantidad'];
+                          //echo "-".$item_1;
+                          self::descuentacantidadcarrito($item_1,$item_2,$item_5);
+                    }
+                 }
+                
+                
+                
+                mysqli_close($link);
+            }
+            catch(Exception $e){
+                echo $e->getMessage();
+            }
+            Db::CerrarConexion($Db);
      
-         /*foreach($_SESSION['CARRITO'] as $indice=>$producto){
-             $Db = Db::Conectar();
-             $sentencia=$Db->prepare('INSERT INTO `detallepedidos`
-                 (`idPedido`, `idProducto`, `cantidad`, `precio`) 
-             VALUES (:idPedido, :idProducto, :cantidad, :precio);');
-     
-             $sentencia->bindValue(":idPedido",$detallePedidos->getidPedido());
-             $sentencia->bindValue(":idProducto",$producto['idProducto']);
-             $sentencia->bindValue(":cantidad",$producto['cantidad']);
-             $sentencia->bindValue(":precio",$producto['precio']);
-             $sentencia->execute();
-     
-             Db::CerrarConexion($Db);
-         }*/
-     
-    }   
+    }
+    
+    public static function descuentacantidadcarrito($item_1,$item_2,$item_5){
+
+        $link2 = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
+            
+            if ( $resultado = $link2->query("SELECT Stock FROM insumos WHERE idinsumo='$item_1'")) {
+               // echo 'Número de resultados: '. $resultado->num_rows;
+
+                /* recorrer los resultados  */
+                while ($fila = $resultado->fetch_row()) {
+                    $num = $fila[0];
+                }
+            
+            }
+            
+        $cantidadNueva=abs($num - $item_5);
+        $sql4 = "UPDATE insumos set Stock = $cantidadNueva WHERE idinsumo = $item_1";
+        $result3 = mysqli_query($link2, $sql4);
+        mysqli_close($link2);
+        
+        }
+    
+    
+
+    
 
 }
 
