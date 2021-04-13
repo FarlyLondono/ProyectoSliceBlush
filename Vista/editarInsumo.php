@@ -61,8 +61,6 @@ if(isset($_POST["editarinsumo"])){
     <input type="text" name="unidadmedida" id="unidadmedida" class="form-control" value="<?php echo $buscarinsumo->getunidadmedida() ?>">
     <label for="">Precio Producto:</label>  
     <input type="text" name="precio" id="precio" class="form-control" value="<?php echo $buscarinsumo->getprecio() ?>">
-    <label for="">Stock:</label>  
-    <input type="text" name="Stock" id="Stock" class="form-control" value="<?php echo $buscarinsumo->getStock() ?>">
     </br>
 
     <button type="submit" name="editarinsumo" id="editarinsumo" class="btn btn-success">Editar</button>

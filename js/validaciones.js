@@ -55,10 +55,6 @@ function validarDatosInsumo() {
         swal("El campo Precio esta vacio");
         comprobacion++;
     }
-    if ($("#Stock").val().length == 0) {
-        swal("El campo Stock esta vacio");
-        comprobacion++;
-    }
     if (comprobacion > 0) {
         return false;
     } else {

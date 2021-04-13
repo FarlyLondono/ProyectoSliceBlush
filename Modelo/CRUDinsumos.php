@@ -25,12 +25,12 @@ public function listarinsumos(){
 }
 public function Registrarinsumo($insumo){
     $Db = Db::Conectar();
-    $Sql = $Db->prepare('INSERT INTO insumos(nombreProducto,unidadmedida,precio,Stock)
-     VALUES(:nombreProducto,:unidadmedida,:precio,:Stock)');
+    $Sql = $Db->prepare('INSERT INTO insumos(nombreProducto,unidadmedida,precio)
+     VALUES(:nombreProducto,:unidadmedida,:precio)');
     $Sql->bindValue('nombreProducto',$insumo->getnombreProducto());
     $Sql->bindValue('unidadmedida',$insumo->getunidadmedida());
     $Sql->bindValue('precio',$insumo->getprecio());
-    $Sql->bindValue('Stock',$insumo->getStock());
+    //$Sql->bindValue('Stock',1);
     
     //var_dump($Sql);
     //var_dump($producto);
@@ -63,7 +63,7 @@ public function buscarinsumo($idinsumo){
         $I->setnombreProducto($insumo['nombreProducto']);
         $I->setunidadmedida($insumo['unidadmedida']);
         $I->setprecio($insumo['precio']);
-        $I->setStock($insumo['Stock']);
+        //$I->setStock($insumo['Stock']);
         
 
         //$listaUsuarios[]= $U;//asignar ala lista el objeto.
@@ -76,13 +76,12 @@ public function editarinsumo($insumo){
     $Sql = $Db->prepare('UPDATE insumos SET
     nombreProducto=:nombreProducto,
     unidadmedida=:unidadmedida,
-    precio=:precio,
-    Stock=:Stock
+    precio=:precio
     WHERE idinsumo=:idinsumo');
     $Sql->bindValue('nombreProducto',$insumo->getnombreProducto());
     $Sql->bindValue('unidadmedida',$insumo->getunidadmedida());
     $Sql->bindValue('precio',$insumo->getprecio());
-    $Sql->bindValue('Stock',$insumo->getStock());
+    //$Sql->bindValue('Stock',$insumo->getStock());
     $Sql->bindValue('idinsumo',$insumo->getidinsumo());
     //var_dump($Sql);
     //var_dump($Usuario);

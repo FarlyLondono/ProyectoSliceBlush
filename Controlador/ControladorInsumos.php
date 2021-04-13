@@ -23,7 +23,7 @@ class ControladorInsumo{
         $insumos->setnombreProducto($_POST["nombreProducto"]);
         $insumos->setunidadmedida($_POST["unidadmedida"]);
         $insumos->setprecio($_POST["precio"]);
-        $insumos->setStock($_POST["Stock"]);
+        //$insumos->setStock($_POST["Stock"]);
         
         //var_dump($producto);
         $crudinsumos->Registrarinsumo($insumos);
@@ -44,7 +44,7 @@ class ControladorInsumo{
         $insumos->setnombreProducto($_POST["nombreProducto"]);
         $insumos->setunidadmedida($_POST["unidadmedida"]);
         $insumos->setprecio($_POST["precio"]);
-        $insumos->setStock($_POST["Stock"]);
+        //$insumos->setStock($_POST["Stock"]);
         
         //var_dump($Usuario);
         $crudinsumos->editarinsumo($insumos);

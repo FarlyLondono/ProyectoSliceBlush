@@ -167,7 +167,7 @@ class CRUDproducto{
         $Sql->bindValue('NombreProducto',$Productos->getNombreProducto());
         $Sql->bindValue('DescripcionProducto',$Productos->getDescripcionProducto());
         $Sql->bindValue('PrecioProducto',$Productos->getPrecioProducto());
-        $Sql->bindValue('idEstado',$Productos->getidEstado());
+        $Sql->bindValue('idEstado',1);
         $Sql->bindValue('idProducto',$Productos->getidProducto());
 
         try{

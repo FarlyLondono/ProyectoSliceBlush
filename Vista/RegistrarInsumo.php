@@ -56,8 +56,7 @@ $listarestado = $controlador->listarestados();*/
          
           <label id="precioRequerido" for="">Precio Producto:</label>
           <input type="text" name="precio" value="<?php echo $_POST['precio'] ?>" id="precio" class="form-control">
-          <label id="StockRequerido" for="">Stock:</label>
-          <input type="text" name="Stock" value="<?php echo $_POST['Stock'] ?>" id="Stock" class="form-control">
+          <br>
           <br>
           <button type="submit" name="RegistrarInsumo" id="RegistrarInsumo" class="btn btn-success">Registrar</button>
           <a href="../menu.php" class="btn btn-primary">Regresar</a>

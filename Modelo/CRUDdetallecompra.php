@@ -12,25 +12,12 @@ class cruddetallecompra{
         $Sql->bindValue('Cantidad',$detallecompra->getCantidad());
         $Sql->bindValue('Total',$detallecompra->getTotal());
         $Sql->bindValue('observaciones',$detallecompra->getobservaciones());
-        $detalleI = $detallecompra->getidinsumo();
+        $detalleC = $detallecompra->getidcompra();
+        $cantddCom = $detallecompra->getCantidad();
+        $idInsumo = $detallecompra->getidinsumo();
         try{
-            $Sql->execute();
-            $link = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
-            $sql2 = "SELECT idinsumo, Cantidad FROM detallecompra WHERE idinsumo='$detalleI'";
-            $result = mysqli_query($link, $sql2);
-            $item_2=0;
-            if($result->num_rows>0){
-                while($fila=$result->fetch_assoc()){
-                      $item_1 = $fila['idinsumo'];
-                      $item_2 = $fila['Cantidad'];
-                      //echo "-".$item_1;
-                      self::sumacantidad($item_1,$item_2);
-                }
-             }
-            
-            
-            
-            mysqli_close($link);
+            $Sql->execute();   
+            self::sumacantidad($cantddCom,$idInsumo);
         }catch(Exception $e){
             echo $e->getMessage();
         }
@@ -38,30 +25,29 @@ class cruddetallecompra{
         Db::cerrarconexion($Db);
     }
 
-    public static function sumacantidad($item_1,$item_2){
+    public static function sumacantidad($cantddCom,$idInsumo){
 
-        $link2 = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
+        $linkb = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
             
-            if ( $resultado = $link2->query("SELECT Stock FROM insumos WHERE idinsumo='$item_1'")) {
+            if ( $resultado = $linkb->query("SELECT Stock FROM insumos WHERE idinsumo='$idInsumo'")) {
                // echo 'Número de resultados: '. $resultado->num_rows;
 
                 /* recorrer los resultados  */
                 while ($fila = $resultado->fetch_row()) {
-                    $num = $fila[0];
+                    $numero = $fila[0];
                 }
             
             }
-            
-        $cantidadNueva=abs($num+$item_2);
-        $sql4 = "UPDATE insumos set Stock = $cantidadNueva WHERE idinsumo = $item_1";
-        $result3 = mysqli_query($link2, $sql4);
-        mysqli_close($link2);
-        $num=0;
-        $cantidadNueva=0;
-        
+        //echo "--".$numero;
+        //echo "--".$item2;    
+        $cantidadNva=abs($numero + $cantddCom);
+        $sql6 = "UPDATE insumos set Stock = $cantidadNva WHERE idinsumo = $idInsumo";
+        $result3 = mysqli_query($linkb, $sql6);
+        mysqli_close($linkb);
+
         }
 
-        
+
 
     public function listardetallecompra($idcompra){
         $Db = Db::Conectar();
