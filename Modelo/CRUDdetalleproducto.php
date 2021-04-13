@@ -9,13 +9,13 @@ class cruddetalleproducto{
     public function RegistrarDetalleProducto($Detalleproducto){
         $Db = Db::Conectar();
         $Sql = $Db->prepare('INSERT INTO detalleproducto(
-        idProducto,idinsumo,cantidad,UnidadMedida
+        idProducto,idinsumo,cantidad,unidadMedida
         ) VALUES (:idProducto,:idinsumo,:cantidad,:unidadMedida)');
         $Sql->bindValue('idProducto',$Detalleproducto->getidProducto());
         $Sql->bindValue('idinsumo',$Detalleproducto->getidinsumo());
         //$Sql->bindValue('NombreInsumo',$Detalleproducto->getNombreInsumo());
         $Sql->bindValue('cantidad',$Detalleproducto->getcantidad());
-        $Sql->bindValue('UnidadMedida',$Detalleproducto->getunidadMedida());
+        $Sql->bindValue('unidadMedida',$Detalleproducto->getunidadMedida());
     
         try{
             $Sql->execute();
@@ -31,8 +31,8 @@ class cruddetalleproducto{
     public function listardetalleproducto($idProducto){
         $Db = Db::Conectar();
         $listardetalleproducto = [];
-        $Sql = $Db->query("SELECT f.iddetalleproducto,f.idProducto,f.idinsumo,f.Cantidad,
-        f.UnidadMedida,i.idinsumo,i.nombreProducto
+        $Sql = $Db->query("SELECT f.iddetalleproducto,f.idProducto,f.idinsumo,f.cantidad,
+        f.unidadMedida,i.idinsumo,i.nombreProducto
         FROM detalleproducto  AS f INNER JOIN insumos AS i ON f.idinsumo=i.idinsumo WHERE f.idProducto = $idProducto ");
         $Sql->execute();
         foreach($Sql->fetchAll() as $objeto){
@@ -41,7 +41,7 @@ class cruddetalleproducto{
             $D->setidProducto($objeto['idProducto']);
             $D->setidinsumo($objeto['idinsumo']);
             $D->setNombreInsumo($objeto['nombreProducto']);
-            $D->setCantidad($objeto['Cantidad']);
+            $D->setCantidad($objeto['cantidad']);
             $D->setunidadMedida($objeto['unidadMedida']);
             
     

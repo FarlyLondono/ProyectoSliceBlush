@@ -305,13 +305,13 @@ public function registrarCliente(){
         
         public function registrardetalleproducto($idProducto){
             $Detalleproducto = new detalleproducto();
-            $CRUDDetallePedido = new cruddetalleproducto();
+            $CRUDDetalleProducto = new cruddetalleproducto();
             $Detalleproducto->setidProducto($idProducto);
             $Detalleproducto->setidinsumo($_POST["insumo"]);
             //$Detalleproducto->setNombreInsumo("prueba");   //($_POST["Precio"]);
             $Detalleproducto->setcantidad($_POST["cantidad"]);
             $Detalleproducto->setunidadMedida($_POST["unidadMedida"]);
-            $CRUDDetallePedido->RegistrarDetalleProducto($Detalleproducto);
+            $CRUDDetalleProducto->RegistrarDetalleProducto($Detalleproducto);
         }
 
 
