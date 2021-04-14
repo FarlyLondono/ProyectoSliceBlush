@@ -24,6 +24,38 @@ class controladordetalleproducto{
     
         }
 
+        public function RegistrarDetalleProducto(){
+
+            $detalleproducto = new detalleproducto();
+            $cruddetalleproducto = new cruddetalleproducto();
+            $detalleproducto->setiddetalleproducto($_POST["iddetalleproducto"]);
+            $detalleproducto->setidinsumo($_POST["idinsumo"]);
+            $detalleproducto->setidProducto($_POST["idProducto"]);
+            $detalleproducto->setunidadMedida($_POST["unidadMedida"]);
+            $detalleproducto->setcantidad($_POST["cantidad"]);
+            
+            //var_dump($Usuario);
+            $cruddetalleproducto->RegistrarDetalleProducto($detalleproducto);
+        
+        
+        }
+
+        public function editardetalleproducto(){
+
+            $detalleproducto = new detalleproducto();
+            $cruddetalleproducto = new cruddetalleproducto();
+            $detalleproducto->setiddetalleproducto($_POST["iddetalleproducto"]);
+            $detalleproducto->setidinsumo($_POST["idinsumo"]);
+            $detalleproducto->setidProducto($_POST["idProducto"]);
+            $detalleproducto->setunidadMedida($_POST["unidadMedida"]);
+            $detalleproducto->setcantidad($_POST["cantidad"]);
+            
+            //var_dump($Usuario);
+            $cruddetalleproducto->editardetalleproducto($detalleproducto);
+        
+        
+        }
+
     public function verdetalleproducto($idProducto){
         $detalleproducto = new detalleproducto();
         $cruddetalleproducto = new cruddetalleproducto();
@@ -57,7 +89,9 @@ if(isset($_POST["Detalleproducto"])){
 }
 elseif(isset($_GET["verdetalleproducto"])){
     $controladordetalleproducto->despliegarVista("../Vista/verdetalleproducto.php");
-}
+}elseif(isset($_GET["eliminardetalleproducto"])){
+    $controladordetalleproducto->eliminardetalleproducto($_GET["iddetalleproducto"]);
+  }
 
 
 ?>

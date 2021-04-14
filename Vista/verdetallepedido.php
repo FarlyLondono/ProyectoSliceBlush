@@ -43,7 +43,7 @@ function desplegarVista2($ruta)
                 $.ajax({
                     url: "../Controlador/ControladorPedido.php?eliminarDetallePedido&idDetallePedido=" + idDetallePedido,
                     success: () => {
-                        window.location.href = "../menu.php"
+                        window.location.href = "../menu.php" 
                     }
                 })
             }

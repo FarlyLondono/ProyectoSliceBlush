@@ -85,7 +85,7 @@ function boton(iddetalleproducto) {
                         <td align="center"><strong><?php echo $C->getunidadMedida()  ?></strong></td>
                         <td align="center"><strong><?php echo $C->getCantidad()  ?></strong></td>
                         <td>
-                      
+                       
                         <a onclick="boton(<?php echo $C->getiddetalleproducto(); ?>)" type="button" class="btn btn-outline-danger">Eliminar</a>
                         </td>     
                         </tr>
@@ -97,6 +97,7 @@ function boton(iddetalleproducto) {
 
             </table>
             <div class="card-header text-white">
+
             <a href="../menu.php" class="btn btn-success">REGRESAR</a>  
             </div> 
     </div>

@@ -261,6 +261,29 @@ function validarDatoseditarcompra() {
 
 }
 
+function validardatosdetalleproducto() {
+
+    var comprobacion = 0;
+    if ($("#idinsumo").val().length == 0) {
+        swal({ icon: 'error', text: "El campo insumo está vacío" });
+        comprobacion++;
+    }
+    if ($("#unidadMedida").val().length == 0) {
+        swal({ icon: 'error', text: "Apreciado Usuario el campo unidadMedida es necesario" });
+        comprobacion++;
+    }
+    if ($("#cantidad").val().length == 0) {
+        swal({ icon: 'error', text: "Apreciado Usuario el campo cantidad es necesario" });
+        comprobacion++;
+    }
+    if (comprobacion > 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
 function validarDatosdetallecompra() {
 
     var comprobacion = 0;
@@ -279,6 +302,7 @@ function validarDatosdetallecompra() {
     }
 
 }
+
 
 function validarDatosdetallepedido() {
 

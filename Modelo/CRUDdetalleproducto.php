@@ -114,7 +114,8 @@ class cruddetalleproducto{
         foreach($Sql->fetchAll() as $detallecompra){
             $I = new detalleproducto(); //crear un objeto de tipo usuario
             $I->setiddetalleproducto($detallecompra['iddetalleproducto']);
-            $I->setidinsumo($detallecompra['idinsumo']);    
+            $I->setidinsumo($detallecompra['idinsumo']);  
+            $I->setidProducto($detallecompra['idProducto']);  
             $I->setunidadMedida($detallecompra['unidadMedida']);
             $I->setCantidad($detallecompra['cantidad']);
             
@@ -124,6 +125,34 @@ class cruddetalleproducto{
         }
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
         return $I;
+    } 
+    public function editardetalleproducto($detalleproducto){
+        $Db = Db::Conectar();
+        $Sql = $Db->prepare('UPDATE detalleproducto SET
+        idinsumo=:idinsumo,
+        idProducto=:idProducto,
+        unidadMedida=:unidadMedida,
+        cantidad=:cantidad
+        WHERE iddetalleproducto=:iddetalleproducto');
+        $Sql->bindValue('idinsumo',$detalleproducto->getidinsumo());
+        $Sql->bindValue('idProducto',$detalleproducto->getidProducto());
+        $Sql->bindValue('cantidad',$detalleproducto->getcantidad());
+        $Sql->bindValue('unidadMedida',$detalleproducto->getunidadMedida());
+        $Sql->bindValue('iddetalleproducto',$detalleproducto->iddetalleproducto());
+        //var_dump($Sql);
+        //var_dump($Usuario);
+    
+        try{
+    
+            $Sql->execute();
+            //echo "Actualizacion exitosa";
+        }
+        catch(Exception $e){
+            echo $e->getMessage();
+            die();
+        }
+    
+        Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
     }
 
 

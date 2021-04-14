@@ -34,22 +34,21 @@ $(document).ready(function() {
     });
 });
 
-function Detallecompra()
-{
+function Detallecompra() {
     var formData = new FormData();
-    formData.append('Detallecompra','Detallecompra');
-    formData.append('idcompra',$("#idcompra").val());
+    formData.append('Detallecompra', 'Detallecompra');
+    formData.append('idcompra', $("#idcompra").val());
     $.ajax({
-        url : '../Controlador/Controladordetallecompra.php',
-        type:'post',
-        data:formData,
-        contentType:false,
-        processData:false,
-        success: function(response){
-            if(response != 0 ){
+        url: '../Controlador/Controladordetallecompra.php',
+        type: 'post',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            if (response != 0) {
                 $("#listadoDetallecompra").html(response);
             }
         }
     });
-   
+
 }
