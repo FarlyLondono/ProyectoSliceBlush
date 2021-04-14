@@ -96,8 +96,8 @@ function desplegarVista2($ruta){
 
                         <tr>
                             <td colspan="5">
-                                <form name="frmPagar" id="frmPagar"}>
-                                <input type="hidden" name="proceder" />
+                                <form name="frmPagar" id="frmPagar">
+                                <input type="hidden" name="proceder" id="proceder" />
                            
                         <tr>
                             <td colspan="3" align="right"><h3>Total</h3></td>
@@ -120,7 +120,7 @@ function desplegarVista2($ruta){
                                          <?php } ?> 
 
                                     <button class="btn btn-success btn-lg btn-block" 
-                                    type="submit" value="proceder" id="proceder" name="proceder">Pago en efectivo>></button>
+                                    type="submit"  id="proceder" name="proceder">Pago en efectivo>></button>
                                 </form>
                                 </div>
                                         <small id="emailHelp" class="form-text text-muted">
@@ -128,7 +128,7 @@ function desplegarVista2($ruta){
                                     </small>
                                         </div>
                                 
-                                <form type="hidden" name="frmPagar2" id="frmPagar" action="../Controlador/ControladorPedido.php" method="post" >
+                                <form type="hidden" name="frmPagar2"  >
                                        
                                 </form>
                                 
@@ -151,11 +151,9 @@ No hay productos en el carrito...
     <script >
         $("#proceder").on('click',function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
             $("#frmPagar").submit(function(e) {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
-            //e.preventDefault();
-            //if(validarDatosInsumo()){ 
-                var dataString = $('#frmPagar').serialize();    
+            var dataString = $('#frmPagar').serialize();    
                 $.post("../Controlador/ControladorPedido.php",dataString, function(response) {
-                    alert(" Gracias por preferirnos!!! \n En unos instantes nos comunicaremos \n con usted para confirmar  su pedido"); 
+                        alert("Gracias por preferirnos!!! \n En unos instantes nos comunicaremos \n con usted para confirmar  su pedido"); 
                     window.location='../menu.php';    
                 }); 
             }

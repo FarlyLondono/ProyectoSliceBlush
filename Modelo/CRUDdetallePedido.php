@@ -222,7 +222,7 @@ class CRUDdetallePedido{
              $Db = Db::Conectar();
              $sentencia2=$Db->prepare('INSERT INTO `detallepedidos`
                  (`idPedido`, `idProducto`, `cantidad`, `precio`) 
-             VALUES (:idPedido, :idProducto, :cantidad, :precio);');
+             VALUES (:idPedido, :idProducto, :cantidad, :precio)');
      
              $sentencia2->bindValue("idPedido",$detallePedidos->getidPedido());
              $sentencia2->bindValue("idProducto",$detallePedidos->getidProducto());

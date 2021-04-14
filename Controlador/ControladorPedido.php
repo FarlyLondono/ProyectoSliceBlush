@@ -153,6 +153,7 @@ class ControladorPedido{
      return $CRUDPedido->RegistrarPedidoCarrito($pedido);
     }
 
+
     public function RegistrarDetallePedidoCarrito($idPedido)
     {
         
@@ -225,7 +226,8 @@ elseif(isset($_POST["editarPedido"])){
     $idPedido = $_POST["idPedido"];
     if($idPedido==""){
         $idPedido= $ControladorPedido->RegistrarPedidoCarrito();
-    }   
+    }
+    echo $idPedido;    
     $ControladorPedido->RegistrarDetallePedidoCarrito($idPedido);
 
 
