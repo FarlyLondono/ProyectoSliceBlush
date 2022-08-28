@@ -7,7 +7,7 @@ public function __construct(){
 public function listarinsumos(){
     $Db = Db::Conectar();
         $listainsumos = [];
-        $Sql = $Db->query('SELECT * FROM insumos order by nombreProducto');
+        $Sql = $Db->query('SELECT * FROM insumos order by Stock ASC');
         $Sql->execute();
         foreach($Sql->fetchAll() as $insumos){
             $I = new insumos();
@@ -17,8 +17,11 @@ public function listarinsumos(){
             $I->setprecio($insumos['precio']);
             $I->setStock($insumos['Stock']);
 
-
-            $listainsumos[]= $I;      
+            $listainsumos[]= $I;
+            
+            /*If($I->setStock()==5){
+                echo '<td style="color:red"> </td>';
+            }*/
         }    
         Db::cerrarconexion($Db);
         return $listainsumos;
@@ -101,7 +104,7 @@ public function editarinsumo($insumo){
 public function eliminarinsumo($idinsumo){
     $mensaje="";
     $Db = Db::Conectar();
-    $Sql = $Db->prepare('DELETE FROM `insumos` WHERE idinsumo =:idinsumo ');
+    $Sql = $Db->prepare('DELETE FROM `insumos` WHERE idinsumo =:idinsumo');
     $Sql->bindValue('idinsumo',$idinsumo);
 
     try{

@@ -62,7 +62,7 @@ function boton(idPedido) {
     <h1 align="center">Lista Pedidos</h1>
     </div>
     <?php
-     $sesion = $_SESSION["IdRol"];
+    $sesion = $_SESSION["IdRol"];
     if($sesion == 1 || $sesion == 2 )
     {
     ?>
@@ -118,11 +118,20 @@ function boton(idPedido) {
                 if($sesion == 1 || $sesion == 2)
                 {
             ?> 
-            <a href="Vista/RegistrarPedido.php" class="btn btn-primary">Nuevo Pedido</a>
+            <a href="Vista/RegistrarPedido.php" class="btn btn-primary">Nuevo Pedido</a>   
+           
+            <?php
+            }
+            ?>
+            <?php
+                $sesion = $_SESSION["IdRol"];
+                if($sesion == 1)
+                {
+            ?> 
             <a href="Vista/reportePedidos.php" target="_black" class="btn btn-warning">Generar Reporte</a>
             <?php
-                        }
-                        ?>
+            }
+            ?>
     </div>
     </div>
                     </div>

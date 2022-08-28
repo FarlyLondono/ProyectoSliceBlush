@@ -8,7 +8,7 @@ function Header()
 {
 
     // Arial bold 15
-    $this->SetFont('Arial','B',18);
+    $this->SetFont('Arial','B',15);
     // Movernos a la derecha
     $this->Cell(60);
     // Título
@@ -17,9 +17,11 @@ function Header()
     $this->Ln(20);
 
 
-    $this->Cell(90, 10, 'idPedido', 1, 0, 'C', 0);
-    $this->Cell(55, 10, 'idCliente', 1, 0, 'C', 0);
-    $this->Cell(55, 10, 'fechaRegistro', 1, 1, 'C', 0);
+    $this->Cell(30, 10, 'idPedido', 1, 0, 'C', 0);
+    $this->Cell(38, 10, 'EstadoPedido', 1, 0, 'C', 0);
+    $this->Cell(38, 10, 'Cliente', 1, 0, 'C', 0);
+    $this->Cell(52, 10, 'Fecha', 1, 0, 'C', 0);
+    $this->Cell(38, 10, 'TotalPedido', 1, 1, 'C', 0);
 
 
 
@@ -38,18 +40,25 @@ function Footer()
 }
 
 require 'cn.php';
-$consulta = "SELECT * FROM pedidos";
+//$consulta = "SELECT * FROM pedido";
+$consulta = "SELECT f.IdEstadoPedido,f.IdCliente,f.idPedido,f.fechaRegistro,e.IdEstadoPedido,e.NombreEstadoPedido,r.idCliente,r.Nombre,
+        sum(p.precio) as TotalPedido 
+        FROM pedido AS f INNER JOIN estadopedido AS e ON f.IdEstadoPedido=e.IdEstadoPedido
+        INNER JOIN clientes AS r ON f.idCliente=r.idCliente INNER JOIN detallepedidos AS p ON f.idPedido=p.idPedido
+        GROUP BY p.idPedido ORDER BY f.fechaRegistro DESC";
 $resultado = $mysqli->query($consulta);
 
 $pdf = new PDF();
 $pdf->aliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont('Arial','B',16);
+$pdf->SetFont('Arial','B',15);
 
 while($row = $resultado->fetch_assoc()){
-    $pdf->Cell(90, 10, $row['idPedido'], 1, 0, 'C', 0);
-    $pdf->Cell(55, 10, $row['idCliente'], 1, 0, 'C', 0);
-    $pdf->Cell(55, 10, $row['fechaRegistro'], 1, 1, 'C', 0);
+    $pdf->Cell(30, 10, $row['idPedido'], 1, 0, 'C', 0);
+    $pdf->Cell(38, 10, $row['NombreEstadoPedido'], 1, 0, 'C', 0);
+    $pdf->Cell(38, 10, $row['Nombre'], 1, 0, 'C', 0);
+    $pdf->Cell(52, 10, $row['fechaRegistro'], 1, 0, 'C', 0);
+    $pdf->Cell(38, 10, $row['TotalPedido'], 1, 1, 'C', 0);
 
 }
 

@@ -12,9 +12,9 @@ class CRUDPedido{
 
         $Sql = $Db->query('SELECT f.IdEstadoPedido,f.IdCliente,f.idPedido,f.fechaRegistro,e.IdEstadoPedido,e.NombreEstadoPedido,r.idCliente,r.Nombre,
         sum(p.precio) as TotalPedido 
-        FROM pedidos AS f INNER JOIN estadopedido AS e ON f.IdEstadoPedido=e.IdEstadoPedido
+        FROM pedido AS f INNER JOIN estadopedido AS e ON f.IdEstadoPedido=e.IdEstadoPedido
         INNER JOIN clientes AS r ON f.idCliente=r.idCliente INNER JOIN detallepedidos AS p ON f.idPedido=p.idPedido
-        GROUP BY p.idPedido ORDER BY f.IdEstadoPedido');
+        WHERE f.IdEstadoPedido IN (1,2,3) GROUP BY p.idPedido ORDER BY f.fechaRegistro DESC');
        
         $Sql->execute();
         foreach($Sql->fetchAll() as $Registro){
@@ -32,7 +32,7 @@ class CRUDPedido{
 
     public function editarPedido($Pedido){
         $Db = Db::Conectar();
-        $Sql = $Db->prepare('UPDATE pedidos SET
+        $Sql = $Db->prepare('UPDATE pedido SET
         idCliente=:idCliente,  
         fechaRegistro=:fechaRegistro,
         IdEstadoPedido=:IdEstadoPedido
@@ -59,7 +59,7 @@ class CRUDPedido{
 
     public function eliminarPedido($idPedido){
         $Db = Db::Conectar();
-        $Sql = $Db->prepare('DELETE FROM `pedidos` WHERE idPedido =:idPedido');
+        $Sql = $Db->prepare('DELETE FROM `pedido` WHERE idPedido =:idPedido');
         $Sql->bindValue('idPedido',$idPedido);
 
         try{
@@ -78,7 +78,7 @@ class CRUDPedido{
     public function buscarPedido($idPedido){
         //conectar ala DB
         $Db = Db::Conectar();
-        $Sql = $Db->prepare('SELECT * FROM pedidos WHERE idPedido=:idPedido');
+        $Sql = $Db->prepare('SELECT * FROM pedido WHERE idPedido=:idPedido');
         $Sql->bindValue(':idPedido',$idPedido);
         //se ejecuta la consulta
         $Sql->execute();
@@ -96,7 +96,7 @@ class CRUDPedido{
     public function RegistrarPedido($pedido){
         $Db = Db::Conectar();
         $idPedidoGenerado = -1;
-        $sql = $Db->prepare('INSERT INTO pedidos(
+        $sql = $Db->prepare('INSERT INTO pedido(
             idCliente,fechaRegistro,IdEstadoPedido)
             VALUES(
             :idCliente,NOW(),:IdEstadoPedido)');
@@ -123,22 +123,22 @@ class CRUDPedido{
              $idCliente = $ControladorPedido->buscaridcliente($Correo);
              echo'  
              <script>
-         swal($idCliente, "=)!","success",{
-             button: "OK"
-         }).then(function(){
-         window.location.href="../index.php"
-         })
+                swal($idCliente, "=)!","success",{
+                    button: "OK"
+                }).then(function(){
+                window.location.href="../index.php"
+                })
              </script>
              
              ';
              foreach($_SESSION['CARRITO'] as $indice=>$producto){
-                 $total=$total+($producto['precio']*$producto['cantidad']);
+             $total=$total+($producto['precio']*$producto['cantidad']);
                  //var_dump($producto['idProducto']);
              }
          
                  $Db = Db::Conectar();
                  $idPedidoGenerado = -1;
-                 $sentencia=$Db->prepare("INSERT INTO `pedidos`
+                 $sentencia=$Db->prepare("INSERT INTO `pedido`
                           (`idCliente`, `fechaRegistro`, `IdEstadoPedido`)
                  VALUES (:idCliente,NOW(),:IdEstadoPedido)");
                  $sentencia->bindValue(":idCliente",print_r($idCliente,true));

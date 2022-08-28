@@ -14,7 +14,8 @@ class ControladorInsumo{
         $insumos = new insumos();
         $crudinsumos = new crudinsumos();
         $listarinsumos = $crudinsumos->listarinsumos();
-        return $listarinsumos;        
+        return $listarinsumos;
+                
     }
     public function Registrarinsumo(){
 

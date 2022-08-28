@@ -199,18 +199,18 @@ public function registrarCliente(){
 
         $passwordencriptada = base64_encode($_POST["Contrasena"]);
 
-    $Clientes = new Clientes();
-    $CRUDcliente = new CRUDcliente();
-        $Clientes->setidCliente($_POST["idCliente"]);
-        $Clientes->setNombre($_POST["Nombre"]);
-        $Clientes->setCorreo($_POST["Correo"]);
-        $Clientes->setDireccion($_POST["Direccion"]);
-        $Clientes->setTelefono($_POST["Telefono"]);
-        $Clientes->setContrasena($passwordencriptada);
-    
+        $Clientes = new Clientes();
+        $CRUDcliente = new CRUDcliente();
+            $Clientes->setidCliente($_POST["idCliente"]);
+            $Clientes->setNombre($_POST["Nombre"]);
+            $Clientes->setCorreo($_POST["Correo"]);
+            $Clientes->setDireccion($_POST["Direccion"]);
+            $Clientes->setTelefono($_POST["Telefono"]);
+            $Clientes->setContrasena($passwordencriptada);
         
-            //var_dump($Usuario);
-    $CRUDcliente->editarCliente($Clientes);
+            
+                //var_dump($Usuario);
+        $CRUDcliente->editarCliente($Clientes);
 
 
     }
@@ -255,12 +255,13 @@ public function registrarCliente(){
 
         $Productos = new Productos();
         $CRUDproducto = new CRUDproducto(); 
-       return $CRUDproducto->eliminarProducto($idProductos);
+        return $CRUDproducto->eliminarProducto($idProductos);
     
     
-        }
+    }
 
-        public function editarProducto(){
+
+    public function editarProducto(){
 
             $Productos = new Productos();
             $CRUDproducto = new CRUDproducto();
@@ -289,7 +290,7 @@ public function registrarCliente(){
             
         
         
-            }
+    }
 
     
     public function listarProductos(){ 

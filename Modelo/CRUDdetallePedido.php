@@ -64,7 +64,7 @@ class CRUDdetallePedido{
         $result3 = mysqli_query($link2, $sql4);
         mysqli_close($link2);
         
-        }
+    }
 
 
     public function buscardetallepedido($idDetallePedido){
@@ -101,7 +101,7 @@ class CRUDdetallePedido{
         //ORDER BY idDetallePedido DESC");
         $Sql = $Db->query("SELECT f.idDetallePedido,f.idPedido,f.idProducto,f.cantidad,
         f.precio,i.idProducto,i.NombreProducto 
-        FROM detallepedidos  AS f LEFT JOIN productos AS i ON f.idProducto=i.idProducto WHERE f.idPedido = $idPedido ");
+        FROM detallepedidos  AS f LEFT JOIN productos AS i ON f.idProducto=i.idProducto WHERE f.idPedido = $idPedido");
         $Sql->execute();
         foreach($Sql->fetchAll() as $detallePedidos){
             $C = new detallePedidos(); //crear un objeto de tipo usuario
@@ -231,8 +231,9 @@ class CRUDdetallePedido{
              $detalleP = $detallePedidos->getidProducto();
              $cantddProdc = $detallePedidos->getcantidad();
              $sentencia2->execute();
+             
              try{
-                $sentencia2->execute();
+                //$sentencia2->execute();
                 $link = new mysqli('127.0.0.1', 'root', '', 'proyecto slice blush');
                 
                 $sql2 = "SELECT idinsumo, idProducto, cantidad FROM detalleproducto WHERE idProducto='$detalleP'";

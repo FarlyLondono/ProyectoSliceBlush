@@ -45,9 +45,7 @@ class cruddetallecompra{
         $result3 = mysqli_query($linkb, $sql6);
         mysqli_close($linkb);
 
-        }
-
-
+    }
 
     public function listardetallecompra($idcompra){
         $Db = Db::Conectar();
@@ -105,6 +103,7 @@ class cruddetallecompra{
     
     
     }
+
     public function eliminardetallecompra($iddetallecompra){
         $mensaje="";
         $Db = Db::Conectar();
@@ -122,6 +121,7 @@ class cruddetallecompra{
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
         return $mensaje;
     }
+
     public function dropdetallecompra($idcompra){
         $mensaje="";
         $Db = Db::Conectar();
@@ -139,14 +139,16 @@ class cruddetallecompra{
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
         return $mensaje;
     }
+
+
     public function buscardetallecompra($iddetallecompra){
         //conectar ala DB
         $Db = Db::Conectar();
         //$listaUsuarios = [];
         //se define la consulta
         //$Sql = $Db->query("SELECT * FROM ususarios WHERE idUsuarios=$idUsuarios");
-        $Sql = $Db->prepare('SELECT iddetallecompra,detallecompra.idinsumo,idcompra,Cantidad,Total,observaciones,precio 
-        FROM `detallecompra` join insumos on detallecompra.idinsumo = insumos.idinsumo WHERE iddetallecompra=:iddetallecompra');
+        $Sql = $Db->prepare('SELECT detallecompra.iddetallecompra,detallecompra.idinsumo,detallecompra.idcompra,detallecompra.Cantidad,detallecompra.Total,detallecompra.observaciones,insumos.precio 
+        FROM detallecompra join insumos on detallecompra.idinsumo = insumos.idinsumo WHERE iddetallecompra=:iddetallecompra');
         $Sql->bindValue('iddetallecompra',$iddetallecompra);
         //se ejecuta la consulta
         $Sql->execute();
@@ -166,6 +168,8 @@ class cruddetallecompra{
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
         return $I;
     }
+
+
     public function editardetallecompra($detallecompra){
         $Db = Db::Conectar();
         $Sql = $Db->prepare('UPDATE detallecompra SET

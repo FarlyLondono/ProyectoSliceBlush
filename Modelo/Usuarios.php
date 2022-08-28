@@ -1,7 +1,7 @@
 <?php
 	
 
-class Usuarios{
+class usuarios{
     //definicion de atributos
     private $IdUsuarios;
     private $NumeroDocumento;

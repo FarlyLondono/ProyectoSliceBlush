@@ -110,8 +110,9 @@ class ControladorPedido{
     $CRUDdetallePedido = new CRUDdetallePedido();
     return $CRUDdetallePedido->verdetallepedido($idPedido);
       
-                
-    }
+}
+
+
     public function buscardetallepedido($idDetallePedido){
         $detallePedidos = new detallePedidos();
         $CRUDdetallePedido = new CRUDdetallePedido(); 
@@ -141,7 +142,6 @@ class ControladorPedido{
     $CRUDdetallePedido = new CRUDdetallePedido();          
     return $CRUDdetallePedido->dropdetallepedido($idPedido);
 
-
     }
 
     public function RegistrarPedidoCarrito()
@@ -160,7 +160,6 @@ class ControladorPedido{
         $detallePedidos = new detallePedidos();
         $CRUDdetallePedido = new CRUDdetallePedido();
         $detallePedidos->setidPedido($idPedido);
-        //
         foreach($_SESSION['CARRITO'] as $indice=>$producto){
         $detallePedidos->setidProducto($producto["idProducto"]);
         $detallePedidos->setcantidad($producto["cantidad"]);
@@ -169,7 +168,7 @@ class ControladorPedido{
         }
         $_SESSION['CARRITO'] = [];
     }
-
+    
 
 
     public function DesplegarVista($url){

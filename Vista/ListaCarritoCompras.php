@@ -49,7 +49,7 @@ function desplegarVista2($ruta){
     <a href="../menu.php" class="btn btn-success">REGRESAR</a> 
     <?php if(!empty($_SESSION['CARRITO'])){ ?>
     </div>
-    <div id="formContent">
+<div id="formContent">
     <div class="card-bordy">
     <table class="table" id="listadoPedidos">
                 <thead class="thead-dark">
@@ -88,23 +88,27 @@ function desplegarVista2($ruta){
                                 >Eliminar</button>
 
                             </form>
+
+
                             </td>
                         </tr>
-                        <?php  $total=$total+($producto['precio']*$producto['cantidad']); ?>
 
-                        <?php } ?>
 
-                        <tr>
-                            <td colspan="5">
-                                <form name="frmPagar" id="frmPagar">
+            <?php  $total=$total+($producto['precio']*$producto['cantidad']); ?>
+
+                <?php } ?>
+
+                    <tr>
+                        <td colspan="5">
+                            <form name="frmPagar" id="frmPagar">
                                 <input type="hidden" name="proceder" id="proceder" />
                            
-                        <tr>
-                            <td colspan="3" align="right"><h3>Total</h3></td>
-                            <td align="right"><h3><?php echo number_format($total,2); ?></h3></td>
-                            <td></td>
-                        </tr>
-                                <div class="alert alert-success">
+                                <tr>
+                                    <td colspan="3" align="right"><h3>Total</h3></td>
+                                    <td align="right"><h3><?php echo number_format($total,2); ?></h3></td>
+                                    <td></td>
+                                </tr>
+                            <div class="alert alert-success">
                                 <div class="form-group">
                                         <label for="my-input">Correo de Contacto:</label>
                                         <input id="email"
@@ -120,15 +124,14 @@ function desplegarVista2($ruta){
                                          <?php } ?> 
 
                                     <button class="btn btn-success btn-lg btn-block" 
-                                    type="submit"  id="proceder" name="proceder">Pago en efectivo>></button>
-                                </form>
+                                    type="submit"  id="proceder" name="proceder">Enviar pedido>></button>
                                 </div>
                                         <small id="emailHelp" class="form-text text-muted">
                                     Gracias por preferirnos,estaremos en contacto para su entrega.
                                     </small>
-                                        </div>
+                                </div>
                                 
-                                <form type="hidden" name="frmPagar2"  >
+                               
                                        
                                 </form>
                                 
@@ -138,7 +141,7 @@ function desplegarVista2($ruta){
             </table> 
               
     </div>
-    </div>
+</div>
 </div>
 <?php }else{ ?>
 <div class="alert alert-success" >

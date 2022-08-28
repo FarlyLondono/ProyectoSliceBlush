@@ -43,7 +43,7 @@ function boton(idinsumo) {
   }
 })
     }
-        </script>
+</script>
 
 
 
@@ -70,11 +70,34 @@ function boton(idinsumo) {
                 <tbody>
                     <?php foreach($listarinsumos as $I){ ?> 
                         <tr>
-                        
+                        <?php if($I->getStock()<=5) {?>
+
+                        <td <?php echo 'style="color:red"' ?>
+                        onmousemove="return confirm('¿ALERTA!! Hay insumos que se estan agotando!!! ')"><strong>
+
+                        <?php echo $I->getnombreProducto()  ?>
+                        </strong>
+                        </td>  
+                        <?php }else{ ?>
                         <td><?php echo $I->getnombreProducto()  ?></td>
+                        <?php } ?>       
+                        
                         <td><?php echo $I->getunidadmedida()  ?></td>
                         <td><strong style="color:green;"><?php echo $I->getprecio()  ?></strong></td>
-                        <td><?php echo $I->getStock()  ?></td>  
+
+                        <?php if($I->getStock()<=5) {?>
+
+                        <td <?php echo 'style="color:red"' ?>
+                        onmousemove="return confirm('¿ALERTA!! Hay insumos que se estan agotando!!! ')"><strong>
+                        
+                        <?php echo $I->getStock() ?>
+                        </strong>
+                        </td>  
+                        <?php }else{ ?>
+                        <td ><?php echo $I->getStock()  ?></td>    
+                        <?php } ?>
+
+
                         <td>
                         <?php
                         $sesion = $_SESSION["IdRol"];

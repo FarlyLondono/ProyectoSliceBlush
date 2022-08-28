@@ -1,6 +1,7 @@
 <?php
 
 class CRUDusuario{
+    
     public function __construct(){}
 
     public function cambiarEstado($Usuario){
@@ -38,7 +39,7 @@ class CRUDusuario{
         $Sql->bindvalue('Correo',$Usuario->getCorreo());
         $Sql->bindvalue('Contrasena',$Usuario->getContrasena());
         $Sql->execute();
-        $C = new Usuarios();
+        $C = new usuarios();
         if($Sql->rowCount() > 0){
             //echo "Existe";
             $DatosCliente = $Sql->fetch();
@@ -110,6 +111,7 @@ class CRUDusuario{
 
         Db::cerrarconexion($Db);//llamar el metodo para cerrar la conexion.
     }
+
     public function buscarusuario($IdUsuarios){
         //conectar ala DB
 
